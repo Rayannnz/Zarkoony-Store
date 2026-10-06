@@ -105,7 +105,8 @@
     margin-bottom: calc(-1 * var(--header-height));
   }
 
-  body:has([data-transparent-header]) .site-header:not(:hover, [data-solid]) {
+  /* Also solid while the search is open, so its bar hangs from a white header. */
+  body:has([data-transparent-header]):not(:has(dialog[open][data-search])) .site-header:not(:hover, [data-solid]) {
     --header-bg: transparent;
     --header-line: transparent;
     --logo-filter: brightness(0) invert(1);

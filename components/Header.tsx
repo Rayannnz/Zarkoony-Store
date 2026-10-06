@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Heart, Menu, Search, ShoppingBag, User } from "lucide-react";
+import { ChevronDown, Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { HeaderFrame } from "./HeaderFrame";
-import { Trigger } from "./Overlays";
+import { CartDot, Trigger } from "./Overlays";
 
 const icon = { size: 24, strokeWidth: 1.5, "aria-hidden": true } as const;
 
@@ -44,17 +44,9 @@ export function Header() {
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
           </Trigger>
-          <Trigger
-            opens="measure"
-            item={{ title: "Custom Atelier Order", price: 28500 }}
-            aria-label="Shopping bag, 1 item"
-            className={`relative ${iconButton}`}
-          >
-            <ShoppingBag {...icon} />
-            <span
-              aria-hidden
-              className="absolute right-1.5 top-2 size-2 rounded-full bg-current ring-2 ring-(--header-bg) transition-transform duration-200"
-            />
+          <Trigger opens="cart" aria-label="Shopping cart" className={`relative ${iconButton}`}>
+            <ShoppingCart {...icon} />
+            <CartDot />
           </Trigger>
           <a href="#wishlist" aria-label="Wishlist" className={`hidden sm:inline-flex ${iconButton}`}>
             <Heart {...icon} />

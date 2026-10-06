@@ -1,0 +1,42 @@
+[     510ms] [LOG] Panda Size Chart & AI Guide Working version 2.0.0 @ https://cdn.shopify.com/extensions/019dbdfe-dc27-791b-88b1-b4b7182fd5bb/panda-9-41/assets/panda-sizechart.js:3
+[     710ms] TypeError: Cannot read properties of null (reading '1')
+    at https://baroque.pk/web-pixels@87a86122w399bf3b8pd0403c97m2c07468c/custom/web-pixel-129761347@1/sandbox/modern/:11:555
+[     739ms] [LOG] %c InfinitePixels background: blue; color: white {id: sh-13202418-F281-4E0F-F9B8-50F1CDDEF7D5, name: page_viewed, data: Object, type: standard, timestamp: 2026-10-06T21:30:35.381Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[     741ms] [ERROR] Unable to decode Infinite pixel data: URIError: URI malformed
+    at decodeURIComponent (<anonymous>)
+    at T (https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:1357)
+    at https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:5043
+    at Generator.next (<anonymous>)
+    at j (https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:716) @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[     742ms] [ERROR] Unable to decode Infinite pixel data: URIError: URI malformed
+    at decodeURIComponent (<anonymous>)
+    at T (https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:1357)
+    at https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:17278
+    at Generator.next (<anonymous>)
+    at j (https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:1:716) @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[     922ms] [WARNING] In a sandboxed environment, addEventListener may not behave as expected. @ https://baroque.pk/cdn/wpm/s87a86122w399bf3b8pd0403c97m2c07468cm.js:0
+[    6090ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[    6106ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-13204f32-F428-4C34-327E-39109E106881, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:30:40.891Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[    6320ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-132050d4-EB71-4656-FB17-F6B52902EE43, name: input_focused, data: Object, type: dom, timestamp: 2026-10-06T21:30:41.100Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[    8703ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-13206372-D426-41E2-1320-1F3A5DDE9472, name: input_changed, data: Object, type: dom, timestamp: 2026-10-06T21:30:43.483Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[    8704ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-13206374-7FC6-470D-F42D-6B9546AEF7AF, name: input_blurred, data: Object, type: dom, timestamp: 2026-10-06T21:30:43.484Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[   55470ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[   55490ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1321d100-9D36-42C2-BB4C-36AF6E29D1D6, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:31:30.274Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[   57049ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[   57074ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1321dd5a-3426-48E3-B412-2AF6DFFF4EC4, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:31:31.855Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[   58248ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[   58261ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1321e6b2-DEE6-4F3E-349F-57460258499C, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:31:33.051Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  112591ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[  112609ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-13238f40-8FBD-4254-35AC-F4A8C665AE3D, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:32:27.394Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  114166ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[  114194ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-13239b97-230B-4C4D-76EA-67099B89815C, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:32:28.974Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  115470ms] Uncaught TypeError: Cannot read properties of null (reading 'classList')
+    at openModal (https://cdn.shopify.com/extensions/01a10b24-e7f5-74bb-826a-087e105f5da6/orbe-geolocation-504/assets/orbe.min.js:12:27545)
+    at openAndRefreshModal (https://cdn.shopify.com/extensions/01a10b24-e7f5-74bb-826a-087e105f5da6/orbe-geolocation-504/assets/orbe.min.js:12:29292)
+    at onclick (https://baroque.pk/:1000:130)
+[  115471ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[  115492ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1323a5c4-AC79-45F9-6FD5-020A26033FB0, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:32:30.276Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  116083ms] [LOG] clicking on remove button @ https://baroque.pk/cdn/shop/t/257/assets/wishlist.js?v=39864092271188920061786534931:0
+[  116109ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1323aa8c-978D-4042-04B6-298E5C3BF4B8, name: clicked, data: Object, type: dom, timestamp: 2026-10-06T21:32:30.888Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  116324ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1323ac3e-AB56-45A6-E9AF-BCB900A6C135, name: input_focused, data: Object, type: dom, timestamp: 2026-10-06T21:32:31.105Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0
+[  116741ms] [LOG] %c InfinitePixels background: blue; color: white {id: shu-1323af7e-7745-44EF-C8C6-A904A2A3CA53, name: input_blurred, data: Object, type: dom, timestamp: 2026-10-06T21:32:31.521Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@0c82fadb70a787c914df69c49737853b.js:0

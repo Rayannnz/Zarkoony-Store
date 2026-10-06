@@ -9,7 +9,7 @@ import {
   type MouseEvent,
   type ReactNode,
 } from "react";
-import { X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import {
   formatPrice,
   measurementFields,
@@ -21,10 +21,20 @@ import { mobileNavItems, popularSearches, site } from "@/lib/site";
 type OverlayApi = {
   openMenu: () => void;
   openSearch: () => void;
+  openCart: () => void;
   openMeasure: (item?: MeasureItem) => void;
+  cart: MeasureItem[];
+  addToCart: (item: MeasureItem) => void;
+  removeFromCart: (index: number) => void;
 };
 
 const OverlayContext = createContext<OverlayApi | null>(null);
+
+function useOverlays() {
+  const overlays = useContext(OverlayContext);
+  if (!overlays) throw new Error("Overlay components must be rendered inside <Overlays>");
+  return overlays;
+}
 
 const defaultItem: MeasureItem = { title: "Bespoke Tailoring Specification", price: 28500 };
 
@@ -36,62 +46,89 @@ const closeOnBackdrop = (event: MouseEvent<HTMLDialogElement>) => {
   if (event.target === event.currentTarget) event.currentTarget.close();
 };
 
+const closeIcon = <X size={24} strokeWidth={1.5} aria-hidden />;
+
 function Overlay({ className, ...props }: ComponentProps<"dialog">) {
   return (
     <dialog
       onClick={closeOnBackdrop}
-      className={`fixed inset-0 size-full max-h-none max-w-none text-charcoal-body backdrop-blur-xs backdrop:bg-transparent ${className}`}
+      className={`fixed max-h-none max-w-none bg-black/40 text-charcoal-body backdrop:bg-transparent ${className}`}
       {...props}
     />
   );
 }
 
 type TriggerProps = Omit<ComponentProps<"button">, "onClick" | "type"> & {
-  opens: "menu" | "search" | "measure";
+  opens: "menu" | "search" | "cart" | "measure";
   item?: MeasureItem;
 };
 
 /** A button that opens one of the site overlays. Usable from server components. */
 export function Trigger({ opens, item, ...props }: TriggerProps) {
-  const overlays = useContext(OverlayContext);
-  if (!overlays) throw new Error("<Trigger> must be rendered inside <Overlays>");
+  const overlays = useOverlays();
 
   const open = {
     menu: overlays.openMenu,
     search: overlays.openSearch,
+    cart: overlays.openCart,
     measure: () => overlays.openMeasure(item),
   }[opens];
 
   return <button type="button" {...props} onClick={open} />;
 }
 
+/** The dot on the cart icon; scales in once the cart has something in it. */
+export function CartDot() {
+  const { cart } = useOverlays();
+  return (
+    <span
+      aria-hidden
+      className={`absolute right-1.5 top-2 size-2 rounded-full bg-current ring-2 ring-(--header-bg) transition-transform duration-200 ${
+        cart.length ? "scale-100" : "scale-0"
+      }`}
+    />
+  );
+}
+
 export function Overlays({ children }: { children: ReactNode }) {
   const menu = useRef<HTMLDialogElement>(null);
   const search = useRef<HTMLDialogElement>(null);
+  const cartDialog = useRef<HTMLDialogElement>(null);
   const measure = useRef<HTMLDialogElement>(null);
   // `visit` remounts the form so every opening starts from a clean state.
   const [commission, setCommission] = useState({ item: defaultItem, visit: 0 });
+  const [cart, setCart] = useState<MeasureItem[]>([]);
 
   const api: OverlayApi = {
     openMenu: () => menu.current?.showModal(),
-    openSearch: () => search.current?.showModal(),
+    openSearch: () => {
+      // The bar hangs from the header's bottom edge, wherever the header currently is.
+      const header = document.querySelector(".site-header");
+      const top = header ? header.getBoundingClientRect().bottom : 0;
+      search.current?.style.setProperty("--search-top", `${top}px`);
+      search.current?.showModal();
+    },
+    openCart: () => cartDialog.current?.showModal(),
     openMeasure: (item = defaultItem) => {
       setCommission(({ visit }) => ({ item, visit: visit + 1 }));
       measure.current?.showModal();
     },
+    cart,
+    addToCart: (item) => setCart((items) => [...items, item]),
+    removeFromCart: (index) => setCart((items) => items.filter((_, i) => i !== index)),
   };
 
   return (
     <OverlayContext value={api}>
       {children}
 
-      <Overlay ref={menu} aria-label="Navigation menu" className="bg-black/60">
+      <Overlay ref={menu} aria-label="Navigation menu" className="inset-0 size-full">
         <div className="flex h-full w-4/5 max-w-sm flex-col justify-between overflow-y-auto bg-white p-6 transition-transform duration-500 ease-out starting:-translate-x-full motion-reduce:transition-none">
           <div>
             <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
               <span className="caps text-[13px] font-bold">Zarkoony Atelier</span>
-              <button type="button" aria-label="Close menu" className="p-1" onClick={closeDialog}>
-                <X size={20} strokeWidth={1.25} aria-hidden />
+              <button type="button" aria-label="Close menu" className="-m-1 p-1" onClick={closeDialog}>
+                {closeIcon}
               </button>
             </div>
             <nav aria-label="Mobile" className="caps flex flex-col gap-4 pt-6 text-[13px] leading-[1.7]">
@@ -114,30 +151,33 @@ export function Overlays({ children }: { children: ReactNode }) {
         </div>
       </Overlay>
 
+      {/* Full-width bar under the header, like Baroque's. The panel slides out from under it. */}
       <Overlay
         ref={search}
+        data-search
         aria-label="Search"
-        className="items-start justify-center bg-black/60 pt-24 open:flex"
+        className="inset-x-0 bottom-0 top-(--search-top,0px) h-auto w-full overflow-hidden"
       >
-        <div className="mx-4 w-full max-w-2xl bg-white p-6 shadow-2xl transition-[transform,opacity] duration-500 ease-out starting:-translate-y-3 starting:opacity-0 motion-reduce:transition-none">
-          <div className="flex items-center justify-between border-b border-neutral-300 pb-4">
+        <div className="bg-white transition-transform duration-300 ease-out starting:-translate-y-full motion-reduce:transition-none">
+          <div className="mx-auto flex h-20 max-w-[1920px] items-center gap-5 px-4 sm:px-8 lg:px-14">
+            <Search size={24} strokeWidth={1.5} aria-hidden className="shrink-0" />
             <input
               type="text"
               enterKeyHint="search"
               aria-label="Search the couture archive"
-              placeholder="Search couture archive..."
-              className="caps w-full bg-transparent px-3 py-2 text-base text-black outline-hidden placeholder:text-neutral-400 sm:text-xl"
+              placeholder="Search for..."
+              className="caps min-w-0 flex-1 bg-transparent text-xl text-black outline-hidden placeholder:text-neutral-400 sm:text-2xl"
             />
             <button
               type="button"
               aria-label="Close search"
-              className="p-1 text-black"
+              className="-m-1 shrink-0 p-2 text-black"
               onClick={closeDialog}
             >
-              <X size={20} strokeWidth={1.25} aria-hidden />
+              {closeIcon}
             </button>
           </div>
-          <div className="caps flex flex-wrap gap-x-4 gap-y-2 pt-4 text-[11px] text-neutral-500">
+          <div className="caps mx-auto flex max-w-[1920px] flex-wrap gap-x-4 gap-y-2 border-t border-neutral-200 px-4 py-3 text-[11px] text-neutral-500 sm:px-8 lg:px-14">
             <span>Popular:</span>
             {popularSearches.map((item) => (
               <a
@@ -154,13 +194,78 @@ export function Overlays({ children }: { children: ReactNode }) {
       </Overlay>
 
       <Overlay
+        ref={cartDialog}
+        aria-label="Cart"
+        className="inset-0 size-full items-center justify-end open:flex"
+      >
+        <CartPanel />
+      </Overlay>
+
+      <Overlay
         ref={measure}
         aria-label="Bespoke measurements"
-        className="items-center justify-end bg-black/70 open:flex"
+        className="inset-0 size-full items-center justify-end open:flex"
       >
         <MeasureForm key={commission.visit} item={commission.item} />
       </Overlay>
     </OverlayContext>
+  );
+}
+
+function CartPanel() {
+  const { cart, removeFromCart } = useOverlays();
+  const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+
+  return (
+    <div className="flex h-full w-full max-w-[450px] flex-col bg-white transition-transform duration-500 ease-out starting:translate-x-full motion-reduce:transition-none">
+      <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-5">
+        <h2 className="caps text-[13px] font-bold text-black">Cart</h2>
+        <button type="button" aria-label="Close cart" className="-m-1 p-1" onClick={closeDialog}>
+          {closeIcon}
+        </button>
+      </div>
+
+      {cart.length === 0 ? (
+        <p className="caps flex flex-1 items-center justify-center text-[11px] text-black">
+          Your cart is empty
+        </p>
+      ) : (
+        <>
+          <ul className="flex-1 overflow-y-auto px-6">
+            {cart.map((item, index) => (
+              <li
+                key={`${item.title}-${index}`}
+                className="flex items-start justify-between gap-4 border-b border-neutral-200 py-4"
+              >
+                <div>
+                  <p className="font-serif text-[15px] text-black">{item.title}</p>
+                  <p className="caps mt-1 text-[11px] text-neutral-500">Made to order</p>
+                </div>
+                <div className="text-right">
+                  <p className="caps text-[13px] font-bold text-black">{formatPrice(item.price)}</p>
+                  <button
+                    type="button"
+                    onClick={() => removeFromCart(index)}
+                    className="link-underline mt-1 text-[13px] text-neutral-500"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="border-t border-neutral-200 px-6 py-5">
+            <div className="caps flex items-center justify-between text-[13px] font-bold text-black">
+              <span>Subtotal</span>
+              <span>{formatPrice(subtotal)}</span>
+            </div>
+            <p className="mt-2 text-[13px] text-neutral-500">
+              Checkout isn&apos;t available yet. Our atelier confirms every commission on WhatsApp.
+            </p>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
@@ -176,6 +281,7 @@ const fieldClass =
   "w-full bg-transparent text-base text-black outline-hidden focus:border-black sm:text-[15px]";
 
 function MeasureForm({ item }: { item: MeasureItem }) {
+  const { addToCart } = useOverlays();
   const [tab, setTab] = useState<"custom" | "standard">("custom");
   const [confirmed, setConfirmed] = useState(false);
 
@@ -183,6 +289,7 @@ function MeasureForm({ item }: { item: MeasureItem }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        addToCart(item);
         setConfirmed(true);
       }}
       className="flex h-full w-full max-w-xl flex-col justify-between overflow-y-auto bg-white p-6 shadow-2xl transition-transform duration-500 ease-out starting:translate-x-full motion-reduce:transition-none md:p-10"
@@ -199,7 +306,7 @@ function MeasureForm({ item }: { item: MeasureItem }) {
             className="p-2 text-neutral-500 hover:text-black"
             onClick={closeDialog}
           >
-            <X size={20} strokeWidth={1.25} aria-hidden />
+            {closeIcon}
           </button>
         </div>
 
@@ -295,8 +402,8 @@ function MeasureForm({ item }: { item: MeasureItem }) {
         {confirmed ? (
           <>
             <p role="status" className="text-center text-[13px] text-neutral-600">
-              Your bespoke tailoring specification has been logged. Our Master Karigar will contact
-              you via WhatsApp for final sleeve &amp; margin verification.
+              Added to your cart. Our Master Karigar will contact you via WhatsApp for final sleeve
+              &amp; margin verification.
             </p>
             <button type="button" className="btn-black w-full" onClick={closeDialog}>
               Close
