@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* "Haute Couture Atelier" design system tokens (from the Stitch project). */
+@theme {
+  --color-obsidian-deep: #111111;
+  --color-charcoal-footer: #141414;
+  --color-charcoal-body: #2b2b2b;
+  --color-ivory-base: #faf8f5;
+  --color-border-subtle: #e5e0d8;
+  --color-border-light: #eeeeee;
+  --color-champagne-gold: #c5a880;
+  --color-gold-accent: #b89b72;
+
+  /* One tracking value for every uppercase label, heading and button. */
+  --tracking-label: 0.18em;
+
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* The label voice: Cabin, uppercase, tracked. Pair with a text size. */
+@utility caps {
+  font-family: var(--font-heading);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* 1px underline that retracts on hover. */
+@utility link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      background-size: 0 1px;
+    }
+  }
+}
+
+@layer base {
+  html {
+    /* Keeps anchored sections clear of the sticky header. */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (width >= 48rem) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background-color: #111111;
+    color: #faf8f5;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Header: white, or transparent while it sits over a section marked data-transparent-header
+     (the hero) until it is hovered or has scrolled into its stuck position. */
+  :root {
+    --header-height: 64px;
+  }
+
+  @media (width >= 48rem) {
+    :root {
+      --header-height: 80px;
+    }
+  }
+
+  .site-header {
+    --header-bg: #ffffff;
+    --header-line: #f0efeb;
+    --logo-filter: none;
+    background-color: var(--header-bg);
+    color: #000000;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  body:has([data-transparent-header]) .site-header {
+    margin-bottom: calc(-1 * var(--header-height));
+  }
+
+  body:has([data-transparent-header]) .site-header:not(:hover, [data-solid]) {
+    --header-bg: transparent;
+    --header-line: transparent;
+    --logo-filter: brightness(0) invert(1);
+    color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    dialog {
+      opacity: 0;
+      transition:
+        opacity 0.25s ease,
+        overlay 0.25s allow-discrete,
+        display 0.25s allow-discrete;
+    }
+
+    dialog[open] {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@layer components {
+  /* 44px tall on phones, 46px from `md`. On hover the fill wipes away left to right, leaving a
+     1px outline and text in the fill colour; the fill wipes back in the same direction. The fill
+     is a gradient layer whose width animates while its anchor only flips at the end (step-end). */
+  .btn-white,
+  .btn-black {
+    --fill: #ffffff;
+    --ink: #000000;
+    --ease: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.75rem;
+    border: 1px solid var(--fill);
+    color: var(--ink);
+    background-color: transparent;
+    background-image:
+      linear-gradient(var(--fill), var(--fill)), linear-gradient(transparent, transparent);
+    background-size:
+      100% 100%,
+      0 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+      background-size 0.45s var(--ease),
+      background-position 0.45s step-end,
+      color 0.45s var(--ease),
+      border-color 0.45s var(--ease);
+  }
+
+  .btn-black {
+    --fill: #000000;
+    --ink: #ffffff;
+  }
+
+  @media (width >= 48rem) {
+    .btn-white,
+    .btn-black {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (hover: hover) {
+    .btn-white:hover,
+    .btn-black:hover {
+      background-size:
+        0 100%,
+        100% 100%;
+      background-position: left center;
+      color: var(--fill);
+      border-color: var(--fill);
+    }
+  }
 }
