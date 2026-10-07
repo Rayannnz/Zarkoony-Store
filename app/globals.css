@@ -20,6 +20,13 @@
   /* One tracking value for every uppercase label, heading and button. */
   --tracking-label: 0.18em;
 
+  /* Motion system: fast for hover and icons, medium for drawers and accordions, slow for reveals. */
+  --duration-fast: 200ms;
+  --duration-medium: 400ms;
+  --duration-slow: 800ms;
+  --ease-standard: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-wipe: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
   --animate-marquee: marquee 60s linear infinite;
 
   @keyframes marquee {
@@ -113,6 +120,50 @@
     color: #ffffff;
   }
 
+  /* Native popovers (the country chooser) centre themselves in the top layer; just restyle. */
+  [popover] {
+    border: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  [popover]::backdrop {
+    background-color: rgb(0 0 0 / 0.4);
+  }
+
+  /* Accordions (nav, product details, FAQ) animate open where the browser can interpolate
+     `height: auto`; elsewhere they simply toggle. */
+  details {
+    interpolate-size: allow-keywords;
+  }
+
+  details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size var(--duration-medium) var(--ease-standard),
+      content-visibility var(--duration-medium) allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+
+  /* Scroll reveals: hidden only when JS runs and motion is allowed, so nothing stays invisible. */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    [data-reveal]:not([data-inview]) {
+      opacity: 0;
+      translate: 0 24px;
+    }
+
+    [data-reveal] {
+      transition:
+        opacity var(--duration-slow) var(--ease-standard),
+        translate var(--duration-slow) var(--ease-standard);
+      transition-delay: calc(var(--i, 0) * 80ms);
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     dialog {
       opacity: 0;
@@ -133,6 +184,25 @@
 }
 
 @layer components {
+  /* Loading placeholder for images and listing skeletons. */
+  .skeleton {
+    background-color: #f3f1ed;
+    background-image: linear-gradient(90deg, #f3f1ed 0%, #faf8f5 50%, #f3f1ed 100%);
+    background-size: 200% 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton {
+      animation: shimmer 1.6s linear infinite;
+    }
+  }
+
+  @keyframes shimmer {
+    to {
+      background-position: -200% 0;
+    }
+  }
+
   /* 44px tall on phones, 46px from `md`. On hover the fill wipes away left to right, leaving a
      1px outline and text in the fill colour; the fill wipes back in the same direction. The fill
      is a gradient layer whose width animates while its anchor only flips at the end (step-end). */

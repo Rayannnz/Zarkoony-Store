@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
+import { site } from "@/lib/site";
 import { HeaderFrame } from "./HeaderFrame";
-import { CartDot, Trigger } from "./Overlays";
+import { CartDot, Trigger, WishlistDot } from "./Overlays";
 
 const icon = { size: 24, strokeWidth: 1.5, "aria-hidden": true } as const;
 
@@ -33,14 +34,18 @@ export function Header() {
         </Link>
 
         <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-5">
-          <div className="caps hidden items-center gap-1 text-[11px] lg:flex">
+          <button
+            type="button"
+            popoverTarget="country-menu"
+            className="caps hidden items-center gap-1 text-[11px] lg:flex"
+          >
             <span>Pakistan</span>
             <span className="opacity-60">PKR</span>
             <ChevronDown size={15} strokeWidth={1.5} className="-mr-1" aria-hidden />
-          </div>
-          <a href="#account" aria-label="Account" className={iconButton}>
+          </button>
+          <Link href="/account" aria-label="Account" className={iconButton}>
             <User {...icon} />
-          </a>
+          </Link>
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
           </Trigger>
@@ -48,8 +53,30 @@ export function Header() {
             <ShoppingCart {...icon} />
             <CartDot />
           </Trigger>
-          <a href="#wishlist" aria-label="Wishlist" className={`hidden sm:inline-flex ${iconButton}`}>
+          <Link href="/wishlist" aria-label="Wishlist" className={`relative hidden sm:inline-flex ${iconButton}`}>
             <Heart {...icon} />
+            <WishlistDot />
+          </Link>
+        </div>
+      </div>
+
+      {/* Baroque's "Are you in the right place?" country chooser, as a native popover: Esc and
+          click-outside close it, and any button on the page can open it by id. */}
+      <div
+        id="country-menu"
+        popover="auto"
+        className="w-[calc(100%-2rem)] max-w-sm bg-white p-8 text-charcoal-body shadow-2xl"
+      >
+        <h2 className="font-serif text-xl text-black">Are you in the right place?</h2>
+        <p className="mt-2 text-[13px] text-neutral-600">
+          Choose your shipping country. We stitch for both, but delivery and currency differ.
+        </p>
+        <div className="mt-6 grid gap-3">
+          <button type="button" popoverTarget="country-menu" popoverTargetAction="hide" className="btn-black">
+            Pakistan · PKR
+          </button>
+          <a href={site.internationalUrl} className="btn-white !border-black !text-black">
+            International
           </a>
         </div>
       </div>

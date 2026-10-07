@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: hero.image, width: 1376, height: 768, alt: hero.alt }],
+    images: [{ url: hero.image, width: hero.width, height: hero.height, alt: hero.alt }],
   },
   twitter: { card: "summary_large_image" },
 };

@@ -1,3 +1,6 @@
+import { categories, collections } from "./products";
+
+// Contact details, hours and the atelier address are placeholders. TODO confirm with the owner.
 export const site = {
   name: "ZARKOONY",
   title: "ZARKOONY | Bespoke Custom Stitched Pakistani Couture",
@@ -7,22 +10,50 @@ export const site = {
   internationalUrl: "https://www.zarkoony.com.pk",
   uan: { label: "UAN 111-ZARKOONY (111-927-566)", tel: "111927566" },
   concierge: { label: "+92 300 ZARKOONY", tel: "+92300927566" },
+  whatsapp: { label: "WhatsApp Concierge", href: "https://wa.me/92300927566" },
+  email: "concierge@zarkoony.com",
+  hours: "Monday to Saturday, 10am to 6pm PKT",
+  atelier: { name: "The ZARKOONY Atelier", lines: ["Gulberg III", "Lahore, Pakistan"] },
 };
 
-export const mobileNavItems = [
-  { label: "Custom Stitched", href: "#custom-stitched" },
-  { label: "Formals", href: "#formals" },
-  { label: "Luxury Edit", href: "#luxury-edit" },
-  { label: "Signature Archive", href: "#signature" },
-  { label: "Velvet Couture", href: "#velvet-couture" },
-  { label: "Chantelle Bridals", href: "#chantelle-bridals" },
-  { label: "How Custom Stitch Works", href: "#bespoke-process", emphasis: true },
+export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
+
+/** The drawer menu, all breakpoints. Second level opens as an accordion. */
+export const nav: NavItem[] = [
+  { label: "New Arrivals", href: "/shop/new-arrivals" },
+  {
+    label: "Shop",
+    href: "/shop",
+    children: [
+      { label: "Shop All", href: "/shop" },
+      ...categories.map((c) => ({ label: c.name, href: `/shop/${c.slug}` })),
+    ],
+  },
+  {
+    label: "Collections",
+    href: "/collections",
+    children: [
+      { label: "All Collections", href: "/collections" },
+      ...collections.map((c) => ({ label: c.name, href: `/collections/${c.slug}` })),
+    ],
+  },
+  {
+    label: "Made to Order",
+    href: "/made-to-order",
+    children: [
+      { label: "How It Works", href: "/made-to-order" },
+      { label: "Measurement Guide", href: "/made-to-order/measurement-guide" },
+      { label: "Size Guide", href: "/made-to-order/size-guide" },
+    ],
+  },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const popularSearches = [
-  { label: "Chantelle Velvet", href: "#signature" },
-  { label: "Raw Silk Kalidar", href: "#formals" },
-  { label: "Bridal Peshwas", href: "#custom-stitched" },
+  { label: "Velvet", href: "/search?q=velvet" },
+  { label: "Bridal Lehenga", href: "/search?q=bridal+lehenga" },
+  { label: "Raw Silk Kalidar", href: "/search?q=raw+silk+kalidar" },
 ];
 
 export const footerColumns = [
@@ -30,21 +61,23 @@ export const footerColumns = [
     title: "About",
     span: 3,
     links: [
-      { label: "Who We Are", href: "#" },
-      { label: "Our Responsibility", href: "#" },
-      { label: "The Atelier", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Boutique Locations", href: "#" },
+      { label: "Our Story", href: "/about" },
+      { label: "Craftsmanship", href: "/about#craftsmanship" },
+      { label: "The Atelier", href: "/about#atelier" },
+      { label: "Made to Order", href: "/made-to-order" },
+      { label: "Careers", href: "mailto:careers@zarkoony.com" },
     ],
   },
   {
-    title: "Customer Service",
+    title: "Customer Care",
     span: 3,
     links: [
-      { label: "Contact Us", href: "#" },
-      { label: "Dispatch Timeline", href: "#" },
-      { label: "Exchange & Alterations", href: "#" },
-      { label: "WhatsApp Concierge", href: "#" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Shipping & Dispatch", href: "/shipping" },
+      { label: "Alterations & Exchanges", href: "/returns" },
+      { label: "Size Guide", href: "/made-to-order/size-guide" },
+      { label: site.whatsapp.label, href: site.whatsapp.href },
       { label: site.uan.label, href: `tel:${site.uan.tel}` },
     ],
   },
@@ -52,16 +85,16 @@ export const footerColumns = [
     title: "Policies",
     span: 2,
     links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Refund Policy", href: "#" },
-      { label: "Bespoke Tailoring Terms", href: "#" },
-      { label: "Shipping Policy", href: "#" },
-      { label: "Legal", href: "#" },
+      { label: "Privacy Policy", href: "/policies/privacy" },
+      { label: "Refund Policy", href: "/policies/refund" },
+      { label: "Shipping Policy", href: "/policies/shipping" },
+      { label: "Terms of Service", href: "/policies/terms" },
     ],
   },
 ];
 
 // Lucide ships no brand marks, so these are the 24×24 paths from the Stitch design.
+// Profile URLs are placeholders until the accounts exist. TODO confirm handles.
 export const socials = [
   {
     label: "Facebook",

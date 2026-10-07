@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero";
 import { MadeToOrder } from "@/components/MadeToOrder";
 import { ProductGrid } from "@/components/ProductGrid";
 import { essentials, formals, newArrivals, ownYourLook, signature } from "@/lib/home";
-import { products } from "@/lib/products";
+import { productsInCategory } from "@/lib/catalog";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <CollectionBanner {...signature} />
       <CategorySection {...formals} />
       <CollectionBanner {...essentials} />
-      <ProductGrid {...newArrivals} products={products} />
+      <ProductGrid {...newArrivals} products={productsInCategory("new-arrivals").slice(0, 4)} />
       <MadeToOrder />
     </>
   );

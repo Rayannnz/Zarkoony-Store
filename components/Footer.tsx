@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { footerColumns, site, socials } from "@/lib/site";
 import { NewsletterForm } from "./NewsletterForm";
@@ -17,9 +18,9 @@ export function Footer() {
               <ul className="space-y-2.5 text-white/65">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="transition-colors duration-200 hover:text-white">
+                    <Link href={link.href} className="transition-colors duration-200 hover:text-white">
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -51,10 +52,14 @@ export function Footer() {
         </div>
 
         <div className="caps flex flex-col items-center justify-between gap-4 pt-8 text-[11px] text-neutral-500 md:flex-row">
-          <div className="flex items-center gap-1">
+          <button
+            type="button"
+            popoverTarget="country-menu"
+            className="flex items-center gap-1 transition-colors duration-200 hover:text-white"
+          >
             <span>Pakistan</span>
             <ChevronDown size={12} strokeWidth={1.25} aria-hidden />
-          </div>
+          </button>
           <div>
             © {new Date().getFullYear()} - {site.name}
           </div>

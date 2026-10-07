@@ -3,17 +3,25 @@ import type { MeasureItem } from "./products";
 /** A call to action either links somewhere or opens the measurement drawer for a garment. */
 export type Cta = { label: string } & ({ href: string } | { item: MeasureItem });
 
-export type CategoryCard = { image: string; alt: string; cta: Cta };
+/** `href` is where the photo itself leads; the CTA may go elsewhere (e.g. open the drawer). */
+export type CategoryCard = { image: string; alt: string; href: string; cta: Cta };
 
 export type BannerCta = Cta & { variant: "black" | "white" };
 
 export const hero = {
   heading: "ZARKOONY: custom stitched Pakistani couture, made to order",
-  image: "/images/hero/velvet-couture.jpg",
-  alt: "Zarkoony Grand Velvet Couture Collection",
+  image: "/images/hero/atelier-salon.jpg",
+  width: 1672,
+  height: 941,
+  alt: "Zarkoony hand-embellished sage couture gown in the atelier salon",
+  /** object-position; keeps the chandelier out from behind the transparent header's logo. */
+  focus: "center 25%",
   ctas: [
-    { label: "Shop All", href: "#new-arrivals" },
-    { label: "Custom Stitch", item: { title: "Bespoke Bridal Salon Commission", price: 45000 } },
+    { label: "Shop All", href: "/shop" },
+    {
+      label: "Custom Stitch",
+      item: { slug: "rania-pearl-gharara-ensemble", title: "Rania Pearl Gharara Ensemble", price: 98000 },
+    },
   ] satisfies Cta[],
 };
 
@@ -24,14 +32,16 @@ export const ownYourLook = {
     {
       image: "/images/categories/bespoke-pret.jpg",
       alt: "ZARKOONY Everyday Luxury Raw Silk Kurta",
-      cta: { label: "Bespoke Prêt", href: "#new-arrivals" },
+      href: "/shop/luxury-pret",
+      cta: { label: "Bespoke Prêt", href: "/shop/luxury-pret" },
     },
     {
       image: "/images/categories/custom-stitched.jpg",
       alt: "ZARKOONY Crimson Scarlet & Turquoise Embroidered Lehenga",
+      href: "/shop/bridal",
       cta: {
         label: "Custom Stitched",
-        item: { title: "Crimson & Turquoise Festive Lehenga", price: 38500 },
+        item: { slug: "mahira-zardozi-bridal-lehenga", title: "Mahira Zardozi Bridal Lehenga", price: 145000 },
       },
     },
   ] satisfies CategoryCard[],
@@ -42,15 +52,16 @@ export const signature = {
   title: "The Signature Collection",
   image: "/images/collections/signature.jpg",
   alt: "Zarkoony Twin Archival Couture Models",
+  href: "/collections/signature",
   focus: "center 35%",
   align: "left" as const,
   ctas: [
     {
       variant: "black",
       label: "Custom Stitched",
-      item: { title: "Zarkoony Archive Kalidar", price: 52000 },
+      item: { slug: "zariya-embroidered-kalidar", title: "Zariya Embroidered Kalidar", price: 28500 },
     },
-    { variant: "white", label: "Bespoke Bridal", href: "#chantelle-bridals" },
+    { variant: "white", label: "Bespoke Bridal", href: "/shop/bridal" },
   ] satisfies BannerCta[],
 };
 
@@ -61,12 +72,14 @@ export const formals = {
     {
       image: "/images/categories/formals-crimson.jpg",
       alt: "ZARKOONY Formal Crimson Embroidered Ensemble",
-      cta: { label: "View Ensemble", item: { title: "Scarlet Festive Lehenga Choli", price: 36500 } },
+      href: "/shop/formals",
+      cta: { label: "View Formals", href: "/shop/formals" },
     },
     {
       image: "/images/categories/formals-raw-silk.jpg",
       alt: "ZARKOONY Powder Mint Embroidered Raw Silk Formal",
-      cta: { label: "Custom Stitched", item: { title: "Mint Pearl Organza Kalidar", price: 32900 } },
+      href: "/shop/formals",
+      cta: { label: "Custom Stitched", item: { slug: "sahar-organza-peshwas", title: "Sahar Organza Peshwas", price: 36500 } },
     },
   ] satisfies CategoryCard[],
 };
@@ -76,15 +89,16 @@ export const essentials = {
   title: "Bespoke Essentials",
   image: "/images/collections/bespoke-essentials.jpg",
   alt: "Zarkoony Velvet Couture & Velvet Shawl Essentials",
+  href: "/collections/velvet-winter",
   focus: "center",
   align: "right" as const,
   ctas: [
     {
       variant: "white",
       label: "Measurement Guide",
-      item: { title: "Velvet Embroidered Shawl Suite", price: 18500 },
+      href: "/made-to-order/measurement-guide",
     },
-    { variant: "black", label: "How It Works", href: "#how-it-works-info" },
+    { variant: "black", label: "How It Works", href: "/made-to-order" },
   ] satisfies BannerCta[],
 };
 
