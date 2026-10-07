@@ -1,65 +1,47 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Package, Plus, RefreshCw, Scissors, Sparkles, Tag } from "lucide-react";
+import { Package, Plus, RefreshCw, Tag, Truck } from "lucide-react";
 import { careByFabric, defaultCare, facts } from "@/lib/content";
 import { stitchingLabel, type Product } from "@/lib/products";
 
 const icon = { size: 18, strokeWidth: 1.5, "aria-hidden": true } as const;
 
+/** Baroque's four rows, each a few lines: details, delivery, description, exchanges. */
 export function ProductAccordions({ product }: { product: Product }) {
+  const care = (careByFabric[product.fabric] ?? defaultCare).split(". ")[0];
+  const details: [string, string][] = [
+    ["Fabric", product.fabric],
+    ["Colour", product.color],
+    ["Silhouette", product.type],
+    ["Pieces", product.pieces.join(", ")],
+    ["Handwork", product.embroidery.join(", ")],
+    ["Care", care.endsWith(".") ? care : `${care}.`],
+  ];
+
   const sections: { title: string; icon: ReactNode; body: ReactNode }[] = [
     {
       title: "Product details",
       icon: <Package {...icon} />,
       body: (
-        <>
-          <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
-            <dt className="caps text-[10px] text-neutral-500">Fabric</dt>
-            <dd>{product.fabric}</dd>
-            <dt className="caps text-[10px] text-neutral-500">Colour</dt>
-            <dd>{product.color}</dd>
-            <dt className="caps text-[10px] text-neutral-500">Silhouette</dt>
-            <dd>{product.type}</dd>
-            <dt className="caps text-[10px] text-neutral-500">Occasion</dt>
-            <dd>{product.occasion}</dd>
-          </dl>
-          <p className="caps mt-4 text-[10px] text-neutral-500">Pieces</p>
-          <ul className="mt-1 list-disc pl-4">
-            {product.pieces.map((piece) => (
-              <li key={piece}>{piece}</li>
-            ))}
-          </ul>
-          <p className="caps mt-4 text-[10px] text-neutral-500">Handwork</p>
-          <ul className="mt-1 list-disc pl-4">
-            {product.embroidery.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="mt-4 text-neutral-500">
-            Colour may vary slightly with lighting and screen settings. Embroidery is placed by hand,
-            so no two pieces are identical.
-          </p>
-        </>
+        <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5">
+          {details.map(([label, value]) => (
+            <div key={label} className="contents">
+              <dt className="caps text-[10px] leading-[1.9] text-neutral-500">{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
       ),
     },
     {
-      title: "Stitching & delivery",
-      icon: <Scissors {...icon} />,
+      title: "Delivery",
+      icon: <Truck {...icon} />,
       body: (
-        <>
-          <p>
-            <strong className="font-medium text-black">Stitching time: {stitchingLabel(product)}.</strong>{" "}
-            {facts.stitchingNote} {facts.dispatch}
-          </p>
-          <p className="mt-3">{facts.deliveryPakistan}</p>
-          <p className="mt-3">
-            Need it sooner? Priority stitching completes in {facts.express.days} working days for a
-            fixed fee, chosen at checkout.{" "}
-            <Link href="/shipping" className="link-underline text-black">
-              Dispatch timeline
-            </Link>
-          </p>
-        </>
+        <p>
+          Stitched in {stitchingLabel(product)}, dispatched within 2 working days of the final
+          inspection. {facts.deliveryPakistan} Priority stitching in {facts.express.days} working
+          days is available at checkout.
+        </p>
       ),
     },
     {
@@ -71,21 +53,13 @@ export function ProductAccordions({ product }: { product: Product }) {
       title: "Alterations & exchanges",
       icon: <RefreshCw {...icon} />,
       body: (
-        <>
-          <p>{facts.alterations}</p>
-          <p className="mt-3">{facts.exchanges}</p>
-          <p className="mt-3">
-            <Link href="/returns" className="link-underline text-black">
-              Read the full policy
-            </Link>
-          </p>
-        </>
+        <p>
+          {facts.alterations}{" "}
+          <Link href="/returns" className="link-underline text-black">
+            Read the full policy
+          </Link>
+        </p>
       ),
-    },
-    {
-      title: "Care",
-      icon: <Sparkles {...icon} />,
-      body: <p>{careByFabric[product.fabric] ?? defaultCare}</p>,
     },
   ];
 

@@ -20,7 +20,7 @@ import { LineItem, Totals } from "../orders/OrderParts";
 import { cartActions, orderActions, useCart, useHydrated, useSession } from "../Store";
 
 const section = "space-y-4 border-t border-neutral-200 pt-6";
-const sectionTitle = "caps text-[13px] font-bold text-black";
+const sectionTitle = "caps text-label font-bold text-black";
 
 /**
  * Mock checkout: validates with the browser, builds an order, stores it on this device and hands

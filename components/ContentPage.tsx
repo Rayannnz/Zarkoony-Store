@@ -95,7 +95,7 @@ export function ContentPage({ page, crumbs, children }: { page: Page; crumbs: Cr
         {page.sections.map((section, index) => (
           <Reveal key={section.heading} index={Math.min(index, 2)}>
             <section id={section.id} className="scroll-mt-24 space-y-5">
-              <h2 className="caps text-[13px] font-bold text-black">{section.heading}</h2>
+              <h2 className="caps text-label font-bold text-black">{section.heading}</h2>
               {section.blocks.map((block, blockIndex) => (
                 <BlockView key={`${section.heading}-${blockIndex}`} block={block} />
               ))}

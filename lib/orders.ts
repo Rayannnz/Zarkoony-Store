@@ -132,9 +132,9 @@ export const sampleOrders: Order[] = [
     lines: [
       {
         id: "sample-1",
-        slug: "zariya-embroidered-kalidar",
-        name: "Zariya Embroidered Kalidar",
-        image: "/images/products/zariya-embroidered-kalidar.jpg",
+        slug: "zariya-embroidered-raw-silk-set",
+        name: "Zariya Embroidered Raw Silk Set",
+        image: "/images/products/rose-raw-silk/4.jpg",
         price: 28500,
         size: "M",
         qty: 1,
@@ -159,7 +159,7 @@ export const sampleOrders: Order[] = [
         id: "sample-2",
         slug: "sahar-organza-peshwas",
         name: "Sahar Organza Peshwas",
-        image: "/images/categories/formals-crimson.jpg",
+        image: "/images/products/silver-gown/2.jpg",
         price: 36500,
         size: "Custom",
         measurements: { bust: 36, waist: 30, hips: 40, shoulder: 14.5, sleeveLength: 22, armhole: 17, shirtLength: 48, trouserLength: 38 },

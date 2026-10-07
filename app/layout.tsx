@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cabin, Figtree, Playfair_Display } from "next/font/google";
+import { Cabin, Figtree } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -11,16 +11,13 @@ import "./globals.css";
 const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const cabin = Cabin({
   variable: "--font-cabin",
   subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -43,9 +40,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${figtree.variable} ${cabin.variable} ${playfair.variable} scroll-smooth`}
+      className={`${figtree.variable} ${cabin.variable} scroll-smooth`}
     >
-      <body className="bg-white font-sans text-[15px] leading-[1.65] text-charcoal-body antialiased">
+      <body className="bg-white font-sans text-[14px] leading-[1.65] text-charcoal-body antialiased min-[700px]:text-[15px]">
         <Overlays>
           <AnnouncementBar />
           <Header />

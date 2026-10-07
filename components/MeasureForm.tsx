@@ -1,10 +1,9 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { productBySlug } from "@/lib/catalog";
 import {
-  formatPrice,
   measurementFields,
   sizeOrder,
   standardSizes,
@@ -19,27 +18,27 @@ type Props = {
   /** Called with the finished line; the host adds it to the cart and decides what to show next. */
   onConfirm: (line: Omit<CartLine, "id">) => void;
   submitLabel?: string;
+  /** Replaces the size-guide page link, e.g. the product page's per-piece size chart. */
+  sizeGuide?: ReactNode;
 };
 
-type Step = "size" | "measure" | "review";
 type Choice = Size | "Custom";
-
-const stepLabels: Record<Step, string> = { size: "Size", measure: "Measurements", review: "Review" };
 
 const fieldLabel = "caps mb-1 block text-[11px] text-neutral-600";
 // 16px on phones so iOS doesn't zoom the page on focus.
 const field =
-  "w-full border border-neutral-300 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors focus:border-black user-invalid:border-red-700 sm:text-[15px]";
+  "w-full border border-neutral-200 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors focus:border-black user-invalid:border-red-700 sm:text-[15px]";
 
 /**
- * Size → (measurements) → review → confirm. Only the current step is rendered, so a hidden
- * `required` field can never block the submit, and each step validates itself before moving on.
+ * Baroque's size row and quantity, then add to cart. Choosing Custom adds one step for the
+ * measurements. Only the current step is rendered, so a hidden `required` field can never block
+ * the submit, and each step validates itself natively before moving on.
  */
-export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Props) {
+export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", sizeGuide }: Props) {
   const product = item.slug ? productBySlug(item.slug) : undefined;
   const sizes = product?.sizes ?? sizeOrder;
 
-  const [step, setStep] = useState<Step>("size");
+  const [measuring, setMeasuring] = useState(false);
   const [size, setSize] = useState<Choice | "">("");
   const [measurements, setMeasurements] = useState<Partial<Record<MeasurementKey, string>>>({});
   const [notes, setNotes] = useState("");
@@ -48,10 +47,8 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
   const [pending, setPending] = useState(false);
   const panel = useRef<HTMLFieldSetElement>(null);
 
-  const steps: Step[] = size === "Custom" ? ["size", "measure", "review"] : ["size", "review"];
-
   /** Native validation of the current step; focuses the first invalid control. */
-  const validateStep = () => {
+  const validate = () => {
     const controls = [...(panel.current?.elements ?? [])] as HTMLInputElement[];
     const invalid = controls.filter((c) => "checkValidity" in c && !c.checkValidity());
     const next: Record<string, string> = {};
@@ -61,15 +58,10 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
     return invalid.length === 0;
   };
 
-  const advance = () => {
-    if (!validateStep()) return;
-    const index = steps.indexOf(step);
-    setStep(steps[index + 1]);
-  };
-
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    if (step !== "review") return advance();
+    if (!validate()) return;
+    if (size === "Custom" && !measuring) return setMeasuring(true);
     setPending(true);
     const numbers = Object.fromEntries(
       Object.entries(measurements).map(([k, v]) => [k, Number(v)]),
@@ -89,42 +81,32 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
     setTimeout(() => {
       onConfirm(line);
       setPending(false);
-      setStep("size");
+      setMeasuring(false);
     }, 350);
   };
 
   return (
-    <form onSubmit={submit} noValidate className="space-y-6">
-      <ol className="caps flex items-center gap-3 text-[11px] text-neutral-400">
-        {steps.map((s, i) => (
-          <li key={s} className={`flex items-center gap-3 ${s === step ? "text-black" : ""}`}>
-            {i > 0 && <span aria-hidden className="h-px w-5 bg-neutral-300" />}
-            <span>
-              {i + 1}. {stepLabels[s]}
-            </span>
-          </li>
-        ))}
-      </ol>
-
+    <form onSubmit={submit} noValidate className="space-y-5">
       {/* Keyed on the step so the panel remounts and @starting-style runs the entrance. */}
       <fieldset
-        key={step}
+        key={measuring ? "measure" : "size"}
         ref={panel}
-        aria-label={stepLabels[step]}
+        aria-label={measuring ? "Measurements" : "Size"}
         className="min-w-0 transition-[opacity,translate] duration-300 ease-out starting:translate-x-3 starting:opacity-0 motion-reduce:transition-none"
       >
-        {step === "size" && (
+        {!measuring ? (
           <>
-            <div className="mb-4 flex items-baseline justify-between">
-              <p className="caps text-[11px] text-neutral-600">Select size</p>
-              <Link
-                href="/made-to-order/size-guide"
-                className="link-underline caps text-[11px] text-black"
-              >
-                Size guide
-              </Link>
+            <div className="mb-3 flex items-baseline justify-between">
+              <p className="caps text-[11px] text-neutral-600">Size</p>
+              {sizeGuide ?? (
+                <Link
+                  href="/made-to-order/size-guide"
+                  className="link-underline caps text-[11px] text-black"
+                >
+                  Size guide
+                </Link>
+              )}
             </div>
-            {/* Baroque's row of 44px boxes; the bust-per-size detail lives in the size guide. */}
             <div role="radiogroup" aria-label="Size" className="flex flex-wrap gap-2.5">
               {standardSizes
                 .filter((s) => s.size === "Custom" || sizes.includes(s.size))
@@ -151,29 +133,43 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
             </div>
             {errors.size && (
               <p role="alert" className="mt-3 text-[13px] text-red-700">
-                Please choose a standard size or custom measurements.
+                Choose a size, or Custom.
               </p>
             )}
-            <p className="mt-4 text-[13px] text-neutral-600">
-              {size === "Custom"
-                ? "Enter your measurements on the next step. Our master karigar drafts the pattern to them, and post-stitch adjustments are complimentary."
-                : "Standard sizes follow the atelier block in the size guide. Choose Custom to have the pattern drafted to your own measurements at no extra cost."}
-            </p>
+            <div className="mt-5 flex items-center justify-between">
+              <p className="caps text-[11px] text-neutral-600">Quantity</p>
+              <div className="flex items-center border border-neutral-200">
+                <button
+                  type="button"
+                  aria-label="Decrease quantity"
+                  onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  className="px-3 py-2 text-neutral-600 hover:text-black"
+                >
+                  −
+                </button>
+                <span className="min-w-8 text-center text-black">{qty}</span>
+                <button
+                  type="button"
+                  aria-label="Increase quantity"
+                  onClick={() => setQty((q) => Math.min(5, q + 1))}
+                  className="px-3 py-2 text-neutral-600 hover:text-black"
+                >
+                  +
+                </button>
+              </div>
+            </div>
           </>
-        )}
-
-        {step === "measure" && (
+        ) : (
           <>
-            <p className="caps mb-1 text-[11px] text-neutral-600">
-              Your measurements (inches)
-            </p>
-            <p className="mb-5 text-[13px] text-neutral-600">
-              Measure over light clothing with the tape level and relaxed.{" "}
-              <Link href="/made-to-order/measurement-guide" className="link-underline text-black">
+            <div className="mb-4 flex items-baseline justify-between">
+              <p className="caps text-[11px] text-neutral-600">Your measurements (inches)</p>
+              <Link
+                href="/made-to-order/measurement-guide"
+                className="link-underline caps text-[11px] text-black"
+              >
                 How to measure
               </Link>
-            </p>
-            {/* `items-start` keeps the inputs level when one hint wraps and its neighbour doesn't. */}
+            </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {measurementFields.map((f) => (
                 <label key={f.key} className="block">
@@ -192,26 +188,22 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
                       setMeasurements((m) => ({ ...m, [f.key]: e.target.value }));
                       setErrors((prev) => ({ ...prev, [f.key]: undefined }));
                     }}
-                    aria-describedby={`${f.key}-hint`}
+                    aria-describedby={errors[f.key] ? `${f.key}-error` : undefined}
                     aria-invalid={!!errors[f.key]}
                     className={field}
                   />
-                  <span id={`${f.key}-hint`} className="mt-1 block text-[12px] text-neutral-500">
-                    {errors[f.key] ? (
-                      <span role="alert" className="text-red-700">
-                        {errors[f.key] === "missing"
-                          ? `Enter your ${f.label.toLowerCase()}.`
-                          : `Between ${f.min} and ${f.max} inches.`}
-                      </span>
-                    ) : (
-                      f.hint
-                    )}
-                  </span>
+                  {errors[f.key] && (
+                    <span id={`${f.key}-error`} role="alert" className="mt-1 block text-[12px] text-red-700">
+                      {errors[f.key] === "missing"
+                        ? `Enter your ${f.label.toLowerCase()}.`
+                        : `Between ${f.min} and ${f.max} inches.`}
+                    </span>
+                  )}
                 </label>
               ))}
             </div>
-            <label className="mt-5 block">
-              <span className={fieldLabel}>Styling notes (optional)</span>
+            <label className="mt-4 block">
+              <span className={fieldLabel}>Notes (optional)</span>
               <textarea
                 name="notes"
                 rows={2}
@@ -223,94 +215,20 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart" }: Pr
             </label>
           </>
         )}
-
-        {step === "review" && (
-          <>
-            <p className="caps mb-4 text-[11px] text-neutral-600">Review your commission</p>
-            <dl className="divide-y divide-neutral-200 border-y border-neutral-200 text-[13px]">
-              <div className="flex items-center justify-between gap-4 py-3">
-                <dt className="caps text-[11px] text-neutral-500">Garment</dt>
-                <dd className="font-serif text-[15px] text-black">{item.title}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4 py-3">
-                <dt className="caps text-[11px] text-neutral-500">Size</dt>
-                <dd className="flex items-center gap-3">
-                  <span className="caps text-[13px] font-bold text-black">{size}</span>
-                  <button
-                    type="button"
-                    onClick={() => setStep("size")}
-                    className="link-underline text-neutral-500"
-                  >
-                    Edit
-                  </button>
-                </dd>
-              </div>
-              {size === "Custom" && (
-                <div className="py-3">
-                  <div className="flex items-center justify-between gap-4">
-                    <dt className="caps text-[11px] text-neutral-500">Measurements</dt>
-                    <button
-                      type="button"
-                      onClick={() => setStep("measure")}
-                      className="link-underline text-neutral-500"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <dd className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1 text-neutral-700 sm:grid-cols-4">
-                    {measurementFields.map((f) => (
-                      <span key={f.key} className="flex justify-between gap-2">
-                        <span className="text-neutral-500">{f.label}</span>
-                        <span className="text-black">{measurements[f.key]}&quot;</span>
-                      </span>
-                    ))}
-                  </dd>
-                  {notes.trim() && <dd className="mt-2 text-neutral-700">Notes: {notes.trim()}</dd>}
-                </div>
-              )}
-              <div className="flex items-center justify-between gap-4 py-3">
-                <dt className="caps text-[11px] text-neutral-500">Quantity</dt>
-                <dd className="flex items-center border border-neutral-300">
-                  <button
-                    type="button"
-                    aria-label="Decrease quantity"
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="px-3 py-1.5 text-neutral-600 hover:text-black"
-                  >
-                    −
-                  </button>
-                  <span className="min-w-8 text-center text-black">{qty}</span>
-                  <button
-                    type="button"
-                    aria-label="Increase quantity"
-                    onClick={() => setQty((q) => Math.min(5, q + 1))}
-                    className="px-3 py-1.5 text-neutral-600 hover:text-black"
-                  >
-                    +
-                  </button>
-                </dd>
-              </div>
-              <div className="flex items-center justify-between gap-4 py-3">
-                <dt className="caps text-[11px] text-neutral-500">Total</dt>
-                <dd className="caps text-[13px] font-bold text-black">{formatPrice(item.price * qty)}</dd>
-              </div>
-            </dl>
-          </>
-        )}
       </fieldset>
 
       <div className="space-y-3">
-        {step !== "size" && (
+        {measuring && (
           <button
             type="button"
-            onClick={() => setStep(steps[steps.indexOf(step) - 1])}
+            onClick={() => setMeasuring(false)}
             className="caps block text-[11px] text-neutral-500 hover:text-black"
           >
             Back
           </button>
         )}
         <button type="submit" disabled={pending} className="btn-black w-full disabled:opacity-60">
-          {step === "review" ? (pending ? "Adding…" : submitLabel) : "Continue"}
+          {pending ? "Adding…" : size === "Custom" && !measuring ? "Continue" : submitLabel}
         </button>
       </div>
     </form>

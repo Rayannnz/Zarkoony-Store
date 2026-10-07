@@ -8,7 +8,7 @@ import { Field, fieldClass, fieldLabelClass, invalidFields } from "../Field";
 import { LineItem, OrderTimeline, Totals } from "../orders/OrderParts";
 import { sessionActions, useOrders, useSession } from "../Store";
 
-const title = "caps text-[13px] font-bold text-black";
+const title = "caps text-label font-bold text-black";
 
 /** Orders placed on this device plus the seeded samples, newest first. */
 function useAllOrders(): Order[] {
@@ -57,7 +57,7 @@ export function AccountOverview() {
   return (
     <div className="space-y-10">
       <div>
-        <h1 className="font-serif text-2xl text-black">Welcome back, {session.name.split(" ")[0]}.</h1>
+        <h1 className="caps text-title font-normal text-black">Welcome back, {session.name.split(" ")[0]}.</h1>
         <p className="mt-2 text-[13px] text-neutral-500">
           Your commissions, measurements and delivery details in one place.
         </p>
@@ -106,7 +106,7 @@ export function OrdersList() {
   const orders = useAllOrders();
   return (
     <div>
-      <h1 className="mb-6 font-serif text-2xl text-black">Orders</h1>
+      <h1 className="mb-6 caps text-title font-normal text-black">Orders</h1>
       {orders.length ? (
         <OrdersTable orders={orders} />
       ) : (
@@ -202,7 +202,7 @@ export function ProfileForm() {
 
   return (
     <form onSubmit={submit} noValidate className="max-w-md space-y-4">
-      <h1 className="font-serif text-2xl text-black">Profile</h1>
+      <h1 className="caps text-title font-normal text-black">Profile</h1>
       <Field label="Name" name="name" required autoComplete="name" defaultValue={session.name} error={errors.name} />
       <Field label="E-mail" name="email" type="email" required autoComplete="email" defaultValue={session.email} error={errors.email} />
       <button type="submit" className="btn-black">
@@ -250,7 +250,7 @@ export function AddressBook() {
   return (
     <div className="space-y-8">
       <div className="flex items-baseline justify-between">
-        <h1 className="font-serif text-2xl text-black">Addresses</h1>
+        <h1 className="caps text-title font-normal text-black">Addresses</h1>
         {!adding && (
           <button type="button" onClick={() => setAdding(true)} className="link-underline caps text-[10px] text-black">
             Add address

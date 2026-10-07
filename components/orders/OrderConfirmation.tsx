@@ -43,7 +43,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
     <div className="mx-auto max-w-5xl">
       <header className="border-b border-neutral-200 pb-8 text-center">
         <p className="caps text-[11px] text-champagne-gold">Commission confirmed</p>
-        <h1 className="mt-3 font-serif text-2xl text-black md:text-3xl">Thank you, {order.address.fullName.split(" ")[0]}.</h1>
+        <h1 className="mt-3 caps text-title font-normal text-black">Thank you, {order.address.fullName.split(" ")[0]}.</h1>
         <p className="mt-3 text-[13px] text-neutral-600">
           Order <span className="caps font-bold text-black">{order.id}</span> · placed {formatDate(order.placedAt)}.
           A confirmation is on its way to {order.email}.
@@ -53,12 +53,12 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
       <div className="grid grid-cols-1 gap-10 pt-10 lg:grid-cols-[1fr_380px] lg:gap-16">
         <div className="space-y-10">
           <section>
-            <h2 className="caps mb-6 text-[13px] font-bold text-black">What happens next</h2>
+            <h2 className="caps mb-6 text-label font-bold text-black">What happens next</h2>
             <OrderTimeline order={order} />
           </section>
 
           <section className="space-y-3 border-t border-neutral-200 pt-8 text-[13px] text-neutral-600">
-            <h2 className="caps text-[13px] font-bold text-black">{payment?.label}</h2>
+            <h2 className="caps text-label font-bold text-black">{payment?.label}</h2>
             <p>{payment?.detail}</p>
             {order.express && (
               <p>Priority stitching is on: your piece ships within {facts.express.days} working days.</p>
@@ -75,7 +75,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
 
         <aside className="space-y-6">
           <div className="border border-neutral-200 p-6">
-            <h2 className="caps text-[13px] font-bold text-black">Your commission</h2>
+            <h2 className="caps text-label font-bold text-black">Your commission</h2>
             <div className="mt-2 divide-y divide-neutral-200">
               {order.lines.map((line) => (
                 <LineItem key={line.id} line={line} />
@@ -86,7 +86,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
             </div>
           </div>
           <div className="border border-neutral-200 p-6 text-[13px] text-neutral-600">
-            <h2 className="caps text-[13px] font-bold text-black">Delivering to</h2>
+            <h2 className="caps text-label font-bold text-black">Delivering to</h2>
             <address className="mt-3 not-italic">
               {order.address.fullName}
               <br />

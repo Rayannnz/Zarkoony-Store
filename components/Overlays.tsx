@@ -131,7 +131,7 @@ export function Overlays({ children }: { children: ReactNode }) {
         <div className="flex h-full w-4/5 max-w-sm flex-col justify-between overflow-y-auto bg-white p-6 transition-transform duration-500 ease-out starting:-translate-x-full motion-reduce:transition-none">
           <div>
             <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
-              <span className="caps text-[13px] font-bold">Zarkoony Atelier</span>
+              <span className="caps text-label font-bold">Zarkoony Atelier</span>
               <button type="button" aria-label="Close menu" className="-m-1 p-1" onClick={closeDialog}>
                 {closeIcon}
               </button>
@@ -189,7 +189,7 @@ export function Overlays({ children }: { children: ReactNode }) {
 /** Two-level navigation; the second level is a native accordion. */
 function MenuTree() {
   return (
-    <nav aria-label="Main" className="caps flex flex-col pt-2 text-[13px] leading-[1.7]">
+    <nav aria-label="Main" className="caps flex flex-col pt-2 text-label leading-[1.7]">
       {nav.map((item) =>
         item.children ? (
           <details key={item.label} className="group border-b border-neutral-100">
@@ -335,7 +335,7 @@ function CartPanel() {
   return (
     <div className={`${panelClass} max-w-[450px]`}>
       <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-5">
-        <h2 className="caps text-[13px] font-bold text-black">
+        <h2 className="caps text-label font-bold text-black">
           Cart {count > 0 && <span className="font-normal text-neutral-500">({count})</span>}
         </h2>
         <button type="button" aria-label="Close cart" className="-m-1 p-1" onClick={closeDialog}>
@@ -366,7 +366,7 @@ function CartPanel() {
                   </Link>
                 )}
                 <div className="flex min-w-0 flex-1 flex-col">
-                  <p className="font-serif text-[15px] text-black">{line.name}</p>
+                  <p className="caps text-[12px] text-black">{line.name}</p>
                   <p className="caps mt-1 text-[11px] text-neutral-500">
                     {line.size === "Custom" ? "Custom measurements" : `Size ${line.size}`} · Made to
                     order
@@ -458,7 +458,7 @@ function MeasurePanel({ item, onConfirm }: { item: MeasureItem; onConfirm: Overl
       <div className="flex items-center justify-between border-b border-neutral-200 pb-6">
         <div>
           <span className="caps mb-1 block text-[11px] text-neutral-500">Zarkoony Atelier</span>
-          <h2 className="font-serif text-xl font-normal text-black md:text-2xl">{item.title}</h2>
+          <h2 className="caps text-product font-normal text-black">{item.title}</h2>
         </div>
         <button
           type="button"

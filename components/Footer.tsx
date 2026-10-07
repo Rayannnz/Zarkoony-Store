@@ -5,11 +5,11 @@ import { NewsletterForm } from "./NewsletterForm";
 
 const columnSpan: Record<number, string> = { 2: "lg:col-span-2", 3: "lg:col-span-3" };
 
-const headingClass = "caps text-[13px] font-bold text-white";
+const headingClass = "caps text-label font-bold text-white";
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-900 bg-black pb-12 pt-16 text-[13px] text-[#8E8E8E] md:pt-20">
+    <footer className="border-t border-neutral-900 bg-black pb-12 pt-16 text-[13px] text-white/65 md:pt-20">
       <div className="mx-auto max-w-[1920px] px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 gap-10 border-b border-neutral-900 pb-16 md:grid-cols-2 md:gap-12 lg:grid-cols-12">
           {footerColumns.map((column) => (

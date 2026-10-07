@@ -4,7 +4,7 @@ export function SectionHeading({ title, subtitle }: { title: string; subtitle?: 
   return (
     <div className={`text-center ${subtitle ? "mb-10 md:mb-14" : "mb-8 md:mb-12"}`}>
       {/* Fluid: 22px on a phone, 30px at 1280px, capped at 32px. */}
-      <h2 className="caps text-[clamp(1.375rem,1.18rem+0.86vw,2rem)] font-normal leading-[1.4] text-black">
+      <h2 className="caps text-title font-normal text-black">
         {title}
       </h2>
       {subtitle && <p className="caps mt-2 text-xs text-neutral-500">{subtitle}</p>}

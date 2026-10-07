@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# shoot source PNGs (184 MB); the site uses the JPEGs in public/images/products
+/public/images/High Quality Pics/

@@ -3,14 +3,23 @@
 @theme inline {
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Baroque's type scale, copied from its theme variables: fluid between 375px and 1400px, × 1.1. */
+  --text-display: max(0.6875rem, clamp(1.375rem, 1.1463rem + 0.9756vw, 2rem) * 1.1); /* 24.2–35.2px */
+  --text-display--line-height: 1.3;
+  --text-title: max(0.6875rem, clamp(1.25rem, 1.0671rem + 0.7805vw, 1.75rem) * 1.1); /* 22–30.8px */
+  --text-title--line-height: 1.4;
+  --text-product: 0.9625rem; /* 15.4px: product titles */
+  --text-product--line-height: 1.7;
+  --text-label: 0.825rem; /* 13.2px: card names, accordion and facet labels, footer headings */
+  --text-label--line-height: 1.7;
 }
 
 /* "Haute Couture Atelier" design system tokens (from the Stitch project). */
 @theme {
   --color-obsidian-deep: #111111;
   --color-charcoal-footer: #141414;
-  --color-charcoal-body: #2b2b2b;
+  --color-charcoal-body: #1c1c1c; /* Baroque's body text colour, measured on the live site. */
   --color-ivory-base: #faf8f5;
   --color-border-subtle: #e5e0d8;
   --color-border-light: #eeeeee;
@@ -57,6 +66,18 @@
       background-size: 0 1px;
     }
   }
+}
+
+/* Baroque's magnifier cursor over gallery photos (lucide zoom glyphs); native fallbacks. */
+@utility cursor-magnify {
+  cursor:
+    url("/images/cursor-zoom-in.svg") 14 14,
+    zoom-in;
+}
+@utility cursor-magnify-out {
+  cursor:
+    url("/images/cursor-zoom-out.svg") 14 14,
+    zoom-out;
 }
 
 @layer base {

@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 
 export const fieldClass =
-  "w-full border border-neutral-300 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors duration-(--duration-fast) focus:border-black user-invalid:border-red-700 aria-invalid:border-red-700 sm:text-[15px]";
+  "w-full border border-neutral-200 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors duration-(--duration-fast) focus:border-black user-invalid:border-red-700 aria-invalid:border-red-700 sm:text-[15px]";
 
 export const fieldLabelClass = "caps mb-1 block text-[11px] text-neutral-600";
 
@@ -44,7 +44,7 @@ export function Field({ label, name, error, hint, ...input }: Props) {
         name={name}
         aria-invalid={!!error || undefined}
         aria-describedby={error || hint ? `${name}-note` : undefined}
-        className={fieldClass}
+        className={`${fieldClass} h-12`}
         {...input}
       />
       {(error || hint) && (

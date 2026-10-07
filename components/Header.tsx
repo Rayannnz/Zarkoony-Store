@@ -1,11 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
+import { ChevronDown, Heart, Menu, Search, User } from "lucide-react";
 import { site } from "@/lib/site";
 import { HeaderFrame } from "./HeaderFrame";
 import { CartDot, Trigger, WishlistDot } from "./Overlays";
 
 const icon = { size: 24, strokeWidth: 1.5, "aria-hidden": true } as const;
+
+/** The paper shopping bag the owner chose: a tall looped handle over a tapered body, drawn to match the lucide stroke. */
+function BagIcon({ size, strokeWidth }: { size: number; strokeWidth: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M7 8h10a1 1 0 0 1 1 .9l.8 11.6a1.5 1.5 0 0 1-1.5 1.5H6.7a1.5 1.5 0 0 1-1.5-1.5L6 8.9A1 1 0 0 1 7 8z" />
+      <path d="M9 12V7.5a3 3 0 0 1 6 0V12" />
+    </svg>
+  );
+}
 
 // Padding plus an equal negative margin: a 40px tap target with no change in layout.
 const iconButton = "-m-1 p-2";
@@ -49,8 +69,8 @@ export function Header() {
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
           </Trigger>
-          <Trigger opens="cart" aria-label="Shopping cart" className={`relative ${iconButton}`}>
-            <ShoppingCart {...icon} />
+          <Trigger opens="cart" aria-label="Shopping bag" className={`relative ${iconButton}`}>
+            <BagIcon size={icon.size} strokeWidth={icon.strokeWidth} />
             <CartDot />
           </Trigger>
           <Link href="/wishlist" aria-label="Wishlist" className={`relative hidden sm:inline-flex ${iconButton}`}>
@@ -67,7 +87,7 @@ export function Header() {
         popover="auto"
         className="w-[calc(100%-2rem)] max-w-sm bg-white p-8 text-charcoal-body shadow-2xl"
       >
-        <h2 className="font-serif text-xl text-black">Are you in the right place?</h2>
+        <h2 className="caps text-label font-bold text-black">Are you in the right place?</h2>
         <p className="mt-2 text-[13px] text-neutral-600">
           Choose your shipping country. We stitch for both, but delivery and currency differ.
         </p>

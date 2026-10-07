@@ -44,7 +44,7 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 33vw, 50vw",
         />
       </div>
       <div className="space-y-1 text-center">
-        <h3 className="font-serif text-[14px] font-normal tracking-wide text-neutral-900 transition-colors duration-(--duration-fast) group-hover:text-champagne-gold md:text-[15px]">
+        <h3 className="caps text-label font-normal text-black transition-colors duration-(--duration-fast) group-hover:text-champagne-gold">
           {/* The ::after stretches the link over the whole card. */}
           <Link href={`/product/${product.slug}`} className="after:absolute after:inset-0">
             {product.name}

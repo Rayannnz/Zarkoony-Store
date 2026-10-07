@@ -10,6 +10,7 @@ const staticPaths = [
   "/made-to-order",
   "/made-to-order/measurement-guide",
   "/made-to-order/size-guide",
+  "/custom-orders",
   "/about",
   "/contact",
   "/faq",

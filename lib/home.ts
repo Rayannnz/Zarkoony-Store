@@ -20,7 +20,7 @@ export const hero = {
     { label: "Shop All", href: "/shop" },
     {
       label: "Custom Stitch",
-      item: { slug: "rania-pearl-gharara-ensemble", title: "Rania Pearl Gharara Ensemble", price: 98000 },
+      item: { slug: "rania-pearl-trail-gown", title: "Rania Pearl Trail Gown", price: 98000 },
     },
   ] satisfies Cta[],
 };
@@ -30,18 +30,18 @@ export const ownYourLook = {
   title: "Own Your New Look",
   cards: [
     {
-      image: "/images/categories/bespoke-pret.jpg",
-      alt: "ZARKOONY Everyday Luxury Raw Silk Kurta",
+      image: "/images/products/rose-raw-silk/2.jpg",
+      alt: "ZARKOONY dusty-rose raw silk kurta set with cutwork",
       href: "/shop/luxury-pret",
       cta: { label: "Bespoke Prêt", href: "/shop/luxury-pret" },
     },
     {
-      image: "/images/categories/custom-stitched.jpg",
-      alt: "ZARKOONY Crimson Scarlet & Turquoise Embroidered Lehenga",
+      image: "/images/products/silver-gown/1.jpg",
+      alt: "ZARKOONY silver-grey embellished bridal gown with train",
       href: "/shop/bridal",
       cta: {
         label: "Custom Stitched",
-        item: { slug: "mahira-zardozi-bridal-lehenga", title: "Mahira Zardozi Bridal Lehenga", price: 145000 },
+        item: { slug: "mahira-zardozi-bridal-gown", title: "Mahira Zardozi Bridal Gown", price: 145000 },
       },
     },
   ] satisfies CategoryCard[],
@@ -50,16 +50,16 @@ export const ownYourLook = {
 export const signature = {
   id: "signature",
   title: "The Signature Collection",
-  image: "/images/collections/signature.jpg",
-  alt: "Zarkoony Twin Archival Couture Models",
+  image: "/images/hero/classical-salon.jpg",
+  alt: "Zarkoony signature embellished gown in a classical salon",
   href: "/collections/signature",
-  focus: "center 35%",
+  focus: "center 65%",
   align: "left" as const,
   ctas: [
     {
       variant: "black",
       label: "Custom Stitched",
-      item: { slug: "zariya-embroidered-kalidar", title: "Zariya Embroidered Kalidar", price: 28500 },
+      item: { slug: "zariya-embroidered-raw-silk-set", title: "Zariya Embroidered Raw Silk Set", price: 28500 },
     },
     { variant: "white", label: "Bespoke Bridal", href: "/shop/bridal" },
   ] satisfies BannerCta[],
@@ -70,16 +70,16 @@ export const formals = {
   title: "Formals",
   cards: [
     {
-      image: "/images/categories/formals-crimson.jpg",
-      alt: "ZARKOONY Formal Crimson Embroidered Ensemble",
+      image: "/images/products/silver-gown/4.jpg",
+      alt: "ZARKOONY silver organza peshwas with embroidered train",
       href: "/shop/formals",
       cta: { label: "View Formals", href: "/shop/formals" },
     },
     {
-      image: "/images/categories/formals-raw-silk.jpg",
-      alt: "ZARKOONY Powder Mint Embroidered Raw Silk Formal",
+      image: "/images/products/black-velvet-peshwas/1.jpg",
+      alt: "ZARKOONY black velvet formal peshwas with gold tilla",
       href: "/shop/formals",
-      cta: { label: "Custom Stitched", item: { slug: "sahar-organza-peshwas", title: "Sahar Organza Peshwas", price: 36500 } },
+      cta: { label: "Custom Stitched", item: { slug: "mehr-velvet-formal-peshwas", title: "Mehr Velvet Formal Peshwas", price: 34900 } },
     },
   ] satisfies CategoryCard[],
 };
@@ -87,8 +87,8 @@ export const formals = {
 export const essentials = {
   id: "bespoke-process",
   title: "Bespoke Essentials",
-  image: "/images/collections/bespoke-essentials.jpg",
-  alt: "Zarkoony Velvet Couture & Velvet Shawl Essentials",
+  image: "/images/collections/velvet-winter.jpg",
+  alt: "Zarkoony velvet winter kurta sets in sapphire and black",
   href: "/collections/velvet-winter",
   focus: "center",
   align: "right" as const,

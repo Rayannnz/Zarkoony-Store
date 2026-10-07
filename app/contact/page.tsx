@@ -58,7 +58,7 @@ export default function ContactPage() {
           ))}
         </ul>
         <div>
-          <h2 className="caps mb-5 text-[13px] font-bold text-black">Send a message</h2>
+          <h2 className="caps mb-5 text-label font-bold text-black">Send a message</h2>
           <ContactForm />
         </div>
       </div>

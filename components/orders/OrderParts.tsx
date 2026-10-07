@@ -14,7 +14,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <Link href={`/product/${line.slug}`} className="font-serif text-[15px] text-black">
+            <Link href={`/product/${line.slug}`} className="caps text-[12px] text-black">
               {line.name}
             </Link>
             <p className="caps mt-1 text-[11px] text-neutral-500">

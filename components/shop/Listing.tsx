@@ -37,7 +37,7 @@ type Props = {
 };
 
 export const headingClass =
-  "caps text-[clamp(1.375rem,1.18rem+0.86vw,2rem)] font-normal leading-[1.4] text-black";
+  "caps text-title font-normal text-black";
 
 const facetLabels = { type: "Garment", fabric: "Fabric", color: "Colour" } as const;
 
