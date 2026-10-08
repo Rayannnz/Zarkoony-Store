@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cabin, Figtree } from "next/font/google";
+import { Cabin, Figtree, Lato } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -16,6 +16,13 @@ const figtree = Figtree({
 
 const cabin = Cabin({
   variable: "--font-cabin",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+// Trial for the product page: the owner wants to see Lato on the product details.
+const lato = Lato({
+  variable: "--font-lato-loaded",
   subsets: ["latin"],
   weight: ["400", "700"],
 });
@@ -40,7 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${figtree.variable} ${cabin.variable} scroll-smooth`}
+      className={`${figtree.variable} ${cabin.variable} ${lato.variable} scroll-smooth`}
     >
       <body className="bg-white font-sans text-[14px] leading-[1.65] text-charcoal-body antialiased min-[700px]:text-[15px]">
         <Overlays>

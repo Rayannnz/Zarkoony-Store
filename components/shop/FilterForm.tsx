@@ -3,16 +3,24 @@
 import { useState } from "react";
 import Form from "next/form";
 import { ChevronDown, SlidersHorizontal } from "lucide-react";
-import { listingQuery, priceRanges, sortOptions, type FacetKey, type ListingParams } from "@/lib/catalog";
+import {
+  listingQuery,
+  priceRanges,
+  sortOptions,
+  type FacetKey,
+  type ListingParams,
+  type SortKey,
+} from "@/lib/catalog";
 
 export type Facet = { key: FacetKey; label: string; options: { value: string; count: number }[] };
 
 const checkbox =
   "size-4 shrink-0 appearance-none border border-neutral-400 bg-white transition-colors checked:border-black checked:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black";
 
+/** A facet, closed by default like Baroque's so the sidebar stays quiet. */
 function Group({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <details open className="group border-b border-neutral-200">
+    <details className="group border-b border-neutral-200">
       <summary className="caps flex cursor-pointer list-none items-center justify-between py-3.5 text-[11px] text-black [&::-webkit-details-marker]:hidden">
         {label}
         <ChevronDown size={16} strokeWidth={1.5} aria-hidden className="transition-transform duration-(--duration-medium) group-open:rotate-180" />
@@ -23,8 +31,35 @@ function Group({ label, children }: { label: string; children: React.ReactNode }
 }
 
 /**
- * Filters and sort as a GET form: every change resubmits through next/form, which navigates on
- * the client without scrolling to the top. The listing page re-reads the URL and re-renders.
+ * "Sort by" sits in the toolbar but belongs to the sidebar form (`form="listing-filters"`), so it
+ * submits through next/form with the filters. It submits itself on change because the form's own
+ * handler can't see a control outside its subtree; keyed on the value so chip links reset it.
+ */
+export function SortSelect({ value }: { value: SortKey }) {
+  return (
+    <label className="flex items-center gap-3">
+      <span className="caps text-[11px] text-black">Sort by</span>
+      <select
+        key={value}
+        form="listing-filters"
+        name="sort"
+        defaultValue={value}
+        onChange={(event) => event.currentTarget.form?.requestSubmit()}
+        className="caps cursor-pointer bg-transparent text-[11px] text-neutral-600 outline-hidden focus-visible:text-black"
+      >
+        {sortOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+/**
+ * Filters as a GET form: every change resubmits through next/form, which navigates on the client
+ * without scrolling to the top. The listing page re-reads the URL and re-renders.
  */
 export function FilterForm({
   action,
@@ -48,7 +83,7 @@ export function FilterForm({
       >
         <span className="flex items-center gap-2">
           <SlidersHorizontal size={16} strokeWidth={1.5} aria-hidden />
-          Filter &amp; sort
+          Filter
         </span>
         <ChevronDown
           size={16}
@@ -69,21 +104,6 @@ export function FilterForm({
         className={`${open ? "block" : "hidden"} lg:block`}
       >
         {params.q && <input type="hidden" name="q" value={params.q} />}
-
-        <label className="flex items-center justify-between gap-3 border-b border-neutral-200 py-3.5">
-          <span className="caps text-[11px] text-black">Sort by</span>
-          <select
-            name="sort"
-            defaultValue={params.sort}
-            className="caps max-w-[60%] cursor-pointer bg-transparent text-right text-[11px] text-neutral-600 outline-hidden focus-visible:text-black"
-          >
-            {sortOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
 
         {facets.map((facet) => (
           <Group key={facet.key} label={facet.label}>

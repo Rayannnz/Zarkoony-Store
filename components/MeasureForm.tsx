@@ -24,7 +24,7 @@ type Props = {
 
 type Choice = Size | "Custom";
 
-const fieldLabel = "caps mb-1 block text-[11px] text-neutral-600";
+const fieldLabel = "caps mb-1 block text-[12px] text-neutral-600";
 // 16px on phones so iOS doesn't zoom the page on focus.
 const field =
   "w-full border border-neutral-200 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors focus:border-black user-invalid:border-red-700 sm:text-[15px]";
@@ -97,11 +97,11 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
         {!measuring ? (
           <>
             <div className="mb-3 flex items-baseline justify-between">
-              <p className="caps text-[11px] text-neutral-600">Size</p>
+              <p className="caps text-[15px] text-neutral-600">Size</p>
               {sizeGuide ?? (
                 <Link
                   href="/made-to-order/size-guide"
-                  className="link-underline caps text-[11px] text-black"
+                  className="link-underline caps text-[13px] text-black"
                 >
                   Size guide
                 </Link>
@@ -127,7 +127,7 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
                       }}
                       className="sr-only"
                     />
-                    <span className="caps text-[13px]">{value}</span>
+                    <span className="caps text-[15px]">{value}</span>
                   </label>
                 ))}
             </div>
@@ -137,7 +137,7 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
               </p>
             )}
             <div className="mt-5 flex items-center justify-between">
-              <p className="caps text-[11px] text-neutral-600">Quantity</p>
+              <p className="caps text-[15px] text-neutral-600">Quantity</p>
               <div className="flex items-center border border-neutral-200">
                 <button
                   type="button"
@@ -162,10 +162,10 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
         ) : (
           <>
             <div className="mb-4 flex items-baseline justify-between">
-              <p className="caps text-[11px] text-neutral-600">Your measurements (inches)</p>
+              <p className="caps text-[15px] text-neutral-600">Your measurements (inches)</p>
               <Link
                 href="/made-to-order/measurement-guide"
-                className="link-underline caps text-[11px] text-black"
+                className="link-underline caps text-[13px] text-black"
               >
                 How to measure
               </Link>
@@ -222,7 +222,7 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
           <button
             type="button"
             onClick={() => setMeasuring(false)}
-            className="caps block text-[11px] text-neutral-500 hover:text-black"
+            className="caps block text-[13px] text-neutral-500 hover:text-black"
           >
             Back
           </button>

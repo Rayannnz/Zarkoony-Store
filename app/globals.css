@@ -3,6 +3,7 @@
 @theme inline {
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
+  --font-lato: var(--font-lato-loaded), ui-sans-serif, system-ui, sans-serif;
 
   /* Baroque's type scale, copied from its theme variables: fluid between 375px and 1400px, × 1.1. */
   --text-display: max(0.6875rem, clamp(1.375rem, 1.1463rem + 0.9756vw, 2rem) * 1.1); /* 24.2–35.2px */
@@ -282,4 +283,11 @@
       border-color: var(--fill);
     }
   }
+}
+
+/* Trial: `font-lato` on a block switches its uppercase labels to Lato as well (unlayered so it beats the utility).
+   Lato Regular reads lighter than Cabin at the same weight, so these labels sit at 700. */
+.font-lato .caps {
+  font-family: var(--font-lato);
+  font-weight: 600;
 }

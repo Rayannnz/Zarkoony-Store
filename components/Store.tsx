@@ -11,6 +11,9 @@ import type { Address, CartLine, Order } from "@/lib/orders";
 
 export type Session = { name: string; email: string; addresses: Address[] };
 
+/** Products per row on the listing; phones and desktops remember their own choice. */
+export type View = { mobile: 1 | 2; desktop: 2 | 3 | 4 };
+
 type LocalStore<T> = {
   get: () => T;
   getServer: () => T;
@@ -73,6 +76,7 @@ const stores = {
   wishlist: createLocalStore<string[]>("zarkoony:wishlist", []),
   session: createLocalStore<Session | null>("zarkoony:session", null),
   orders: createLocalStore<Order[]>("zarkoony:orders", []),
+  view: createLocalStore<View>("zarkoony:view", { mobile: 2, desktop: 2 }),
 };
 
 const useLocal = <T,>(store: LocalStore<T>) =>
@@ -153,5 +157,13 @@ export const useOrders = () => useLocal(stores.orders);
 export const orderActions = {
   place(order: Order) {
     stores.orders.set((orders) => [order, ...orders]);
+  },
+};
+
+export const useView = () => useLocal(stores.view);
+
+export const viewActions = {
+  set(patch: Partial<View>) {
+    stores.view.set((view) => ({ ...view, ...patch }));
   },
 };

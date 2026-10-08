@@ -26,7 +26,7 @@ export function ProductAccordions({ product }: { product: Product }) {
         <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5">
           {details.map(([label, value]) => (
             <div key={label} className="contents">
-              <dt className="caps text-[10px] leading-[1.9] text-neutral-500">{label}</dt>
+              <dt className="caps text-[11px] leading-[2.2] text-neutral-500">{label}</dt>
               <dd>{value}</dd>
             </div>
           ))}
@@ -67,7 +67,7 @@ export function ProductAccordions({ product }: { product: Product }) {
     <div className="divide-y divide-neutral-200 border-y border-neutral-200">
       {sections.map((section) => (
         <details key={section.title} className="group">
-          <summary className="caps flex cursor-pointer list-none items-center gap-3 py-5 text-[11px] text-black [&::-webkit-details-marker]:hidden">
+          <summary className="caps flex cursor-pointer list-none items-center gap-3 py-5 text-label text-black [&::-webkit-details-marker]:hidden">
             <span className="text-neutral-500">{section.icon}</span>
             {section.title}
             <Plus
@@ -77,7 +77,7 @@ export function ProductAccordions({ product }: { product: Product }) {
               className="ml-auto transition-transform duration-(--duration-medium) group-open:rotate-45"
             />
           </summary>
-          <div className="pb-6 text-[13px] leading-relaxed text-neutral-600">{section.body}</div>
+          <div className="pb-6 text-[15px] leading-[1.65] text-neutral-600">{section.body}</div>
         </details>
       ))}
     </div>
