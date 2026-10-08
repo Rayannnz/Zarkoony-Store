@@ -46,6 +46,9 @@ export type Product = {
 };
 
 /** What the measurement drawer is opened for: a garment and its estimated cost in PKR. */
+/** The "custom design" promise: one label and link reused by the home CTAs and product badges. */
+export const customDesign = { label: "Your Custom Design", href: "/custom-orders" } as const;
+
 export type MeasureItem = { slug?: string; title: string; price: number };
 
 export const sizeOrder: Size[] = ["XS", "S", "M", "L", "XL"];
@@ -160,7 +163,7 @@ export const products: Product[] = [
     pieces: ["Kurta", "Straight raw-silk trouser", "Chiffon dupatta"],
     stitchingTime: [14, 21],
     createdAt: "2026-06-12",
-    badge: "Custom Stitched",
+    badge: customDesign.label,
   },
   {
     ...base,
@@ -331,7 +334,7 @@ export const products: Product[] = [
     pieces: ["Kurta", "Straight trouser", "Chiffon dupatta"],
     stitchingTime: [12, 18],
     createdAt: "2026-07-20",
-    badge: "Custom Stitched",
+    badge: customDesign.label,
   },
   {
     ...base,

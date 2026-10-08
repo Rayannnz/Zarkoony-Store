@@ -1,4 +1,4 @@
-import type { MeasureItem } from "./products";
+import { customDesign, type MeasureItem } from "./products";
 
 /** A call to action either links somewhere or opens the measurement drawer for a garment. */
 export type Cta = { label: string } & ({ href: string } | { item: MeasureItem });
@@ -18,10 +18,7 @@ export const hero = {
   focus: "center 25%",
   ctas: [
     { label: "Shop All", href: "/shop" },
-    {
-      label: "Custom Stitch",
-      item: { slug: "rania-pearl-trail-gown", title: "Rania Pearl Trail Gown", price: 98000 },
-    },
+    { label: "Your Custom Design", href: "/custom-orders" },
   ] satisfies Cta[],
 };
 
@@ -39,10 +36,7 @@ export const ownYourLook = {
       image: "/images/products/silver-gown/1.jpg",
       alt: "ZARKOONY silver-grey embellished bridal gown with train",
       href: "/shop/bridal",
-      cta: {
-        label: "Custom Stitched",
-        item: { slug: "mahira-zardozi-bridal-gown", title: "Mahira Zardozi Bridal Gown", price: 145000 },
-      },
+      cta: customDesign,
     },
   ] satisfies CategoryCard[],
 };
@@ -56,11 +50,7 @@ export const signature = {
   focus: "center 65%",
   align: "left" as const,
   ctas: [
-    {
-      variant: "black",
-      label: "Custom Stitched",
-      item: { slug: "zariya-embroidered-raw-silk-set", title: "Zariya Embroidered Raw Silk Set", price: 28500 },
-    },
+    { variant: "black", ...customDesign },
     { variant: "white", label: "Bespoke Bridal", href: "/shop/bridal" },
   ] satisfies BannerCta[],
 };
@@ -79,7 +69,7 @@ export const formals = {
       image: "/images/products/black-velvet-peshwas/1.jpg",
       alt: "ZARKOONY black velvet formal peshwas with gold tilla",
       href: "/shop/formals",
-      cta: { label: "Custom Stitched", item: { slug: "mehr-velvet-formal-peshwas", title: "Mehr Velvet Formal Peshwas", price: 34900 } },
+      cta: customDesign,
     },
   ] satisfies CategoryCard[],
 };
@@ -105,7 +95,8 @@ export const essentials = {
 export const newArrivals = {
   id: "new-arrivals",
   title: "New Arrivals",
-  subtitle: "Custom Stitched • Master Karigar Tailoring",
+  subtitle: `${customDesign.label} • Master Karigar Tailoring`,
+  subtitleHref: customDesign.href,
 };
 
 export const madeToOrder = {

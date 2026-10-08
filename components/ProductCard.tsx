@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, stitchingLabel, type Product } from "@/lib/products";
+import { customDesign, formatPrice, stitchingLabel, type Product } from "@/lib/products";
 import { WishlistButton } from "./WishlistButton";
 
 type Props = {
@@ -34,9 +34,19 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 33vw, 50vw",
             className="object-cover object-top opacity-0 transition-opacity duration-(--duration-slow) group-hover:opacity-100 motion-reduce:transition-none"
           />
         )}
-        <span className="caps absolute left-2.5 top-2.5 bg-white px-2 py-1 text-[10px] text-black">
-          {product.badge}
-        </span>
+        {/* The custom-design badge is a link above the stretched card link, like the wishlist heart. */}
+        {product.badge === customDesign.label ? (
+          <Link
+            href={customDesign.href}
+            className="caps absolute left-2.5 top-2.5 z-10 bg-white px-2 py-1 text-[10px] text-black transition-colors duration-(--duration-fast) hover:text-champagne-gold"
+          >
+            {product.badge}
+          </Link>
+        ) : (
+          <span className="caps absolute left-2.5 top-2.5 bg-white px-2 py-1 text-[10px] text-black">
+            {product.badge}
+          </span>
+        )}
         <WishlistButton
           slug={product.slug}
           name={product.name}

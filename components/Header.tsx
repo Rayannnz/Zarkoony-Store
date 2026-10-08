@@ -69,14 +69,14 @@ export function Header() {
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
           </Trigger>
-          <Trigger opens="cart" aria-label="Shopping bag" className={`relative ${iconButton}`}>
-            <BagIcon size={icon.size} strokeWidth={icon.strokeWidth} />
-            <CartDot />
-          </Trigger>
           <Link href="/wishlist" aria-label="Wishlist" className={`relative hidden sm:inline-flex ${iconButton}`}>
             <Heart {...icon} />
             <WishlistDot />
           </Link>
+          <Trigger opens="cart" aria-label="Shopping bag" className={`relative ${iconButton}`}>
+            <BagIcon size={icon.size} strokeWidth={icon.strokeWidth} />
+            <CartDot />
+          </Trigger>
         </div>
       </div>
 
