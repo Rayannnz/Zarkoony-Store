@@ -5,14 +5,16 @@ import { useState } from "react";
 import { Lightbox } from "./Lightbox";
 
 /**
- * Baroque's layout without its script: on desktop a sticky thumbnail rail scrolls the page to the
- * matching full-size image (plain anchors + smooth scrolling); on phones the same list becomes a
- * swipeable scroll-snap strip. Proportions are Baroque's: a 56px rail, 80px gap, 2:3 images.
- * Clicking a photo opens the full-screen viewer.
+ * One image at a time: a horizontal scroll-snap strip (swipeable on phones, peeking the next
+ * photo) that the sticky thumbnail rail slides from the tablet breakpoint up. Proportions follow
+ * Baroque: a 56px rail, 80px gap, 2:3 images. Clicking a photo opens the full-screen viewer.
  */
 export function ProductGallery({ images, name }: { images: string[]; name: string }) {
   const id = (index: number) => `media-${index + 1}`;
   const [open, setOpen] = useState<number | null>(null);
+
+  const show = (index: number) =>
+    document.getElementById(id(index))?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
 
   return (
     <div className="md:grid md:grid-cols-[56px_1fr] md:gap-10 lg:gap-20">
@@ -22,9 +24,14 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
       >
         {images.map((src, index) => (
           <li key={src + index}>
+            {/* The href keeps the thumbnails working without JS; the handler avoids the page jump. */}
             <a
               href={`#${id(index)}`}
               aria-label={`Show image ${index + 1} of ${images.length}`}
+              onClick={(event) => {
+                event.preventDefault();
+                show(index);
+              }}
               className="relative block aspect-[2/3] overflow-hidden border border-transparent bg-ivory-base transition-colors duration-(--duration-fast) hover:border-black focus-visible:border-black"
             >
               <Image src={src} alt="" fill sizes="56px" className="object-cover object-top" />
@@ -35,13 +42,13 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
 
       <ol
         aria-label={`${name} images`}
-        className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 [scrollbar-width:none] md:mx-0 md:block md:space-y-[30px] md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden"
+        className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 [scrollbar-width:none] md:mx-0 md:gap-0 md:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {images.map((src, index) => (
           <li
             key={src + index}
             id={id(index)}
-            className="relative aspect-[3/4] w-[85vw] shrink-0 snap-center scroll-mt-24 overflow-hidden bg-ivory-base md:aspect-[2/3] md:w-auto"
+            className="relative aspect-[3/4] w-[85vw] shrink-0 snap-center overflow-hidden bg-ivory-base md:aspect-[2/3] md:w-full md:snap-start"
           >
             <button
               type="button"
