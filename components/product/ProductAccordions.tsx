@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Package, Plus, RefreshCw, Tag, Truck } from "lucide-react";
 import { careByFabric, defaultCare, facts } from "@/lib/content";
 import { stitchingLabel, type Product } from "@/lib/products";
+import { Regional } from "../Price";
 
 const icon = { size: 18, strokeWidth: 1.5, "aria-hidden": true } as const;
 
@@ -39,7 +40,7 @@ export function ProductAccordions({ product }: { product: Product }) {
       body: (
         <p>
           Stitched in {stitchingLabel(product)}, dispatched within 2 working days of the final
-          inspection. {facts.deliveryPakistan} Priority stitching in {facts.express.days} working
+          inspection. <Regional pk={facts.deliveryPakistan} us={facts.internationalDelivery.note} /> Priority stitching in {facts.express.days} working
           days is available at checkout.
         </p>
       ),

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Heart, Menu, Search, User } from "lucide-react";
-import { site } from "@/lib/site";
 import { HeaderFrame } from "./HeaderFrame";
 import { CartDot, Trigger, WishlistDot } from "./Overlays";
+import { Regional } from "./Price";
+import { RegionChooser } from "./RegionChooser";
 
 const icon = { size: 24, strokeWidth: 1.5, "aria-hidden": true } as const;
 
@@ -59,8 +60,10 @@ export function Header() {
             popoverTarget="country-menu"
             className="caps hidden items-center gap-1 text-[11px] lg:flex"
           >
-            <span>Pakistan</span>
-            <span className="opacity-60">PKR</span>
+            <Regional pk="Pakistan" us="United States" />
+            <span className="opacity-60">
+              <Regional pk="PKR" us="USD" />
+            </span>
             <ChevronDown size={15} strokeWidth={1.5} className="-mr-1" aria-hidden />
           </button>
           <Link href="/account" aria-label="Account" className={iconButton}>
@@ -91,14 +94,7 @@ export function Header() {
         <p className="mt-2 text-[13px] text-neutral-600">
           Choose your shipping country. We stitch for both, but delivery and currency differ.
         </p>
-        <div className="mt-6 grid gap-3">
-          <button type="button" popoverTarget="country-menu" popoverTargetAction="hide" className="btn-black">
-            Pakistan · PKR
-          </button>
-          <a href={site.internationalUrl} className="btn-white !border-black !text-black">
-            International
-          </a>
-        </div>
+        <RegionChooser />
       </div>
     </HeaderFrame>
   );

@@ -6,6 +6,7 @@ import { facts } from "@/lib/content";
 import { LineItem, Totals } from "../orders/OrderParts";
 import { Stepper } from "../Overlays";
 import { cartActions, useCart, useHydrated } from "../Store";
+import { Regional } from "../Price";
 
 export function CartView() {
   const cart = useCart();
@@ -68,7 +69,7 @@ export function CartView() {
             <Totals subtotal={subtotal} delivery={DELIVERY_FEE} total={subtotal + DELIVERY_FEE} />
           </div>
           <p className="mt-4 text-[13px] text-neutral-500">
-            Stitching: {window[0]}–{window[1]} working days after confirmation. {facts.deliveryPakistan}
+            Stitching: {window[0]}–{window[1]} working days after confirmation. <Regional pk={facts.deliveryPakistan} us={facts.internationalDelivery.note} />
           </p>
           <Link href="/checkout" className="btn-black mt-6 w-full">
             Checkout

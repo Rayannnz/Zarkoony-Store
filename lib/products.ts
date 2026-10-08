@@ -564,3 +564,11 @@ export const chartForPiece = (piece: string) => {
 
 // Fixed locale so server and client render the same string.
 export const formatPrice = (price: number) => `PKR ${price.toLocaleString("en-US")}`;
+
+/** Display rate for the United States; Stripe charges at its own rate on the day. TODO confirm. */
+export const USD_RATE = 278;
+
+export const formatUsd = (pkr: number) =>
+  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
+    Math.round(pkr / USD_RATE),
+  );

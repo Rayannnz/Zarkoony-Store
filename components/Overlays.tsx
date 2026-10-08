@@ -15,10 +15,11 @@ import Form from "next/form";
 import { ChevronDown, Minus, Plus, Search, X } from "lucide-react";
 import { searchProducts } from "@/lib/catalog";
 import { cartCount, cartSubtotal, lineTotal, stitchingWindow } from "@/lib/orders";
-import { formatPrice, type MeasureItem } from "@/lib/products";
+import type { MeasureItem } from "@/lib/products";
 import { nav, popularSearches, site } from "@/lib/site";
 import { MeasureForm } from "./MeasureForm";
 import { cartActions, useCart, useWishlist } from "./Store";
+import { Price } from "./Price";
 
 type OverlayApi = {
   openMenu: () => void;
@@ -304,7 +305,7 @@ function SearchPanel() {
                       {product.name}
                     </p>
                     <p className="caps mt-1 text-[11px] font-bold text-black">
-                      {formatPrice(product.price)}
+                      <Price value={product.price} />
                     </p>
                   </Link>
                 </li>
@@ -387,7 +388,7 @@ function CartPanel() {
                   </div>
                 </div>
                 <p className="caps shrink-0 text-[13px] font-bold text-black">
-                  {formatPrice(lineTotal(line))}
+                  <Price value={lineTotal(line)} />
                 </p>
               </li>
             ))}
@@ -395,7 +396,7 @@ function CartPanel() {
           <div className="space-y-4 border-t border-neutral-200 px-6 py-5">
             <div className="caps flex items-center justify-between text-[13px] font-bold text-black">
               <span>Subtotal</span>
-              <span>{formatPrice(cartSubtotal(cart))}</span>
+              <span><Price value={cartSubtotal(cart)} /></span>
             </div>
             <p className="text-[13px] text-neutral-500">
               Stitching begins once your commission is confirmed: {window[0]}–{window[1]} working
@@ -473,7 +474,7 @@ function MeasurePanel({ item, onConfirm }: { item: MeasureItem; onConfirm: Overl
       <div className="my-6 flex items-center justify-between gap-4 border border-neutral-200 bg-ivory-base p-4">
         <div>
           <span className="caps block text-[11px] text-neutral-500">Estimated Atelier Cost</span>
-          <span className="caps text-sm font-bold text-black">{formatPrice(item.price)}</span>
+          <span className="caps text-sm font-bold text-black"><Price value={item.price} /></span>
         </div>
         <div className="text-right">
           <span className="caps block text-[11px] text-black">Made to order</span>

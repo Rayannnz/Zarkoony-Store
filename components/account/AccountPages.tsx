@@ -2,11 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { formatDate, orderStages, provinces, sampleOrders, type Address, type Order } from "@/lib/orders";
-import { formatPrice } from "@/lib/products";
+import { countryName, formatDate, provinces, sampleOrders, type Address, type Order } from "@/lib/orders";
 import { Field, fieldClass, fieldLabelClass, invalidFields } from "../Field";
-import { LineItem, OrderTimeline, Totals } from "../orders/OrderParts";
+import { LineItem, Totals } from "../orders/OrderParts";
 import { sessionActions, useOrders, useSession } from "../Store";
+import { Price } from "../Price";
 
 const title = "caps text-label font-bold text-black";
 
@@ -16,7 +16,6 @@ function useAllOrders(): Order[] {
   return [...placed, ...sampleOrders].sort((a, b) => b.placedAt.localeCompare(a.placedAt));
 }
 
-const statusLabel = (order: Order) => orderStages.find((s) => s.key === order.status)?.label ?? order.status;
 
 function OrdersTable({ orders }: { orders: Order[] }) {
   return (
@@ -25,7 +24,6 @@ function OrdersTable({ orders }: { orders: Order[] }) {
         <tr className="border-b border-neutral-200 text-left">
           <th className="py-2 font-normal">Order</th>
           <th className="hidden py-2 font-normal sm:table-cell">Date</th>
-          <th className="py-2 font-normal">Status</th>
           <th className="py-2 text-right font-normal">Total</th>
         </tr>
       </thead>
@@ -39,8 +37,7 @@ function OrdersTable({ orders }: { orders: Order[] }) {
               <span className="mt-1 block text-neutral-500 sm:hidden">{formatDate(order.placedAt)}</span>
             </td>
             <td className="hidden py-3 text-neutral-600 sm:table-cell">{formatDate(order.placedAt)}</td>
-            <td className="py-3 text-neutral-600">{statusLabel(order)}</td>
-            <td className="py-3 text-right text-black">{formatPrice(order.total)}</td>
+            <td className="py-3 text-right text-black"><Price value={order.total} /></td>
           </tr>
         ))}
       </tbody>
@@ -146,15 +143,10 @@ export function OrderDetail({ orderId }: { orderId: string }) {
         </Link>
         <h1 className="caps mt-3 text-xl text-black">{order.id}</h1>
         <p className="mt-1 text-[13px] text-neutral-500">
-          Placed {formatDate(order.placedAt)} · {statusLabel(order)}
+          Placed {formatDate(order.placedAt)}
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px] lg:gap-16">
-        <section>
-          <h2 className={`${title} mb-6`}>Progress</h2>
-          <OrderTimeline order={order} />
-        </section>
-        <aside className="space-y-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div className="border border-neutral-200 p-6">
             <h2 className={title}>Pieces</h2>
             <div className="mt-2 divide-y divide-neutral-200">
@@ -173,12 +165,13 @@ export function OrderDetail({ orderId }: { orderId: string }) {
               <br />
               {order.address.line1}
               <br />
-              {order.address.city}, {order.address.province}
+              {order.address.city}, {order.address.province} {order.address.postcode}
+              <br />
+              {countryName(order.address.country)}
               <br />
               {order.address.phone}
             </address>
           </div>
-        </aside>
       </div>
     </div>
   );
@@ -233,6 +226,7 @@ export function AddressBook() {
     const text = (key: string) => String(data.get(key) ?? "").trim();
     const address: Address = {
       fullName: text("fullName"),
+      country: "PK", // The address book is Pakistan-only; a US address is entered at checkout.
       phone: text("phone"),
       line1: text("line1"),
       line2: text("line2") || undefined,

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { customDesign, formatPrice, stitchingLabel, type Product } from "@/lib/products";
+import { customDesign, stitchingLabel, type Product } from "@/lib/products";
 import { WishlistButton } from "./WishlistButton";
+import { Price } from "./Price";
 
 type Props = {
   product: Product;
@@ -63,10 +64,10 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 33vw, 50vw",
         <p className="caps text-[13px] font-bold text-black">
           {product.compareAtPrice && (
             <span className="mr-2 font-normal text-neutral-400 line-through">
-              {formatPrice(product.compareAtPrice)}
+              <Price value={product.compareAtPrice} />
             </span>
           )}
-          {formatPrice(product.price)}
+          <Price value={product.price} />
         </p>
         <span className="caps inline-block text-[10px] text-neutral-400">
           Made to order · {stitchingLabel(product)}

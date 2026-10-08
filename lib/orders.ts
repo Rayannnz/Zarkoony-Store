@@ -15,6 +15,15 @@ export type CartLine = {
   qty: number;
 };
 
+export type Country = "PK" | "US";
+
+export const countries: { code: Country; label: string; currency: "PKR" | "USD"; note: string }[] = [
+  { code: "PK", label: "Pakistan", currency: "PKR", note: "Cash on delivery or bank transfer. Complimentary tracked delivery." },
+  { code: "US", label: "United States", currency: "USD", note: "Paid in advance by card or ACH bank transfer through Stripe. Tracked international courier." },
+];
+
+export const countryName = (code: Country) => countries.find((c) => c.code === code)?.label ?? code;
+
 export type Address = {
   fullName: string;
   phone: string;
@@ -23,9 +32,15 @@ export type Address = {
   city: string;
   province: string;
   postcode?: string;
+  /** Decides the address fields, the delivery charge and which payment methods are offered. */
+  country: Country;
 };
 
-export type PaymentMethod = "cod" | "bank";
+/** cod and bank are Pakistan; card and ach are advance payments through Stripe for the United States. */
+export type PaymentMethod = "cod" | "bank" | "card" | "ach";
+
+/** What a Pakistani customer tells us about their transfer; the receipt itself stays on their device. */
+export type TransferDetails = { accountName: string; bank: string; reference: string; proofName: string };
 
 export type OrderStatus = "confirmed" | "stitching" | "inspection" | "dispatched" | "delivered";
 
@@ -45,6 +60,7 @@ export type Order = {
   email: string;
   address: Address;
   payment: PaymentMethod;
+  transfer?: TransferDetails;
   /** Priority stitching: a fixed window for a per-order fee. */
   express: boolean;
   lines: CartLine[];
@@ -58,6 +74,8 @@ export type Order = {
 };
 
 export const DELIVERY_FEE = 0; // TODO confirm: free delivery within Pakistan, as Baroque
+
+export const deliveryFee = (country: Country) => (country === "US" ? facts.internationalDelivery.fee : DELIVERY_FEE);
 
 export const lineTotal = (line: CartLine) => line.price * line.qty;
 export const cartSubtotal = (lines: CartLine[]) => lines.reduce((sum, l) => sum + lineTotal(l), 0);
@@ -75,9 +93,10 @@ export function stitchingWindow(lines: CartLine[]): [number, number] {
 
 export function createOrder(
   lines: CartLine[],
-  details: { email: string; address: Address; payment: PaymentMethod; express: boolean },
+  details: { email: string; address: Address; payment: PaymentMethod; express: boolean; transfer?: TransferDetails },
 ): Order {
   const subtotal = cartSubtotal(lines);
+  const delivery = deliveryFee(details.address.country);
   const expressFee = details.express ? facts.express.fee : 0;
   return {
     id: `ZK-${Date.now().toString(36).toUpperCase().slice(-6)}`,
@@ -85,9 +104,9 @@ export function createOrder(
     ...details,
     lines,
     subtotal,
-    delivery: DELIVERY_FEE,
+    delivery,
     expressFee,
-    total: subtotal + DELIVERY_FEE + expressFee,
+    total: subtotal + delivery + expressFee,
     status: "confirmed",
     stitchingTime: details.express ? [facts.express.days, facts.express.days] : stitchingWindow(lines),
   };
@@ -103,10 +122,21 @@ export const provinces = [
   "Azad Jammu & Kashmir",
 ];
 
-export const paymentMethods: { value: PaymentMethod; label: string; detail: string }[] = [
-  { value: "cod", label: "Cash on delivery", detail: "Pay the courier in cash when your piece arrives." },
-  { value: "bank", label: "Bank transfer", detail: "Our concierge sends the account details on WhatsApp; stitching begins once the transfer clears." },
+export const paymentMethods: {
+  value: PaymentMethod;
+  label: string;
+  detail: string;
+  countries: Country[];
+  /** Collected on Stripe after the order is placed, never on our pages. */
+  via?: "stripe";
+}[] = [
+  { value: "cod", countries: ["PK"], label: "Cash on delivery", detail: "Pay the courier in cash when your piece arrives. Nothing to pay today." },
+  { value: "bank", countries: ["PK"], label: "Bank transfer", detail: "Transfer the total to our account and attach the receipt below. Stitching begins once it clears." },
+  { value: "card", countries: ["US"], via: "stripe", label: "Debit or credit card", detail: "Pay in full on Stripe's secure checkout. Visa, Mastercard, American Express and Discover." },
+  { value: "ach", countries: ["US"], via: "stripe", label: "Bank transfer (ACH)", detail: "Pay in full from a US bank account on Stripe's secure checkout. Settles in 1 to 3 business days." },
 ];
+
+export const paymentMethodsFor = (country: Country) => paymentMethods.filter((m) => m.countries.includes(country));
 
 export const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -118,6 +148,7 @@ const sampleAddress: Address = {
   city: "Lahore",
   province: "Punjab",
   postcode: "54660",
+  country: "PK",
 };
 
 /** Shown in every mock account so the order pages have something to render. */

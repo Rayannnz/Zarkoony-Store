@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { facts } from "@/lib/content";
-import { formatDate, paymentMethods, sampleOrders } from "@/lib/orders";
+import { countryName, formatDate, paymentMethods, sampleOrders } from "@/lib/orders";
 import { site } from "@/lib/site";
 import { LineItem, OrderTimeline, Totals } from "./OrderParts";
 import { useHydrated, useOrders } from "../Store";
@@ -58,8 +58,32 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
           </section>
 
           <section className="space-y-3 border-t border-neutral-200 pt-8 text-[13px] text-neutral-600">
-            <h2 className="caps text-label font-bold text-black">{payment?.label}</h2>
-            <p>{payment?.detail}</p>
+            <h2 className="caps text-label font-bold text-black">
+              {payment?.label}
+              {payment?.via === "stripe" && <span className="ml-2 font-normal text-neutral-400">via Stripe</span>}
+            </h2>
+            <p>
+              {order.transfer
+                ? "We have your transfer details. The concierge confirms the payment within one working day, then stitching begins."
+                : payment?.via === "stripe"
+                  ? "Paid in advance through Stripe; your receipt arrives from Stripe by e-mail."
+                  : payment?.detail}
+            </p>
+            {order.transfer && (
+              <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border border-neutral-200 p-4">
+                <dt className="text-neutral-500">From</dt>
+                <dd className="text-black">
+                  {order.transfer.accountName}, {order.transfer.bank}
+                </dd>
+                <dt className="text-neutral-500">Reference</dt>
+                <dd className="text-black">{order.transfer.reference}</dd>
+                <dt className="text-neutral-500">Receipt</dt>
+                <dd className="text-black">{order.transfer.proofName}</dd>
+              </dl>
+            )}
+            {payment?.via === "stripe" && (
+              <p>Demo store: no payment was taken. In production this page follows Stripe&apos;s checkout.</p>
+            )}
             {order.express && (
               <p>Priority stitching is on: your piece ships within {facts.express.days} working days.</p>
             )}
@@ -100,12 +124,11 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
               <br />
               {order.address.city}, {order.address.province} {order.address.postcode}
               <br />
+              {countryName(order.address.country)}
+              <br />
               {order.address.phone}
             </address>
           </div>
-          <Link href={`/account/orders/${order.id}`} className="btn-black w-full">
-            Track in your account
-          </Link>
         </aside>
       </div>
     </div>

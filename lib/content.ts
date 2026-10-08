@@ -11,8 +11,17 @@ export const facts = {
   express: { days: 10, fee: 8500 }, // Priority stitching: a fixed window and a per-order fee.
   deliveryPakistan: "Complimentary tracked delivery across Pakistan, 2 to 4 working days after dispatch.",
   international:
-    "International orders are placed through zarkoony.com.pk; customs duties, where charged, are payable by the recipient.",
-  payment: ["Cash on delivery", "Bank transfer", "Card payment (coming soon)"],
+    "Orders to the United States are paid in advance through Stripe; customs duties, where charged, are payable by the recipient.",
+  internationalDelivery: {
+    fee: 12000, // TODO confirm: flat tracked-courier charge to the United States, in PKR.
+    note: "Tracked international courier, 5 to 8 working days after dispatch; duties and taxes, where charged, are billed by the courier.",
+  },
+  /** Shown at checkout for Pakistani bank transfers. TODO confirm: placeholders. */
+  bankAccount: { bank: "Meezan Bank", title: "ZARKOONY", iban: "PK00 MEZN 0000 0000 0000 0000" },
+  payment: {
+    PK: ["cash on delivery", "bank transfer with the receipt attached at checkout"],
+    US: ["debit or credit card", "ACH bank transfer"],
+  },
   alterations: "Post-stitch adjustments are complimentary within 14 days of delivery.",
   exchanges:
     "Because every piece is cut to your measurements, exchanges and remakes are offered only for a manufacturing fault or a measurement error on our side, reported within 48 hours of delivery.",
@@ -244,7 +253,7 @@ export const faq: ContentPage = {
             { q: "Do I need an account to order?", a: "No. You can check out as a guest. An account keeps your measurements, addresses and order history together for next time." },
             { q: "Can I change the design, neckline or sleeve?", a: "Styling notes such as a modest neckline, sleeve lining or extra flare are welcome and usually free. Changes to the embroidery or silhouette are quoted by the concierge before cutting." },
             { q: "Can I order more than one of the same piece?", a: "Yes, up to five of a standard size per line. Custom-measured pieces are added one at a time because each is drafted individually." },
-            { q: "How do I pay?", a: `${facts.payment.slice(0, 2).join(" or ")}. Card payment is coming soon. We never ask for card details over WhatsApp.` },
+            { q: "How do I pay?", a: `In Pakistan: ${facts.payment.PK.join(" or ")}. In the United States: ${facts.payment.US.join(" or ")}, paid in advance through Stripe's secure checkout. We never ask for card details over WhatsApp.` },
           ],
         },
       ],

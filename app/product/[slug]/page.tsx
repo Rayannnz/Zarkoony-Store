@@ -6,7 +6,8 @@ import { ProductForm } from "@/components/product/ProductForm";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { StickyColumn } from "@/components/product/StickyColumn";
 import { productBySlug, relatedProducts } from "@/lib/catalog";
-import { formatPrice, products } from "@/lib/products";
+import { products } from "@/lib/products";
+import { Price } from "@/components/Price";
 
 export const dynamicParams = false;
 
@@ -42,10 +43,10 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           <p className="caps mt-3 text-[13px] font-bold text-black">
             {product.compareAtPrice && (
               <span className="mr-3 font-normal text-neutral-400 line-through">
-                {formatPrice(product.compareAtPrice)}
+                <Price value={product.compareAtPrice} />
               </span>
             )}
-            {formatPrice(product.price)}
+            <Price value={product.price} />
           </p>
           <p className="caps mt-1 border-b border-neutral-200 pb-5 text-[11px] text-neutral-500">
             {product.id} · {product.pieces.length} {product.pieces.length === 1 ? "piece" : "pieces"}

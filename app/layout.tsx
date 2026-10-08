@@ -4,6 +4,7 @@ import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Overlays } from "@/components/Overlays";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { hero } from "@/lib/home";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -42,19 +43,33 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+// Runs before first paint: the region cookie (set by proxy.ts from the IP country, or by the
+// header chooser) wins; otherwise Pakistan for the Karachi time zone and the United States for
+// everyone else. See components/Price.tsx.
+const regionScript =
+  '(function(){try{var m=document.cookie.match(/(?:^|; )zarkoony-region=(PK|US)/);' +
+  'var r=m?m[1]:(Intl.DateTimeFormat().resolvedOptions().timeZone==="Asia/Karachi"?"PK":"US");' +
+  'document.documentElement.dataset.region=r;' +
+  'if(!m)document.cookie="zarkoony-region="+r+"; path=/; max-age=31536000; samesite=lax"}catch(e){}})()';
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       data-scroll-behavior="smooth"
       className={`${figtree.variable} ${cabin.variable} ${lato.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: regionScript }} />
+      </head>
       <body className="bg-white font-sans text-[14px] leading-[1.65] text-charcoal-body antialiased min-[700px]:text-[15px]">
         <Overlays>
           <AnnouncementBar />
           <Header />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </Overlays>
       </body>
     </html>

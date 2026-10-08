@@ -1,10 +1,7 @@
 import { site } from "@/lib/site";
 
 const messages = [
-  {
-    href: site.internationalUrl,
-    text: `For international website visit ${new URL(site.internationalUrl).host}`,
-  },
+  { href: "/shipping", text: "Stitched in Lahore, delivered across Pakistan and the United States" },
   { href: `tel:${site.uan.tel}`, text: `Call us at: ${site.uan.label}`, primary: true },
   { href: `tel:${site.concierge.tel}`, text: `For bespoke concierge: ${site.concierge.label}` },
 ];

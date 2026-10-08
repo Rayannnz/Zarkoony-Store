@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import type { Address, CartLine, Order } from "@/lib/orders";
+import type { Address, CartLine, Country, Order } from "@/lib/orders";
 
 /**
  * Client state that survives a reload: cart, wishlist, the mock session and placed orders, each in
@@ -165,5 +165,31 @@ export const useView = () => useLocal(stores.view);
 export const viewActions = {
   set(patch: Partial<View>) {
     stores.view.set((view) => ({ ...view, ...patch }));
+  },
+};
+
+/**
+ * The visitor's region, "PK" or "US", read from `<html data-region>`: the inline script in
+ * app/layout.tsx sets it before first paint from the region cookie (geo via proxy.ts, else the
+ * time zone). Setting it here updates the attribute and the cookie, so the CSS-switched prices
+ * (components/Price.tsx) and React views agree.
+ */
+const regionListeners = new Set<() => void>();
+
+export const useRegion = () =>
+  useSyncExternalStore(
+    (listener) => {
+      regionListeners.add(listener);
+      return () => regionListeners.delete(listener);
+    },
+    () => (document.documentElement.dataset.region === "US" ? "US" : "PK") as Country,
+    () => "PK" as Country,
+  );
+
+export const regionActions = {
+  set(region: Country) {
+    document.documentElement.dataset.region = region;
+    document.cookie = `zarkoony-region=${region}; path=/; max-age=31536000; samesite=lax`;
+    regionListeners.forEach((listener) => listener());
   },
 };

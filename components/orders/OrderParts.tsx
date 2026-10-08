@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { lineTotal, orderStages, stageIndex, type CartLine, type Order } from "@/lib/orders";
-import { formatPrice, measurementFields } from "@/lib/products";
+import { measurementFields } from "@/lib/products";
+import { Price } from "../Price";
 
 /** One cart line as shown in the cart page, checkout summary and order pages. */
 export function LineItem({ line, children }: { line: CartLine; children?: React.ReactNode }) {
@@ -22,7 +23,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
               {line.qty > 1 && ` · Qty ${line.qty}`}
             </p>
           </div>
-          <p className="caps shrink-0 text-[13px] font-bold text-black">{formatPrice(lineTotal(line))}</p>
+          <p className="caps shrink-0 text-[13px] font-bold text-black"><Price value={lineTotal(line)} /></p>
         </div>
         {line.measurements && (
           <details className="mt-2 text-[12px] text-neutral-600">
@@ -60,21 +61,21 @@ export function Totals({
     <dl className="text-[13px] text-neutral-600">
       <div className={row}>
         <dt>Subtotal</dt>
-        <dd className="text-black">{formatPrice(subtotal)}</dd>
+        <dd className="text-black"><Price value={subtotal} /></dd>
       </div>
       <div className={row}>
         <dt>Delivery</dt>
-        <dd className="text-black">{delivery ? formatPrice(delivery) : "Complimentary"}</dd>
+        <dd className="text-black">{delivery ? <Price value={delivery} /> : "Complimentary"}</dd>
       </div>
       {expressFee > 0 && (
         <div className={row}>
           <dt>Priority stitching</dt>
-          <dd className="text-black">{formatPrice(expressFee)}</dd>
+          <dd className="text-black"><Price value={expressFee} /></dd>
         </div>
       )}
       <div className={`${row} caps border-t border-neutral-200 pt-3 text-[13px] font-bold text-black`}>
         <dt>Total</dt>
-        <dd>{formatPrice(total)}</dd>
+        <dd><Price value={total} /></dd>
       </div>
     </dl>
   );

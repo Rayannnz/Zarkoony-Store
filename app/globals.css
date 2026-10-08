@@ -291,3 +291,10 @@
   font-family: var(--font-lato);
   font-weight: 600;
 }
+
+/* Region-dependent content (components/Price.tsx): both versions are in the HTML and the inline
+   script in app/layout.tsx sets data-region before first paint, so only one is ever visible. */
+html[data-region="US"] .region-pk,
+html:not([data-region="US"]) .region-us {
+  display: none;
+}
