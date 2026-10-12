@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cabin, Figtree, Lato } from "next/font/google";
+import { Allura, Cabin, Manrope } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -9,24 +9,15 @@ import { hero } from "@/lib/home";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+// Manrope (body and UI) and Allura (the one script accent) come from the typography guide; the
+// variable font ships as one file (the site uses 400-600). The big headings keep Cabin in uppercase,
+// as committed: two serifs (Bodoni Moda, then Cormorant Garamond) were tried on them and the owner
+// asked for the committed look back both times.
+const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight: "variable" });
 
-const cabin = Cabin({
-  variable: "--font-cabin",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+const cabin = Cabin({ variable: "--font-cabin", subsets: ["latin"], weight: "400" });
 
-// Trial for the product page: the owner wants to see Lato on the product details.
-const lato = Lato({
-  variable: "--font-lato-loaded",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+const allura = Allura({ variable: "--font-allura", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -57,13 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${figtree.variable} ${cabin.variable} ${lato.variable} scroll-smooth`}
+      className={`${manrope.variable} ${cabin.variable} ${allura.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: regionScript }} />
       </head>
-      <body className="bg-white font-sans text-[14px] leading-[1.65] text-charcoal-body antialiased min-[700px]:text-[15px]">
+      <body className="bg-white font-sans text-[15px] leading-[1.6] text-charcoal-body antialiased min-[700px]:text-base">
         <Overlays>
           <AnnouncementBar />
           <Header />

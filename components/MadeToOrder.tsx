@@ -7,9 +7,7 @@ export function MadeToOrder() {
       className="border-t border-border-subtle bg-ivory-base py-12 md:py-16"
     >
       <div className="mx-auto max-w-6xl px-6 text-center">
-        <h3 className="caps mb-3 text-[11px] font-normal text-neutral-500">
-          {madeToOrder.eyebrow}
-        </h3>
+        <p className="font-script text-script mb-3 text-neutral-900">{madeToOrder.accent}</p>
         <p className="mx-auto mb-6 max-w-2xl text-[17px] font-normal leading-[1.75] text-neutral-900 md:text-[19px]">
           &quot;{madeToOrder.quote}&quot;
         </p>

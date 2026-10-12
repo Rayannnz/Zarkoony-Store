@@ -24,7 +24,7 @@ import { Price } from "../Price";
 import { cartActions, orderActions, sessionActions, useCart, useHydrated, useRegion, useSession } from "../Store";
 
 const section = "space-y-4 border-t border-neutral-200 pt-6";
-const sectionTitle = "caps text-label font-bold text-black";
+const sectionTitle = "caps text-label font-semibold text-black";
 const checkbox =
   "mt-0.5 size-4 shrink-0 appearance-none border border-neutral-400 bg-white checked:border-black checked:bg-black";
 const radio =

@@ -90,7 +90,7 @@ export function Header() {
         popover="auto"
         className="w-[calc(100%-2rem)] max-w-sm bg-white p-8 text-charcoal-body shadow-2xl"
       >
-        <h2 className="caps text-label font-bold text-black">Are you in the right place?</h2>
+        <h2 className="caps text-label font-semibold text-black">Are you in the right place?</h2>
         <p className="mt-2 text-[13px] text-neutral-600">
           Choose your shipping country. We stitch for both, but delivery and currency differ.
         </p>

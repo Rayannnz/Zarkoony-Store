@@ -44,7 +44,7 @@ export default function CustomOrdersPage() {
         />
       </div>
       <header className="pb-10 text-center md:pb-14">
-        <p className="caps text-[11px] text-neutral-500">Made to order</p>
+        <p className="caps text-[11px] font-semibold text-neutral-500">Made to order</p>
         <h1 className={`${headingClass} mt-2`}>Custom Orders</h1>
         <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-[1.75] text-neutral-600">
           Have a design in mind that is not in the store? Send us its pictures, your size and when
@@ -58,14 +58,14 @@ export default function CustomOrdersPage() {
               <span className="mt-0.5 text-neutral-500">{step.icon}</span>
               <div>
                 <p className="caps text-[10px] text-neutral-500">Step {index + 1}</p>
-                <h2 className="caps mt-1 text-label font-bold text-black">{step.title}</h2>
+                <h2 className="caps mt-1 text-label font-semibold text-black">{step.title}</h2>
                 <p className="mt-1 text-[13px] leading-[1.7] text-neutral-600">{step.text}</p>
               </div>
             </li>
           ))}
         </ol>
         <div>
-          <h2 className="caps mb-5 text-label font-bold text-black">Request a quote</h2>
+          <h2 className="caps mb-5 text-label font-semibold text-black">Request a quote</h2>
           <CustomOrderForm />
         </div>
       </div>

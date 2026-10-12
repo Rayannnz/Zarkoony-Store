@@ -82,7 +82,7 @@ export function ContentPage({ page, crumbs, children }: { page: Page; crumbs: Cr
         <Breadcrumbs crumbs={crumbs} />
       </div>
       <header className="pb-10 text-center md:pb-14">
-        {page.eyebrow && <p className="caps text-[11px] text-neutral-500">{page.eyebrow}</p>}
+        {page.eyebrow && <p className="caps text-[11px] font-semibold text-neutral-500">{page.eyebrow}</p>}
         <h1 className={`${headingClass} mt-2`}>{page.title}</h1>
         <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-[1.75] text-neutral-600">{page.intro}</p>
         {page.updated && (
@@ -95,7 +95,7 @@ export function ContentPage({ page, crumbs, children }: { page: Page; crumbs: Cr
         {page.sections.map((section, index) => (
           <Reveal key={section.heading} index={Math.min(index, 2)}>
             <section id={section.id} className="scroll-mt-24 space-y-5">
-              <h2 className="caps text-label font-bold text-black">{section.heading}</h2>
+              <h2 className="caps text-label font-semibold text-black">{section.heading}</h2>
               {section.blocks.map((block, blockIndex) => (
                 <BlockView key={`${section.heading}-${blockIndex}`} block={block} />
               ))}

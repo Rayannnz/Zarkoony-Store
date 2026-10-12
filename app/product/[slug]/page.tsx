@@ -34,13 +34,13 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
   return (
     // Baroque's product page: a centred 1260px container, the gallery and a 413px info column
     // holding only title, price, SKU, the size row, quantity, add to cart and four accordions.
-    <div className="font-lato mx-auto max-w-[1376px] px-4 pt-6 md:px-10 md:pt-10 lg:px-14">
+    <div className="mx-auto max-w-[1376px] px-4 pt-6 md:px-10 md:pt-10 lg:px-14">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_413px] lg:gap-20">
         <ProductGallery images={product.images} name={product.name} />
 
         <StickyColumn>
-          <h1 className="caps text-product font-normal text-[#818589]">{product.name}</h1>
-          <p className="caps mt-3 text-[13px] font-bold text-black">
+          <h1 className="text-product font-medium text-[#818589]">{product.name}</h1>
+          <p className="mt-3 text-sm font-semibold text-black">
             {product.compareAtPrice && (
               <span className="mr-3 font-normal text-neutral-400 line-through">
                 <Price value={product.compareAtPrice} />

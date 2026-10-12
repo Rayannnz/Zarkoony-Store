@@ -22,7 +22,7 @@ export function SizeChart({ product }: { product: Product }) {
       <button
         type="button"
         onClick={() => dialog.current?.showModal()}
-        className="caps text-[13px] font-bold text-black underline underline-offset-4 hover:text-neutral-600"
+        className="caps text-[13px] font-semibold text-black underline underline-offset-4 hover:text-neutral-600"
       >
         Size chart
       </button>
@@ -36,7 +36,7 @@ export function SizeChart({ product }: { product: Product }) {
         className="fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-[1143px] overflow-hidden bg-white text-charcoal-body backdrop:bg-black/40"
       >
         <div className="relative flex h-14 items-center justify-center bg-ivory-base px-14">
-          <h2 className="caps truncate text-label font-bold text-black">{product.name}</h2>
+          <h2 className="caps truncate text-label font-semibold text-black">{product.name}</h2>
           <button
             type="button"
             aria-label="Close"
@@ -83,17 +83,17 @@ export function SizeChart({ product }: { product: Product }) {
           <div className="space-y-8 md:max-h-[calc(90vh-7.5rem)] md:overflow-y-auto md:pr-2">
             {tables.map(({ piece, rows }) => (
               <section key={piece}>
-                <h3 className="caps mb-3 text-center text-[13px] font-bold text-black">
+                <h3 className="caps mb-3 text-center text-[13px] font-semibold text-black">
                   {product.id} {piece}
                 </h3>
                 <table className="caps w-full border-collapse text-[12px]">
                   <thead>
                     <tr className="bg-ivory-base text-black">
-                      <th scope="col" className="border border-neutral-200 px-2 py-1.5 text-left font-bold">
+                      <th scope="col" className="border border-neutral-200 px-2 py-1.5 text-left font-semibold">
                         Size (inches)
                       </th>
                       {sizeOrder.map((size) => (
-                        <th key={size} scope="col" className="border border-neutral-200 px-2 py-1.5 text-center font-bold">
+                        <th key={size} scope="col" className="border border-neutral-200 px-2 py-1.5 text-center font-semibold">
                           {size}
                         </th>
                       ))}

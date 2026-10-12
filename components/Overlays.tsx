@@ -132,7 +132,7 @@ export function Overlays({ children }: { children: ReactNode }) {
         <div className="flex h-full w-4/5 max-w-sm flex-col justify-between overflow-y-auto bg-white p-6 transition-transform duration-500 ease-out starting:-translate-x-full motion-reduce:transition-none">
           <div>
             <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
-              <span className="caps text-label font-bold">Zarkoony Atelier</span>
+              <span className="caps text-label font-semibold">Zarkoony Atelier</span>
               <button type="button" aria-label="Close menu" className="-m-1 p-1" onClick={closeDialog}>
                 {closeIcon}
               </button>
@@ -283,7 +283,7 @@ function SearchPanel() {
           </p>
         ) : (
           <div>
-            <p className="caps mb-4 text-[11px] text-neutral-500">Products</p>
+            <p className="caps mb-4 text-[11px] font-semibold text-neutral-500">Products</p>
             <ul className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
               {matches.map((product) => (
                 <li key={product.slug}>
@@ -301,10 +301,10 @@ function SearchPanel() {
                         className="object-cover object-top"
                       />
                     </div>
-                    <p className="caps text-[11px] text-black group-hover:text-champagne-gold">
+                    <p className="text-[12px] font-medium text-black group-hover:text-champagne-gold">
                       {product.name}
                     </p>
-                    <p className="caps mt-1 text-[11px] font-bold text-black">
+                    <p className="mt-1 text-[12px] font-semibold text-black">
                       <Price value={product.price} />
                     </p>
                   </Link>
@@ -336,7 +336,7 @@ function CartPanel() {
   return (
     <div className={`${panelClass} max-w-[450px]`}>
       <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-5">
-        <h2 className="caps text-label font-bold text-black">
+        <h2 className="caps text-label font-semibold text-black">
           Cart {count > 0 && <span className="font-normal text-neutral-500">({count})</span>}
         </h2>
         <button type="button" aria-label="Close cart" className="-m-1 p-1" onClick={closeDialog}>
@@ -367,7 +367,7 @@ function CartPanel() {
                   </Link>
                 )}
                 <div className="flex min-w-0 flex-1 flex-col">
-                  <p className="caps text-[12px] text-black">{line.name}</p>
+                  <p className="text-[13px] font-medium text-black">{line.name}</p>
                   <p className="caps mt-1 text-[11px] text-neutral-500">
                     {line.size === "Custom" ? "Custom measurements" : `Size ${line.size}`} · Made to
                     order
@@ -387,14 +387,14 @@ function CartPanel() {
                     </button>
                   </div>
                 </div>
-                <p className="caps shrink-0 text-[13px] font-bold text-black">
+                <p className="shrink-0 text-sm font-semibold text-black">
                   <Price value={lineTotal(line)} />
                 </p>
               </li>
             ))}
           </ul>
           <div className="space-y-4 border-t border-neutral-200 px-6 py-5">
-            <div className="caps flex items-center justify-between text-[13px] font-bold text-black">
+            <div className="caps flex items-center justify-between text-[13px] font-semibold text-black">
               <span>Subtotal</span>
               <span><Price value={cartSubtotal(cart)} /></span>
             </div>
@@ -458,8 +458,8 @@ function MeasurePanel({ item, onConfirm }: { item: MeasureItem; onConfirm: Overl
     <div className={`${panelClass} max-w-xl overflow-y-auto p-6 shadow-2xl md:p-10`}>
       <div className="flex items-center justify-between border-b border-neutral-200 pb-6">
         <div>
-          <span className="caps mb-1 block text-[11px] text-neutral-500">Zarkoony Atelier</span>
-          <h2 className="caps text-product font-normal text-black">{item.title}</h2>
+          <span className="caps mb-1 block text-[11px] font-semibold text-neutral-500">Zarkoony Atelier</span>
+          <h2 className="text-product font-medium text-black">{item.title}</h2>
         </div>
         <button
           type="button"
@@ -474,7 +474,7 @@ function MeasurePanel({ item, onConfirm }: { item: MeasureItem; onConfirm: Overl
       <div className="my-6 flex items-center justify-between gap-4 border border-neutral-200 bg-ivory-base p-4">
         <div>
           <span className="caps block text-[11px] text-neutral-500">Estimated Atelier Cost</span>
-          <span className="caps text-sm font-bold text-black"><Price value={item.price} /></span>
+          <span className="text-sm font-semibold text-black"><Price value={item.price} /></span>
         </div>
         <div className="text-right">
           <span className="caps block text-[11px] text-black">Made to order</span>

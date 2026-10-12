@@ -55,13 +55,13 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 33vw, 50vw",
         />
       </div>
       <div className="space-y-1 text-center">
-        <h3 className="caps text-label font-normal text-black transition-colors duration-(--duration-fast) group-hover:text-champagne-gold">
+        <h3 className="text-sm font-medium leading-[1.45] text-black transition-colors duration-(--duration-fast) group-hover:text-champagne-gold">
           {/* The ::after stretches the link over the whole card. */}
           <Link href={`/product/${product.slug}`} className="after:absolute after:inset-0">
             {product.name}
           </Link>
         </h3>
-        <p className="caps text-[13px] font-bold text-black">
+        <p className="text-sm font-semibold text-black">
           {product.compareAtPrice && (
             <span className="mr-2 font-normal text-neutral-400 line-through">
               <Price value={product.compareAtPrice} />

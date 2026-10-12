@@ -38,7 +38,7 @@ type Props = {
 };
 
 export const headingClass =
-  "caps text-title font-normal text-black";
+  "heading text-title text-black";
 
 const facetLabels = { type: "Garment", fabric: "Fabric", color: "Colour" } as const;
 
@@ -135,7 +135,7 @@ export function Listing({
             <div className="flex items-center border-r border-neutral-200 px-2 md:px-5">
               <ViewSwitch />
             </div>
-            <p className="caps flex flex-1 items-center justify-center text-label text-black">
+            <p className="caps flex flex-1 items-center justify-center whitespace-nowrap text-label text-black max-sm:text-[11px]">
               {total} {total === 1 ? "product" : "products"}
             </p>
             <div className="flex items-center border-l border-neutral-200 px-4 md:px-7">

@@ -38,7 +38,8 @@ function Group({ label, children }: { label: string; children: React.ReactNode }
 export function SortSelect({ value }: { value: SortKey }) {
   return (
     <label className="flex items-center gap-3">
-      <span className="caps text-[11px] text-black">Sort by</span>
+      {/* On phones the select alone fits the toolbar; the label stays for screen readers. */}
+      <span className="caps text-[11px] text-black max-sm:sr-only">Sort by</span>
       <select
         key={value}
         form="listing-filters"

@@ -64,7 +64,7 @@ export function CartView() {
 
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <div className="border border-neutral-200 p-6">
-          <h2 className="caps text-label font-bold text-black">Summary</h2>
+          <h2 className="caps text-label font-semibold text-black">Summary</h2>
           <div className="mt-4">
             <Totals subtotal={subtotal} delivery={DELIVERY_FEE} total={subtotal + DELIVERY_FEE} />
           </div>

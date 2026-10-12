@@ -103,7 +103,8 @@ export const newArrivals = {
 
 export const madeToOrder = {
   id: "how-it-works-info",
-  eyebrow: "100% Bespoke Architecture",
+  /** The one script accent on the site: short and decorative, never essential information. */
+  accent: "Made around you",
   quote:
     "Every garment is stitched to order with bespoke ease allowances and master handcraftsmanship.",
   assurances: [

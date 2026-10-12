@@ -5,7 +5,7 @@ import { NewsletterForm } from "./NewsletterForm";
 
 const columnSpan: Record<number, string> = { 2: "lg:col-span-2", 3: "lg:col-span-3" };
 
-const headingClass = "caps text-label font-bold text-white";
+const headingClass = "caps text-label font-semibold text-white";
 
 export function Footer() {
   return (
@@ -64,7 +64,7 @@ export function Footer() {
             © {new Date().getFullYear()} - {site.name}
           </div>
           <div className="flex items-center gap-3">
-            <div className="flex h-5 w-8 items-center justify-center bg-neutral-800 font-sans text-[8px] font-bold tracking-tighter text-white">
+            <div className="flex h-5 w-8 items-center justify-center bg-neutral-800 font-sans text-[8px] font-semibold text-white">
               VISA
             </div>
             <div

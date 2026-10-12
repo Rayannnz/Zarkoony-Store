@@ -15,7 +15,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <Link href={`/product/${line.slug}`} className="caps text-[12px] text-black">
+            <Link href={`/product/${line.slug}`} className="text-[13px] font-medium text-black">
               {line.name}
             </Link>
             <p className="caps mt-1 text-[11px] text-neutral-500">
@@ -23,7 +23,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
               {line.qty > 1 && ` · Qty ${line.qty}`}
             </p>
           </div>
-          <p className="caps shrink-0 text-[13px] font-bold text-black"><Price value={lineTotal(line)} /></p>
+          <p className="shrink-0 text-sm font-semibold text-black"><Price value={lineTotal(line)} /></p>
         </div>
         {line.measurements && (
           <details className="mt-2 text-[12px] text-neutral-600">
@@ -73,7 +73,7 @@ export function Totals({
           <dd className="text-black"><Price value={expressFee} /></dd>
         </div>
       )}
-      <div className={`${row} caps border-t border-neutral-200 pt-3 text-[13px] font-bold text-black`}>
+      <div className={`${row} caps border-t border-neutral-200 pt-3 text-[13px] font-semibold text-black`}>
         <dt>Total</dt>
         <dd><Price value={total} /></dd>
       </div>

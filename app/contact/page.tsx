@@ -32,7 +32,7 @@ export default function ContactPage() {
         <Breadcrumbs crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       </div>
       <header className="pb-10 text-center md:pb-14">
-        <p className="caps text-[11px] text-neutral-500">Customer care</p>
+        <p className="caps text-[11px] font-semibold text-neutral-500">Customer care</p>
         <h1 className={`${headingClass} mt-2`}>Contact</h1>
         <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-[1.75] text-neutral-600">
           For a commission in progress, a bridal consultation or anything else, the concierge replies
@@ -58,7 +58,7 @@ export default function ContactPage() {
           ))}
         </ul>
         <div>
-          <h2 className="caps mb-5 text-label font-bold text-black">Send a message</h2>
+          <h2 className="caps mb-5 text-label font-semibold text-black">Send a message</h2>
           <ContactForm />
         </div>
       </div>

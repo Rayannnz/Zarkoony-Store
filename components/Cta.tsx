@@ -9,7 +9,7 @@ export const variantClass: Record<BannerCta["variant"], string> = {
 };
 
 /** Smaller text and padding below `sm`, so two long labels stay side by side on phones. */
-export const phoneCompact = "max-sm:px-3 max-sm:text-[11px] max-sm:tracking-[0.12em]";
+export const phoneCompact = "max-sm:px-3 max-sm:text-[11px]";
 
 export function Cta({ cta, className }: { cta: CtaData; className?: string }) {
   return "href" in cta ? (

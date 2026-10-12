@@ -14,7 +14,7 @@ export function SectionHeading({
   return (
     <div className={`text-center ${subtitle ? "mb-10 md:mb-14" : "mb-8 md:mb-12"}`}>
       {/* Fluid: 22px on a phone, 30px at 1280px, capped at 32px. */}
-      <h2 className="caps text-title font-normal text-black">
+      <h2 className="heading text-title text-black">
         {title}
       </h2>
       {subtitle && (
