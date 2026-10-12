@@ -283,6 +283,26 @@
       border-color: var(--fill);
     }
   }
+
+  /* Secondary button: the same wipe starting from the outline state, so it fills on hover
+     (left to right, like the filled buttons) and empties again on leave. */
+  .btn-outline {
+    background-size:
+      0 100%,
+      100% 100%;
+    background-position: left center;
+    color: var(--fill);
+  }
+
+  @media (hover: hover) {
+    .btn-outline:hover {
+      background-size:
+        100% 100%,
+        0 100%;
+      background-position: right center;
+      color: var(--ink);
+    }
+  }
 }
 
 /* Trial: `font-lato` on a block switches its uppercase labels to Lato as well (unlayered so it beats the utility).

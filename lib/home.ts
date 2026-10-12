@@ -6,7 +6,8 @@ export type Cta = { label: string } & ({ href: string } | { item: MeasureItem })
 /** `href` is where the photo itself leads; the CTA may go elsewhere (e.g. open the drawer). */
 export type CategoryCard = { image: string; alt: string; href: string; cta: Cta };
 
-export type BannerCta = Cta & { variant: "black" | "white" };
+/** `outline` is the secondary treatment: a white outline that fills on hover. */
+export type BannerCta = Cta & { variant: "black" | "white" | "outline" };
 
 export const hero = {
   heading: "ZARKOONY: custom stitched Pakistani couture, made to order",
@@ -16,10 +17,11 @@ export const hero = {
   alt: "Zarkoony hand-embellished sage couture gown in the atelier salon",
   /** object-position; keeps the chandelier out from behind the transparent header's logo. */
   focus: "center 25%",
+  /** Custom design is the primary action; the broad "Shop All" sits beside it as an outline. */
   ctas: [
-    { label: "Shop All", href: "/shop" },
-    { label: "Your Custom Design", href: "/custom-orders" },
-  ] satisfies Cta[],
+    { variant: "outline", label: "Shop All", href: "/shop" },
+    { variant: "white", label: "Your Custom Design", href: "/custom-orders" },
+  ] satisfies BannerCta[],
 };
 
 export const ownYourLook = {

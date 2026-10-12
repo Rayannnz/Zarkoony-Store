@@ -1,5 +1,5 @@
 import { hero } from "@/lib/home";
-import { Cta } from "./Cta";
+import { Cta, phoneCompact, variantClass } from "./Cta";
 import { HeroMedia } from "./HeroMedia";
 
 export function Hero() {
@@ -13,7 +13,7 @@ export function Hero() {
       <div className="relative aspect-video max-h-[920px] min-h-[520px] w-full md:aspect-[2.1/1]">
         <HeroMedia src={hero.image} alt={hero.alt} focus={hero.focus}>
           {hero.ctas.map((cta) => (
-            <Cta key={cta.label} cta={cta} className="btn-white" />
+            <Cta key={cta.label} cta={cta} className={`${variantClass[cta.variant]} ${phoneCompact}`} />
           ))}
         </HeroMedia>
       </div>

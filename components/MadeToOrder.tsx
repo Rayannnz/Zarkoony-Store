@@ -4,7 +4,7 @@ export function MadeToOrder() {
   return (
     <section
       id={madeToOrder.id}
-      className="border-t border-neutral-200/70 bg-[#F8F7F4] py-12 md:py-16"
+      className="border-t border-border-subtle bg-ivory-base py-12 md:py-16"
     >
       <div className="mx-auto max-w-6xl px-6 text-center">
         <h3 className="caps mb-3 text-[11px] font-normal text-neutral-500">

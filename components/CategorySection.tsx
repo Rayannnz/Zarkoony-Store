@@ -20,7 +20,7 @@ export function CategorySection({ id, title, cards, className, eager }: Props) {
         {cards.map((card) => (
           <div
             key={card.image}
-            className="group relative aspect-[3/4] overflow-hidden bg-[#F6F5F2] sm:aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5.2]"
+            className="group relative aspect-[3/4] overflow-hidden bg-ivory-base sm:aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5.2]"
           >
             {/* The photo leads to its category; the button on top keeps its own destination. */}
             <Link
