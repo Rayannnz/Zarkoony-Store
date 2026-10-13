@@ -55,6 +55,12 @@ export function Header() {
         </Link>
 
         <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-5">
+          <Link
+            href="/custom-orders"
+            className="caps hidden border border-current px-3 py-2 text-[11px] transition-colors duration-(--duration-fast) hover:bg-black hover:text-white lg:inline-flex"
+          >
+            Custom Design
+          </Link>
           <button
             type="button"
             popoverTarget="country-menu"
