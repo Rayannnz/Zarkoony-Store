@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import Form from "next/form";
-import { ChevronDown, Minus, Plus, Search, X } from "lucide-react";
+import { ChevronDown, Minus, Plus, Search, User, X } from "lucide-react";
 import { searchProducts } from "@/lib/catalog";
 import { cartCount, cartSubtotal, lineTotal, stitchingWindow } from "@/lib/orders";
 import type { MeasureItem } from "@/lib/products";
@@ -141,7 +141,8 @@ export function Overlays({ children }: { children: ReactNode }) {
           </div>
           <div className="caps space-y-3 border-t border-neutral-200 pt-6 text-[11px] text-neutral-500">
             <nav aria-label="Account" className="flex flex-col gap-3 text-black">
-              <Link href="/account" onClick={closeDialog}>
+              <Link href="/account" onClick={closeDialog} className="flex items-center gap-2">
+                <User size={18} strokeWidth={1.5} aria-hidden />
                 Account
               </Link>
               <Link href="/wishlist" onClick={closeDialog}>

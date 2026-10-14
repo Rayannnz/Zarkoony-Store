@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { ImagePlus, X } from "lucide-react";
-import { standardSizes } from "@/lib/products";
+import { measurementFields, standardSizes } from "@/lib/products";
 import { Field, fieldClass, fieldLabelClass, invalidFields } from "./Field";
 
 const MIN_PICTURES = 2;
@@ -27,6 +28,7 @@ export function CustomOrderForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
   const [pictures, setPictures] = useState<File[]>([]);
+  const [custom, setCustom] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
 
   const previews = useMemo(() => pictures.map((file) => URL.createObjectURL(file)), [pictures]);
@@ -72,6 +74,7 @@ export function CustomOrderForm() {
     if (Object.keys(invalid).length) return;
     event.currentTarget.reset();
     setPictures([]);
+    setCustom(false);
     setSent(true);
   };
 
@@ -142,7 +145,12 @@ export function CustomOrderForm() {
       </div>
 
       <div>
-        <span className={fieldLabelClass}>Size</span>
+        <div className="mb-1 flex items-baseline justify-between">
+          <span className={fieldLabelClass}>Size</span>
+          <Link href="/made-to-order/size-guide" className="link-underline caps text-[11px] text-black">
+            Size guide
+          </Link>
+        </div>
         <div role="radiogroup" aria-label="Size" className="flex flex-wrap gap-2.5">
           {standardSizes.map(({ size }) => (
             <label
@@ -154,7 +162,10 @@ export function CustomOrderForm() {
                 name="size"
                 value={size}
                 required
-                onChange={() => setErrors((prev) => ({ ...prev, size: "" }))}
+                onChange={() => {
+                  setCustom(size === "Custom");
+                  setErrors((prev) => ({ ...prev, size: "" }));
+                }}
                 className="sr-only"
               />
               <span className="caps text-label">{size}</span>
@@ -162,9 +173,41 @@ export function CustomOrderForm() {
           ))}
         </div>
         <span role={errors.size ? "alert" : undefined} className={`mt-1 block text-[12px] ${errors.size ? "text-red-700" : "text-neutral-500"}`}>
-          {errors.size || "Choose Custom and measurements are taken after the quote, at no extra cost."}
+          {errors.size || "Choose Custom to enter your measurements, at no extra cost."}
         </span>
       </div>
+
+      {custom && (
+        <fieldset className="min-w-0 transition-[opacity,translate] duration-300 ease-out starting:translate-x-3 starting:opacity-0 motion-reduce:transition-none">
+          <div className="mb-3 flex items-baseline justify-between">
+            <legend className={fieldLabelClass}>Your measurements (inches)</legend>
+            <Link
+              href="/made-to-order/measurement-guide"
+              className="link-underline caps text-[11px] text-black"
+            >
+              How to measure
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {measurementFields.map((f) => (
+              <Field
+                key={f.key}
+                label={f.label}
+                name={f.key}
+                type="number"
+                inputMode="decimal"
+                step="0.25"
+                min={f.min}
+                max={f.max}
+                required
+                placeholder={f.placeholder}
+                onChange={() => setErrors((prev) => ({ ...prev, [f.key]: "" }))}
+                error={errors[f.key]}
+              />
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Field label="Name" name="name" required autoComplete="name" error={errors.name} />

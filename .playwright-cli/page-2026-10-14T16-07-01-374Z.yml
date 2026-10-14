@@ -1,0 +1,288 @@
+- generic [ref=f1e1]:
+  - complementary "Contact" [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - list [ref=f1e4]:
+        - listitem [ref=f1e5]:
+          - link "Stitched in Lahore, delivered across Pakistan and the United States" [ref=f1e6] [cursor=pointer]:
+            - /url: /shipping
+        - listitem [ref=f1e7]:
+          - 'link "Call us at: UAN 111-ZARKOONY (111-927-566)" [ref=f1e8] [cursor=pointer]':
+            - /url: tel:111927566
+        - listitem [ref=f1e9]:
+          - 'link "For bespoke concierge: +92 300 ZARKOONY" [ref=f1e10] [cursor=pointer]':
+            - /url: tel:+92300927566
+      - list [aria-hidden] [ref=f1e11]:
+        - listitem [ref=f1e12]:
+          - link [ref=f1e13] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e14]:
+          - link [ref=f1e15] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e16]:
+          - link [ref=f1e17] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=f1e18]:
+        - listitem [ref=f1e19]:
+          - link [ref=f1e20] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e21]:
+          - link [ref=f1e22] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e23]:
+          - link [ref=f1e24] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=f1e25]:
+        - listitem [ref=f1e26]:
+          - link [ref=f1e27] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e28]:
+          - link [ref=f1e29] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e30]:
+          - link [ref=f1e31] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+  - banner [ref=f1e33]:
+    - generic [ref=f1e34]:
+      - button "Open navigation menu" [ref=f1e36] [cursor=pointer]
+      - link [ref=f1e38] [cursor=pointer]:
+        - /url: /
+        - img "ZARKOONY Custom Stitched Couture" [ref=f1e39]
+      - generic [ref=f1e40]:
+        - link "Custom Design" [ref=f1e41] [cursor=pointer]:
+          - /url: /custom-orders
+        - button "Pakistan PKR" [ref=f1e42] [cursor=pointer]:
+          - generic [ref=f1e43]: Pakistan
+          - generic [ref=f1e44]: PKR
+        - link "Account" [ref=f1e47] [cursor=pointer]:
+          - /url: /account
+        - button "Search" [ref=f1e51] [cursor=pointer]
+        - link "Wishlist" [ref=f1e55] [cursor=pointer]:
+          - /url: /wishlist
+        - button "Shopping bag" [ref=f1e58] [cursor=pointer]
+  - main [ref=f1e62]:
+    - generic [ref=f1e63]:
+      - navigation "Breadcrumb" [ref=f1e65]:
+        - list [ref=f1e66]:
+          - listitem [ref=f1e67]:
+            - link "Home" [ref=f1e68] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f1e69]:
+            - generic [aria-hidden] [ref=f1e70]: /
+            - link "Made to Order" [ref=f1e71] [cursor=pointer]:
+              - /url: /made-to-order
+          - listitem [ref=f1e72]:
+            - generic [aria-hidden] [ref=f1e73]: /
+            - generic [ref=f1e74]: Custom Orders
+      - generic [ref=f1e75]:
+        - paragraph [ref=f1e76]: Made to order
+        - heading "Custom Orders" [level=1] [ref=f1e77]
+        - paragraph [ref=f1e78]: Have a design in mind that is not in the store? Send us its pictures, your size and when you need it, and the atelier quotes it and stitches it to your measurements.
+      - generic [ref=f1e79]:
+        - list [ref=f1e80]:
+          - listitem [ref=f1e81]:
+            - generic [ref=f1e86]:
+              - paragraph [ref=f1e87]: Step 1
+              - heading "Send your pictures" [level=2] [ref=f1e88]
+              - paragraph [ref=f1e89]: "Two or three photos of the design: the front, the back and a close-up of the embroidery or detail you want recreated."
+          - listitem [ref=f1e90]:
+            - generic [ref=f1e94]:
+              - paragraph [ref=f1e95]: Step 2
+              - heading "A quote within a working day" [level=2] [ref=f1e96]
+              - paragraph [ref=f1e97]: The concierge replies with a price, fabric options and a stitching timeline for your time frame.
+          - listitem [ref=f1e98]:
+            - generic [ref=f1e106]:
+              - paragraph [ref=f1e107]: Step 3
+              - heading "Measured, cut and stitched" [level=2] [ref=f1e108]
+              - paragraph [ref=f1e109]: Once you confirm, measurements are taken at the atelier or sent through the measurement guide. Stitching begins the next working day after your commission is confirmed. Priority stitching in 10 working days is available.
+        - generic [ref=f1e110]:
+          - heading "Request a quote" [level=2] [ref=f1e111]
+          - generic [ref=f1e112]:
+            - generic [ref=f1e113]:
+              - generic [ref=f1e114]: Pictures of the design (2 to 3)
+              - generic [ref=f1e115] [cursor=pointer]:
+                - generic [ref=f1e120]: "Add pictures: the front, the back and a close-up of the work"
+                - generic [ref=f1e121]: JPG or PNG, up to 10 MB each
+                - 'button "Add pictures: the front, the back and a close-up of the work JPG or PNG, up to 10 MB each" [ref=f1e122]'
+              - generic [ref=f1e123]: 0 of 3 added
+            - generic [ref=f1e124]:
+              - generic [ref=f1e125]:
+                - generic [ref=f1e126]: Size
+                - link "Size guide" [ref=f1e127] [cursor=pointer]:
+                  - /url: /made-to-order/size-guide
+              - radiogroup "Size" [ref=f1e128]:
+                - generic [ref=f1e129] [cursor=pointer]:
+                  - radio "XS" [ref=f1e130]
+                  - generic [ref=f1e131]: XS
+                - generic [ref=f1e132] [cursor=pointer]:
+                  - radio "S" [ref=f1e133]
+                  - generic [ref=f1e134]: S
+                - generic [ref=f1e135] [cursor=pointer]:
+                  - radio "M" [ref=f1e136]
+                  - generic [ref=f1e137]: M
+                - generic [ref=f1e138] [cursor=pointer]:
+                  - radio "L" [ref=f1e139]
+                  - generic [ref=f1e140]: L
+                - generic [ref=f1e141] [cursor=pointer]:
+                  - radio "XL" [ref=f1e142]
+                  - generic [ref=f1e143]: XL
+                - generic [ref=f1e144] [cursor=pointer]:
+                  - radio "Custom" [checked] [active] [ref=f1e145]
+                  - generic [ref=f1e146]: Custom
+              - generic [ref=f1e147]: Choose Custom to enter your measurements, at no extra cost.
+            - group [ref=f1e257]:
+              - generic [ref=f1e258]:
+                - generic [ref=f1e259]: Your measurements (inches)
+                - link "How to measure" [ref=f1e260] [cursor=pointer]:
+                  - /url: /made-to-order/measurement-guide
+              - generic [ref=f1e261]:
+                - generic [ref=f1e262]:
+                  - generic [ref=f1e263]: Bust
+                  - spinbutton "Bust" [ref=f1e264]
+                - generic [ref=f1e265]:
+                  - generic [ref=f1e266]: Waist
+                  - spinbutton "Waist" [ref=f1e267]
+                - generic [ref=f1e268]:
+                  - generic [ref=f1e269]: Hips
+                  - spinbutton "Hips" [ref=f1e270]
+                - generic [ref=f1e271]:
+                  - generic [ref=f1e272]: Shoulder width
+                  - spinbutton "Shoulder width" [ref=f1e273]
+                - generic [ref=f1e274]:
+                  - generic [ref=f1e275]: Sleeve length
+                  - spinbutton "Sleeve length" [ref=f1e276]
+                - generic [ref=f1e277]:
+                  - generic [ref=f1e278]: Arm hole
+                  - spinbutton "Arm hole" [ref=f1e279]
+                - generic [ref=f1e280]:
+                  - generic [ref=f1e281]: Shirt / kurta length
+                  - spinbutton "Shirt / kurta length" [ref=f1e282]
+                - generic [ref=f1e283]:
+                  - generic [ref=f1e284]: Trouser length
+                  - spinbutton "Trouser length" [ref=f1e285]
+            - generic [ref=f1e148]:
+              - generic [ref=f1e149]:
+                - generic [ref=f1e150]: Name
+                - textbox "Name" [ref=f1e151]
+              - generic [ref=f1e152]:
+                - generic [ref=f1e153]: Contact number
+                - textbox "Contact number" [ref=f1e154]:
+                  - /placeholder: +92 3xx xxxxxxx
+              - generic [ref=f1e155]:
+                - generic [ref=f1e156]: E-mail
+                - textbox "E-mail" [ref=f1e157]
+              - generic [ref=f1e158]:
+                - generic [ref=f1e159]: Time frame
+                - combobox "Time frame" [ref=f1e160]:
+                  - option "When do you need it?" [disabled] [selected]
+                  - option "Within 2 weeks (priority stitching)"
+                  - option "3 to 4 weeks"
+                  - option "5 to 8 weeks"
+                  - option "2 to 3 months"
+                  - option "Flexible"
+            - generic [ref=f1e161]:
+              - generic [ref=f1e162]: Address
+              - textbox "Address" [ref=f1e163]:
+                - /placeholder: House, street, city
+            - generic [ref=f1e164]:
+              - generic [ref=f1e165]: Notes (optional)
+              - textbox "Notes (optional)" [ref=f1e166]:
+                - /placeholder: Fabric, colour, budget, the occasion...
+            - button "Get a Quote" [ref=f1e167] [cursor=pointer]
+  - contentinfo [ref=f1e168]:
+    - generic [ref=f1e169]:
+      - generic [ref=f1e170]:
+        - generic [ref=f1e171]:
+          - heading "About" [level=4] [ref=f1e172]
+          - list [ref=f1e173]:
+            - listitem [ref=f1e174]:
+              - link "Our Story" [ref=f1e175] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e176]:
+              - link "Craftsmanship" [ref=f1e177] [cursor=pointer]:
+                - /url: /about#craftsmanship
+            - listitem [ref=f1e178]:
+              - link "The Atelier" [ref=f1e179] [cursor=pointer]:
+                - /url: /about#atelier
+            - listitem [ref=f1e180]:
+              - link "Made to Order" [ref=f1e181] [cursor=pointer]:
+                - /url: /made-to-order
+            - listitem [ref=f1e182]:
+              - link "Careers" [ref=f1e183] [cursor=pointer]:
+                - /url: mailto:careers@zarkoony.com
+        - generic [ref=f1e184]:
+          - heading "Customer Care" [level=4] [ref=f1e185]
+          - list [ref=f1e186]:
+            - listitem [ref=f1e187]:
+              - link "Contact Us" [ref=f1e188] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f1e189]:
+              - link "FAQ" [ref=f1e190] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=f1e191]:
+              - link "Shipping & Dispatch" [ref=f1e192] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f1e193]:
+              - link "Alterations & Exchanges" [ref=f1e194] [cursor=pointer]:
+                - /url: /returns
+            - listitem [ref=f1e195]:
+              - link "Size Guide" [ref=f1e196] [cursor=pointer]:
+                - /url: /made-to-order/size-guide
+            - listitem [ref=f1e197]:
+              - link "Custom Orders" [ref=f1e198] [cursor=pointer]:
+                - /url: /custom-orders
+            - listitem [ref=f1e199]:
+              - link "WhatsApp Concierge" [ref=f1e200] [cursor=pointer]:
+                - /url: https://wa.me/92300927566
+            - listitem [ref=f1e201]:
+              - link "UAN 111-ZARKOONY (111-927-566)" [ref=f1e202] [cursor=pointer]:
+                - /url: tel:111927566
+        - generic [ref=f1e203]:
+          - heading "Policies" [level=4] [ref=f1e204]
+          - list [ref=f1e205]:
+            - listitem [ref=f1e206]:
+              - link "Privacy Policy" [ref=f1e207] [cursor=pointer]:
+                - /url: /policies/privacy
+            - listitem [ref=f1e208]:
+              - link "Refund Policy" [ref=f1e209] [cursor=pointer]:
+                - /url: /policies/refund
+            - listitem [ref=f1e210]:
+              - link "Shipping Policy" [ref=f1e211] [cursor=pointer]:
+                - /url: /policies/shipping
+            - listitem [ref=f1e212]:
+              - link "Terms of Service" [ref=f1e213] [cursor=pointer]:
+                - /url: /policies/terms
+        - generic [ref=f1e214]:
+          - heading "Sign up for our atelier newsletter" [level=4] [ref=f1e215]
+          - paragraph [ref=f1e216]: Subscribe for early previews of new limited drops, bespoke stitching slots, and private salon appointments.
+          - generic [ref=f1e217]:
+            - textbox "E-mail address" [ref=f1e218]:
+              - /placeholder: E-mail
+            - button "Subscribe" [ref=f1e219] [cursor=pointer]
+          - generic [ref=f1e220]:
+            - link "Facebook" [ref=f1e221] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=f1e224] [cursor=pointer]:
+              - /url: "#"
+            - link "YouTube" [ref=f1e227] [cursor=pointer]:
+              - /url: "#"
+            - link "TikTok" [ref=f1e230] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f1e233]:
+        - button "Pakistan" [ref=f1e234] [cursor=pointer]
+        - generic [ref=f1e238]: © 2026 - ZARKOONY
+        - generic [ref=f1e239]:
+          - generic [ref=f1e240]: VISA
+          - img "Mastercard" [ref=f1e241]
+  - link "Chat with the concierge on WhatsApp" [ref=f1e244] [cursor=pointer]:
+    - /url: https://wa.me/92300927566
+  - button "Open Next.js Dev Tools" [ref=f1e252] [cursor=pointer]
+  - alert [ref=f1e256]

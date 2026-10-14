@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Heart, Menu, Search, User } from "lucide-react";
+import { ChevronDown, Heart, Menu, Search } from "lucide-react";
 import { HeaderFrame } from "./HeaderFrame";
 import { CartDot, Trigger, WishlistDot } from "./Overlays";
 import { Regional } from "./Price";
@@ -57,7 +57,7 @@ export function Header() {
         <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-5">
           <Link
             href="/custom-orders"
-            className="caps hidden border border-current px-3 py-2 text-[11px] transition-colors duration-(--duration-fast) hover:bg-black hover:text-white lg:inline-flex"
+            className="caps hidden  border-current px-3 py-2 text-[11px] transition-colors duration-(--duration-fast) hover:bg-black hover:text-white lg:inline-flex"
           >
             Custom Design
           </Link>
@@ -72,9 +72,6 @@ export function Header() {
             </span>
             <ChevronDown size={15} strokeWidth={1.5} className="-mr-1" aria-hidden />
           </button>
-          <Link href="/account" aria-label="Account" className={iconButton}>
-            <User {...icon} />
-          </Link>
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
           </Trigger>
