@@ -9,7 +9,7 @@ import { collections } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Collections",
-  description: "ZARKOONY's named collections: Signature, Luxury Edit, Velvet Winter and the Eid Edit.",
+  description: "ZARKOONY's named collections: Signature, Luxury Edit, the Winter Edit and the Eid Edit.",
 };
 
 export default function CollectionsPage() {

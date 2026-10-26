@@ -36,7 +36,7 @@ export function Header() {
     // Colours come from `.site-header` in globals.css: white, or transparent over the hero.
     <HeaderFrame className="site-header sticky top-0 z-50 border-b border-(--header-line)">
       {/* Equal side columns keep the logo centred; it shrinks before the icons can overlap it. */}
-      <div className="mx-auto grid h-16 max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center gap-x-3 px-4 sm:px-8 md:h-20 lg:px-14">
+      <div className="mx-auto grid h-16 max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center gap-x-3 px-4 sm:px-8 md:h-[110px] lg:px-14">
         <div className="flex min-w-23 items-center">
           <Trigger opens="menu" aria-label="Open navigation menu" className="-ml-2 p-2">
             <Menu {...icon} />
@@ -47,10 +47,10 @@ export function Header() {
           <Image
             src="/images/brand/logo.png"
             alt="ZARKOONY Custom Stitched Couture"
-            width={720}
-            height={120}
+            width={1064}
+            height={269}
             loading="eager"
-            className="mx-auto h-9 w-auto max-w-full object-contain transition-[filter] duration-200 [filter:var(--logo-filter)] md:h-10"
+            className="mx-auto h-9 w-auto max-w-full object-contain transition-[filter] duration-200 [filter:var(--logo-filter)] md:h-13"
           />
         </Link>
 

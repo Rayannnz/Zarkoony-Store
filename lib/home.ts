@@ -11,12 +11,12 @@ export type BannerCta = Cta & { variant: "black" | "white" | "outline" };
 
 export const hero = {
   heading: "ZARKOONY: custom stitched Pakistani couture, made to order",
-  image: "/images/hero/atelier-salon.jpg",
-  width: 1672,
-  height: 941,
-  alt: "Zarkoony hand-embellished sage couture gown in the atelier salon",
-  /** object-position; keeps the chandelier out from behind the transparent header's logo. */
-  focus: "center 25%",
+  image: "/images/hero/marble-courtyard.jpg",
+  width: 1920,
+  height: 1080,
+  alt: "Zarkoony hand-embellished ivory couture gown with a train in a sunlit marble courtyard",
+  /** object-position; keeps the model's head clear of the transparent header's logo when the hero is cropped wide. */
+  focus: "center 0%",
   /** Custom design is the primary action; the broad "Shop All" sits beside it as an outline. */
   ctas: [
     { variant: "outline", label: "Shop All", href: "/shop" },
@@ -29,15 +29,15 @@ export const ownYourLook = {
   title: "Own Your New Look",
   cards: [
     {
-      image: "/images/products/rose-raw-silk/2.jpg",
-      alt: "ZARKOONY dusty-rose raw silk kurta set with cutwork",
+      image: "/images/products/powder-blue-block/1.jpg",
+      alt: "ZARKOONY powder-blue cotton-silk kurta set with block-print motifs",
       href: "/shop/luxury-pret",
       cta: { label: "Bespoke Prêt", href: "/shop/luxury-pret" },
     },
     {
-      image: "/images/products/silver-gown/1.jpg",
-      alt: "ZARKOONY silver-grey embellished bridal gown with train",
-      href: "/shop/bridal",
+      image: "/images/products/blush-silver/1.jpg",
+      alt: "ZARKOONY blush raw silk kurta set with silver tilla and scarlet dupatta",
+      href: "/shop/formals",
       cta: customDesign,
     },
   ] satisfies CategoryCard[],
@@ -46,14 +46,14 @@ export const ownYourLook = {
 export const signature = {
   id: "signature",
   title: "The Signature Collection",
-  image: "/images/hero/classical-salon.jpg",
-  alt: "Zarkoony signature embellished gown in a classical salon",
+  image: "/images/collections/signature.jpg",
+  alt: "Zarkoony signature kurta sets in sage, mint and beige",
   href: "/collections/signature",
-  focus: "center 65%",
+  focus: "center",
   align: "left" as const,
   ctas: [
     { variant: "black", ...customDesign },
-    { variant: "white", label: "Bespoke Bridal", href: "/shop/bridal" },
+    { variant: "white", label: "Bespoke Formals", href: "/shop/formals" },
   ] satisfies BannerCta[],
 };
 
@@ -62,14 +62,14 @@ export const formals = {
   title: "Formals",
   cards: [
     {
-      image: "/images/products/silver-gown/4.jpg",
-      alt: "ZARKOONY silver organza peshwas with embroidered train",
+      image: "/images/products/rose-gold-jaal/1.jpg",
+      alt: "ZARKOONY rose-gold raw silk kurta set with gold jaal",
       href: "/shop/formals",
       cta: { label: "View Formals", href: "/shop/formals" },
     },
     {
-      image: "/images/products/black-velvet-peshwas/1.jpg",
-      alt: "ZARKOONY black velvet formal peshwas with gold tilla",
+      image: "/images/products/emerald-gold/1.jpg",
+      alt: "ZARKOONY emerald raw silk kurta set with gold tilla lattice",
       href: "/shop/formals",
       cta: customDesign,
     },
@@ -79,9 +79,9 @@ export const formals = {
 export const essentials = {
   id: "bespoke-process",
   title: "Bespoke Essentials",
-  image: "/images/collections/velvet-winter.jpg",
-  alt: "Zarkoony velvet winter kurta sets in sapphire and black",
-  href: "/collections/velvet-winter",
+  image: "/images/collections/winter-edit.jpg",
+  alt: "Zarkoony winter edit kurta sets in plum, emerald and fuchsia",
+  href: "/collections/winter-edit",
   focus: "center",
   align: "right" as const,
   ctas: [

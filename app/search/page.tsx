@@ -66,8 +66,8 @@ export default async function SearchPage(props: PageProps<"/search">) {
             <>
               <p className="caps text-[11px] text-black">No results for “{q}”</p>
               <p className="mx-auto mt-3 max-w-md text-[13px] text-neutral-500">
-                Try a fabric (velvet, organza), a colour, an occasion (bridal, Eid) or a garment
-                (kalidar, peshwas, sharara).
+                Try a fabric (chikankari, raw silk), a colour, an occasion (wedding, Eid) or a garment
+                (kurta, kameez, dupatta).
               </p>
               <Popular />
               <Link href="/shop" className="btn-black mt-8">

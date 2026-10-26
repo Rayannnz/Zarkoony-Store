@@ -1,0 +1,262 @@
+- generic [active] [ref=f1e1]:
+  - complementary "Contact" [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - list [ref=f1e4]:
+        - listitem [ref=f1e5]:
+          - link "Stitched in Lahore, delivered across Pakistan and the United States" [ref=f1e6] [cursor=pointer]:
+            - /url: /shipping
+        - listitem [ref=f1e7]:
+          - 'link "Call us at: UAN 111-ZARKOONY (111-927-566)" [ref=f1e8] [cursor=pointer]':
+            - /url: tel:111927566
+        - listitem [ref=f1e9]:
+          - 'link "For bespoke concierge: +92 300 ZARKOONY" [ref=f1e10] [cursor=pointer]':
+            - /url: tel:+92300927566
+      - list [aria-hidden] [ref=f1e11]:
+        - listitem [ref=f1e12]:
+          - link [ref=f1e13] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e14]:
+          - link [ref=f1e15] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e16]:
+          - link [ref=f1e17] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=f1e18]:
+        - listitem [ref=f1e19]:
+          - link [ref=f1e20] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e21]:
+          - link [ref=f1e22] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e23]:
+          - link [ref=f1e24] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=f1e25]:
+        - listitem [ref=f1e26]:
+          - link [ref=f1e27] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=f1e28]:
+          - link [ref=f1e29] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=f1e30]:
+          - link [ref=f1e31] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+  - banner [ref=f1e33]:
+    - generic [ref=f1e34]:
+      - button "Open navigation menu" [ref=f1e36] [cursor=pointer]
+      - link [ref=f1e38] [cursor=pointer]:
+        - /url: /
+        - img "ZARKOONY Custom Stitched Couture" [ref=f1e39]
+      - generic [ref=f1e40]:
+        - link "Custom Design" [ref=f1e41] [cursor=pointer]:
+          - /url: /custom-orders
+        - button "Pakistan PKR" [ref=f1e42] [cursor=pointer]:
+          - generic [ref=f1e43]: Pakistan
+          - generic [ref=f1e44]: PKR
+        - button "Search" [ref=f1e47] [cursor=pointer]
+        - link "Wishlist" [ref=f1e51] [cursor=pointer]:
+          - /url: /wishlist
+        - button "Shopping bag" [ref=f1e54] [cursor=pointer]
+  - main [ref=f1e58]:
+    - generic [ref=f1e59]:
+      - generic [ref=f1e60]:
+        - generic [ref=f1e61]:
+          - list "Gallery thumbnails" [ref=f1e62]:
+            - listitem [ref=f1e63]:
+              - link "Show image 1 of 1" [ref=f1e64] [cursor=pointer]:
+                - /url: "#media-1"
+          - list "Sana Sage Chikankari Set images" [ref=f1e66]:
+            - listitem [ref=f1e67]:
+              - button "Open image 1 of 1 full screen" [ref=f1e68]:
+                - img "Sana Sage Chikankari Set" [ref=f1e69]
+        - generic [ref=f1e70]:
+          - heading "Sana Sage Chikankari Set" [level=1] [ref=f1e71]
+          - paragraph [ref=f1e72]: PKR 18,500
+          - paragraph [ref=f1e73]: zk-012 · 2 pieces
+          - generic [ref=f1e75]:
+            - generic [ref=f1e76]:
+              - group "Size" [ref=f1e77]:
+                - generic [ref=f1e78]:
+                  - paragraph [ref=f1e79]: Size
+                  - button "Size chart" [ref=f1e80] [cursor=pointer]
+                - radiogroup "Size" [ref=f1e81]:
+                  - generic [ref=f1e82] [cursor=pointer]:
+                    - radio "XS" [ref=f1e83]
+                    - generic [ref=f1e84]: XS
+                  - generic [ref=f1e85] [cursor=pointer]:
+                    - radio "S" [ref=f1e86]
+                    - generic [ref=f1e87]: S
+                  - generic [ref=f1e88] [cursor=pointer]:
+                    - radio "M" [ref=f1e89]
+                    - generic [ref=f1e90]: M
+                  - generic [ref=f1e91] [cursor=pointer]:
+                    - radio "L" [ref=f1e92]
+                    - generic [ref=f1e93]: L
+                  - generic [ref=f1e94] [cursor=pointer]:
+                    - radio "XL" [ref=f1e95]
+                    - generic [ref=f1e96]: XL
+                  - generic [ref=f1e97] [cursor=pointer]:
+                    - radio "Custom" [ref=f1e98]
+                    - generic [ref=f1e99]: Custom
+                - generic [ref=f1e100]:
+                  - paragraph [ref=f1e101]: Quantity
+                  - generic [ref=f1e102]:
+                    - button "Decrease quantity" [ref=f1e103] [cursor=pointer]: −
+                    - generic [ref=f1e104]: "1"
+                    - button "Increase quantity" [ref=f1e105] [cursor=pointer]: +
+              - button "Add to cart" [ref=f1e107] [cursor=pointer]
+            - button "Add Sana Sage Chikankari Set to wishlist" [ref=f1e109] [cursor=pointer]
+          - generic [ref=f1e113]:
+            - group [ref=f1e114]:
+              - generic [ref=f1e115] [cursor=pointer]
+            - group [ref=f1e122]:
+              - generic [ref=f1e123] [cursor=pointer]
+            - group [ref=f1e131]:
+              - generic [ref=f1e132] [cursor=pointer]
+            - group [ref=f1e138]:
+              - generic [ref=f1e139] [cursor=pointer]
+      - generic [ref=f1e147]:
+        - heading "You may also like" [level=2] [ref=f1e149]
+        - generic [ref=f1e150]:
+          - article [ref=f1e151]:
+            - generic [ref=f1e152]:
+              - img "Nayab Lemon Chikankari Set" [ref=f1e153]
+              - generic [ref=f1e154]: New
+              - button "Add Nayab Lemon Chikankari Set to wishlist" [ref=f1e155] [cursor=pointer]
+            - generic [ref=f1e158]:
+              - heading [level=3] [ref=f1e159]:
+                - link "Nayab Lemon Chikankari Set" [ref=f1e160] [cursor=pointer]:
+                  - /url: /product/nayab-lemon-chikankari-set
+              - paragraph [ref=f1e161]: PKR 16,900
+              - generic [ref=f1e162]: Made to order · 10–14 working days
+          - article [ref=f1e163]:
+            - generic [ref=f1e164]:
+              - img "Parisa Sky Chikankari Set" [ref=f1e165]
+              - link "Your Custom Design" [ref=f1e166] [cursor=pointer]:
+                - /url: /custom-orders
+              - button "Add Parisa Sky Chikankari Set to wishlist" [ref=f1e167] [cursor=pointer]
+            - generic [ref=f1e170]:
+              - heading [level=3] [ref=f1e171]:
+                - link "Parisa Sky Chikankari Set" [ref=f1e172] [cursor=pointer]:
+                  - /url: /product/parisa-sky-chikankari-set
+              - paragraph [ref=f1e173]: PKR 21,500
+              - generic [ref=f1e174]: Made to order · 10–14 working days
+          - article [ref=f1e175]:
+            - generic [ref=f1e176]:
+              - img "Inaya Cream Cutwork Set" [ref=f1e177]
+              - generic [ref=f1e178]: New
+              - button "Add Inaya Cream Cutwork Set to wishlist" [ref=f1e179] [cursor=pointer]
+            - generic [ref=f1e182]:
+              - heading [level=3] [ref=f1e183]:
+                - link "Inaya Cream Cutwork Set" [ref=f1e184] [cursor=pointer]:
+                  - /url: /product/inaya-cream-cutwork-set
+              - paragraph [ref=f1e185]: PKR 23,500
+              - generic [ref=f1e186]: Made to order · 10–14 working days
+          - article [ref=f1e187]:
+            - generic [ref=f1e188]:
+              - img "Mahira Mint Sequin Kurta" [ref=f1e189]
+              - generic [ref=f1e190]: Signature Edit
+              - button "Add Mahira Mint Sequin Kurta to wishlist" [ref=f1e191] [cursor=pointer]
+            - generic [ref=f1e194]:
+              - heading [level=3] [ref=f1e195]:
+                - link "Mahira Mint Sequin Kurta" [ref=f1e196] [cursor=pointer]:
+                  - /url: /product/mahira-mint-sequin-kurta
+              - paragraph [ref=f1e197]: PKR 31,000
+              - generic [ref=f1e198]: Made to order · 14–21 working days
+  - contentinfo [ref=f1e199]:
+    - generic [ref=f1e200]:
+      - generic [ref=f1e201]:
+        - generic [ref=f1e202]:
+          - heading "About" [level=4] [ref=f1e203]
+          - list [ref=f1e204]:
+            - listitem [ref=f1e205]:
+              - link "Our Story" [ref=f1e206] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e207]:
+              - link "Craftsmanship" [ref=f1e208] [cursor=pointer]:
+                - /url: /about#craftsmanship
+            - listitem [ref=f1e209]:
+              - link "The Atelier" [ref=f1e210] [cursor=pointer]:
+                - /url: /about#atelier
+            - listitem [ref=f1e211]:
+              - link "Made to Order" [ref=f1e212] [cursor=pointer]:
+                - /url: /made-to-order
+            - listitem [ref=f1e213]:
+              - link "Careers" [ref=f1e214] [cursor=pointer]:
+                - /url: mailto:careers@zarkoony.com
+        - generic [ref=f1e215]:
+          - heading "Customer Care" [level=4] [ref=f1e216]
+          - list [ref=f1e217]:
+            - listitem [ref=f1e218]:
+              - link "Contact Us" [ref=f1e219] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f1e220]:
+              - link "FAQ" [ref=f1e221] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=f1e222]:
+              - link "Shipping & Dispatch" [ref=f1e223] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f1e224]:
+              - link "Alterations & Exchanges" [ref=f1e225] [cursor=pointer]:
+                - /url: /returns
+            - listitem [ref=f1e226]:
+              - link "Size Guide" [ref=f1e227] [cursor=pointer]:
+                - /url: /made-to-order/size-guide
+            - listitem [ref=f1e228]:
+              - link "Custom Orders" [ref=f1e229] [cursor=pointer]:
+                - /url: /custom-orders
+            - listitem [ref=f1e230]:
+              - link "WhatsApp Concierge" [ref=f1e231] [cursor=pointer]:
+                - /url: https://wa.me/92300927566
+            - listitem [ref=f1e232]:
+              - link "UAN 111-ZARKOONY (111-927-566)" [ref=f1e233] [cursor=pointer]:
+                - /url: tel:111927566
+        - generic [ref=f1e234]:
+          - heading "Policies" [level=4] [ref=f1e235]
+          - list [ref=f1e236]:
+            - listitem [ref=f1e237]:
+              - link "Privacy Policy" [ref=f1e238] [cursor=pointer]:
+                - /url: /policies/privacy
+            - listitem [ref=f1e239]:
+              - link "Refund Policy" [ref=f1e240] [cursor=pointer]:
+                - /url: /policies/refund
+            - listitem [ref=f1e241]:
+              - link "Shipping Policy" [ref=f1e242] [cursor=pointer]:
+                - /url: /policies/shipping
+            - listitem [ref=f1e243]:
+              - link "Terms of Service" [ref=f1e244] [cursor=pointer]:
+                - /url: /policies/terms
+        - generic [ref=f1e245]:
+          - heading "Sign up for our atelier newsletter" [level=4] [ref=f1e246]
+          - paragraph [ref=f1e247]: Subscribe for early previews of new limited drops, bespoke stitching slots, and private salon appointments.
+          - generic [ref=f1e248]:
+            - textbox "E-mail address" [ref=f1e249]:
+              - /placeholder: E-mail
+            - button "Subscribe" [ref=f1e250] [cursor=pointer]
+          - generic [ref=f1e251]:
+            - link "Facebook" [ref=f1e252] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=f1e255] [cursor=pointer]:
+              - /url: "#"
+            - link "YouTube" [ref=f1e258] [cursor=pointer]:
+              - /url: "#"
+            - link "TikTok" [ref=f1e261] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f1e264]:
+        - button "Pakistan" [ref=f1e265] [cursor=pointer]
+        - generic [ref=f1e269]: © 2026 - ZARKOONY
+        - generic [ref=f1e270]:
+          - generic [ref=f1e271]: VISA
+          - img "Mastercard" [ref=f1e272]
+  - link "Chat with the concierge on WhatsApp" [ref=f1e275] [cursor=pointer]:
+    - /url: https://wa.me/92300927566
+  - button "Open Next.js Dev Tools" [ref=f1e283] [cursor=pointer]

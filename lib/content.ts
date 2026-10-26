@@ -44,6 +44,10 @@ export const careByFabric: Record<string, string> = {
     "Dry clean only. Iron on the reverse on a low setting; hang to store so the weave keeps its drape.",
   "Raw Silk":
     "Dry clean recommended. Iron on the reverse while slightly damp; store away from direct sunlight.",
+  "Chikankari Lawn":
+    "Gentle hand wash separately in cold water; do not wring. Dry flat in shade and iron on the reverse on medium heat.",
+  Jacquard:
+    "Dry clean only. Iron on the reverse on a low setting; hang to store so the weave keeps its drape.",
   "Cotton Silk":
     "Gentle hand wash in cold water or dry clean. Dry in shade; iron on medium heat on the reverse.",
 };

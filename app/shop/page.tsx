@@ -5,7 +5,7 @@ import { products } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Shop All",
   description:
-    "Every ZARKOONY piece, custom stitched and made to order: formals, bridal, festive and luxury prêt, cut to your measurements.",
+    "Every ZARKOONY piece, custom stitched and made to order: formals, chikankari, festive and luxury prêt, cut to your measurements.",
 };
 
 export default async function ShopPage(props: PageProps<"/shop">) {

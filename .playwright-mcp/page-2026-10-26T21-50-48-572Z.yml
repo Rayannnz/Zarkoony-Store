@@ -1,0 +1,355 @@
+- generic [active] [ref=e1]:
+  - complementary "Contact" [ref=e2]:
+    - generic [ref=e3]:
+      - list [ref=e4]:
+        - listitem [ref=e5]:
+          - link "Stitched in Lahore, delivered across Pakistan and the United States" [ref=e6] [cursor=pointer]:
+            - /url: /shipping
+        - listitem [ref=e7]:
+          - 'link "Call us at: UAN 111-ZARKOONY (111-927-566)" [ref=e8] [cursor=pointer]':
+            - /url: tel:111927566
+        - listitem [ref=e9]:
+          - 'link "For bespoke concierge: +92 300 ZARKOONY" [ref=e10] [cursor=pointer]':
+            - /url: tel:+92300927566
+      - list [aria-hidden] [ref=e11]:
+        - listitem [ref=e12]:
+          - link [ref=e13] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e14]:
+          - link [ref=e15] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e16]:
+          - link [ref=e17] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=e18]:
+        - listitem [ref=e19]:
+          - link [ref=e20] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e21]:
+          - link [ref=e22] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e23]:
+          - link [ref=e24] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=e25]:
+        - listitem [ref=e26]:
+          - link [ref=e27] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e28]:
+          - link [ref=e29] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e30]:
+          - link [ref=e31] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+  - banner [ref=e33]:
+    - generic [ref=e34]:
+      - button "Open navigation menu" [ref=e36] [cursor=pointer]
+      - link [ref=e38] [cursor=pointer]:
+        - /url: /
+        - img "ZARKOONY Custom Stitched Couture" [ref=e39]
+      - generic [ref=e40]:
+        - link "Custom Design" [ref=e41] [cursor=pointer]:
+          - /url: /custom-orders
+        - button "Pakistan PKR" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: Pakistan
+          - generic [ref=e44]: PKR
+        - button "Search" [ref=e47] [cursor=pointer]
+        - link "Wishlist" [ref=e51] [cursor=pointer]:
+          - /url: /wishlist
+        - button "Shopping bag" [ref=e54] [cursor=pointer]
+  - main [ref=e58]:
+    - generic [ref=e59]:
+      - navigation "Breadcrumb" [ref=e61]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - link "Home" [ref=e64] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e65]:
+            - generic [aria-hidden] [ref=e66]: /
+            - generic [ref=e67]: Shop
+      - generic [ref=e68]:
+        - heading "Shop All" [level=1] [ref=e69]
+        - paragraph [ref=e70]: Custom stitched · Made to order
+        - navigation "Categories" [ref=e71]:
+          - link "All" [ref=e72] [cursor=pointer]:
+            - /url: /shop
+          - link "New Arrivals" [ref=e73] [cursor=pointer]:
+            - /url: /shop/new-arrivals
+          - link "Formals" [ref=e74] [cursor=pointer]:
+            - /url: /shop/formals
+          - link "Chikankari" [ref=e75] [cursor=pointer]:
+            - /url: /shop/chikankari
+          - link "Festive" [ref=e76] [cursor=pointer]:
+            - /url: /shop/festive
+          - link "Luxury Prêt" [ref=e77] [cursor=pointer]:
+            - /url: /shop/luxury-pret
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - button "2 per row" [pressed] [ref=e81] [cursor=pointer]
+          - button "3 per row" [ref=e87] [cursor=pointer]
+          - button "4 per row" [ref=e98] [cursor=pointer]
+        - paragraph [ref=e116]: 19 products
+        - generic [ref=e118]:
+          - generic [ref=e119]: Sort by
+          - combobox "Sort by" [ref=e120] [cursor=pointer]:
+            - option "Featured" [selected]
+            - option "Newest"
+            - option "Price, low to high"
+            - option "Price, high to low"
+      - generic [ref=e121]:
+        - complementary "Filters" [ref=e122]:
+          - generic [ref=e123]:
+            - group [ref=e124]:
+              - generic "Garment" [ref=e125] [cursor=pointer]
+            - group [ref=e128]:
+              - generic "Fabric" [ref=e129] [cursor=pointer]
+            - group [ref=e132]:
+              - generic "Colour" [ref=e133] [cursor=pointer]
+            - group [ref=e136]:
+              - generic "Price" [ref=e137] [cursor=pointer]
+            - generic [ref=e140] [cursor=pointer]:
+              - checkbox "New arrivals only" [ref=e141]
+              - text: New arrivals only
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - article [ref=e145]:
+              - generic [ref=e146]:
+                - img "Zariya Blush Raw Silk Set" [ref=e147]
+                - generic [ref=e148]: Luxury Edit
+                - button "Add Zariya Blush Raw Silk Set to wishlist" [ref=e149] [cursor=pointer]
+              - generic [ref=e152]:
+                - heading [level=3] [ref=e153]:
+                  - link "Zariya Blush Raw Silk Set" [ref=e154] [cursor=pointer]:
+                    - /url: /product/zariya-blush-raw-silk-set
+                - paragraph [ref=e155]: PKR 34,500
+                - generic [ref=e156]: Made to order · 14–21 working days
+            - article [ref=e158]:
+              - generic [ref=e159]:
+                - img "Mehr Rose Gold Jaal Set" [ref=e160]
+                - generic [ref=e161]: Luxury Edit
+                - button "Add Mehr Rose Gold Jaal Set to wishlist" [ref=e162] [cursor=pointer]
+              - generic [ref=e165]:
+                - heading [level=3] [ref=e166]:
+                  - link "Mehr Rose Gold Jaal Set" [ref=e167] [cursor=pointer]:
+                    - /url: /product/mehr-rose-gold-jaal-set
+                - paragraph [ref=e168]: PKR 32,500
+                - generic [ref=e169]: Made to order · 14–21 working days
+            - article [ref=e171]:
+              - generic [ref=e172]:
+                - img "Sahar Emerald Tilla Set" [ref=e173]
+                - link "Your Custom Design" [ref=e174] [cursor=pointer]:
+                  - /url: /custom-orders
+                - button "Add Sahar Emerald Tilla Set to wishlist" [ref=e175] [cursor=pointer]
+              - generic [ref=e178]:
+                - heading [level=3] [ref=e179]:
+                  - link "Sahar Emerald Tilla Set" [ref=e180] [cursor=pointer]:
+                    - /url: /product/sahar-emerald-tilla-set
+                - paragraph [ref=e181]: PKR 36,500
+                - generic [ref=e182]: Made to order · 14–21 working days
+            - article [ref=e184]:
+              - generic [ref=e185]:
+                - img "Laila Plum Jacquard Set" [ref=e186]
+                - link "Your Custom Design" [ref=e187] [cursor=pointer]:
+                  - /url: /custom-orders
+                - button "Add Laila Plum Jacquard Set to wishlist" [ref=e188] [cursor=pointer]
+              - generic [ref=e191]:
+                - heading [level=3] [ref=e192]:
+                  - link "Laila Plum Jacquard Set" [ref=e193] [cursor=pointer]:
+                    - /url: /product/laila-plum-jacquard-set
+                - paragraph [ref=e194]:
+                  - generic [ref=e195]: PKR 44,500
+                  - text: PKR 39,500
+                - generic [ref=e196]: Made to order · 14–21 working days
+            - article [ref=e198]:
+              - generic [ref=e199]:
+                - img "Noor Champagne Raw Silk Set" [ref=e200]
+                - generic [ref=e201]: Signature Edit
+                - button "Add Noor Champagne Raw Silk Set to wishlist" [ref=e202] [cursor=pointer]
+              - generic [ref=e205]:
+                - heading [level=3] [ref=e206]:
+                  - link "Noor Champagne Raw Silk Set" [ref=e207] [cursor=pointer]:
+                    - /url: /product/noor-champagne-raw-silk-set
+                - paragraph [ref=e208]: PKR 29,500
+                - generic [ref=e209]: Made to order · 14–21 working days
+            - article [ref=e211]:
+              - generic [ref=e212]:
+                - img "Mahira Mint Sequin Kurta" [ref=e213]
+                - generic [ref=e214]: Signature Edit
+                - button "Add Mahira Mint Sequin Kurta to wishlist" [ref=e215] [cursor=pointer]
+              - generic [ref=e218]:
+                - heading [level=3] [ref=e219]:
+                  - link "Mahira Mint Sequin Kurta" [ref=e220] [cursor=pointer]:
+                    - /url: /product/mahira-mint-sequin-kurta
+                - paragraph [ref=e221]: PKR 31,000
+                - generic [ref=e222]: Made to order · 14–21 working days
+            - article [ref=e224]:
+              - generic [ref=e225]:
+                - img "Rania Peach Gold Kurta" [ref=e226]
+                - generic [ref=e227]: Luxury Edit
+                - button "Add Rania Peach Gold Kurta to wishlist" [ref=e228] [cursor=pointer]
+              - generic [ref=e231]:
+                - heading [level=3] [ref=e232]:
+                  - link "Rania Peach Gold Kurta" [ref=e233] [cursor=pointer]:
+                    - /url: /product/rania-peach-gold-kurta
+                - paragraph [ref=e234]: PKR 33,500
+                - generic [ref=e235]: Made to order · 14–21 working days
+            - article [ref=e237]:
+              - generic [ref=e238]:
+                - img "Hoor Rust Floral Set" [ref=e239]
+                - generic [ref=e240]: New
+                - button "Add Hoor Rust Floral Set to wishlist" [ref=e241] [cursor=pointer]
+              - generic [ref=e244]:
+                - heading [level=3] [ref=e245]:
+                  - link "Hoor Rust Floral Set" [ref=e246] [cursor=pointer]:
+                    - /url: /product/hoor-rust-floral-set
+                - paragraph [ref=e247]: PKR 24,900
+                - generic [ref=e248]: Made to order · 12–18 working days
+            - article [ref=e250]:
+              - generic [ref=e251]:
+                - img "Ayla Black Floral Set" [ref=e252]
+                - link "Your Custom Design" [ref=e253] [cursor=pointer]:
+                  - /url: /custom-orders
+                - button "Add Ayla Black Floral Set to wishlist" [ref=e254] [cursor=pointer]
+              - generic [ref=e257]:
+                - heading [level=3] [ref=e258]:
+                  - link "Ayla Black Floral Set" [ref=e259] [cursor=pointer]:
+                    - /url: /product/ayla-black-floral-set
+                - paragraph [ref=e260]: PKR 27,500
+                - generic [ref=e261]: Made to order · 12–18 working days
+            - article [ref=e263]:
+              - generic [ref=e264]:
+                - img "Zoya Pink Bow Set" [ref=e265]
+                - generic [ref=e266]: New
+                - button "Add Zoya Pink Bow Set to wishlist" [ref=e267] [cursor=pointer]
+              - generic [ref=e270]:
+                - heading [level=3] [ref=e271]:
+                  - link "Zoya Pink Bow Set" [ref=e272] [cursor=pointer]:
+                    - /url: /product/zoya-pink-bow-set
+                - paragraph [ref=e273]: PKR 26,500
+                - generic [ref=e274]: Made to order · 12–18 working days
+            - article [ref=e276]:
+              - generic [ref=e277]:
+                - img "Dua Fuchsia Kashmiri Kurta" [ref=e278]
+                - generic [ref=e279]: New
+                - button "Add Dua Fuchsia Kashmiri Kurta to wishlist" [ref=e280] [cursor=pointer]
+              - generic [ref=e283]:
+                - heading [level=3] [ref=e284]:
+                  - link "Dua Fuchsia Kashmiri Kurta" [ref=e285] [cursor=pointer]:
+                    - /url: /product/dua-fuchsia-kashmiri-kurta
+                - paragraph [ref=e286]: PKR 28,500
+                - generic [ref=e287]: Made to order · 12–18 working days
+            - article [ref=e289]:
+              - generic [ref=e290]:
+                - img "Sana Sage Chikankari Set" [ref=e291]
+                - generic [ref=e292]: New
+                - button "Add Sana Sage Chikankari Set to wishlist" [ref=e293] [cursor=pointer]
+              - generic [ref=e296]:
+                - heading [level=3] [ref=e297]:
+                  - link "Sana Sage Chikankari Set" [ref=e298] [cursor=pointer]:
+                    - /url: /product/sana-sage-chikankari-set
+                - paragraph [ref=e299]: PKR 18,500
+                - generic [ref=e300]: Made to order · 10–14 working days
+          - navigation "Pagination" [ref=e301]:
+            - link "1" [ref=e302] [cursor=pointer]:
+              - /url: /shop
+            - link "2" [ref=e303] [cursor=pointer]:
+              - /url: /shop?page=2
+            - link "Next" [ref=e304] [cursor=pointer]:
+              - /url: /shop?page=2
+  - contentinfo [ref=e305]:
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - generic [ref=e308]:
+          - heading "About" [level=4] [ref=e309]
+          - list [ref=e310]:
+            - listitem [ref=e311]:
+              - link "Our Story" [ref=e312] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e313]:
+              - link "Craftsmanship" [ref=e314] [cursor=pointer]:
+                - /url: /about#craftsmanship
+            - listitem [ref=e315]:
+              - link "The Atelier" [ref=e316] [cursor=pointer]:
+                - /url: /about#atelier
+            - listitem [ref=e317]:
+              - link "Made to Order" [ref=e318] [cursor=pointer]:
+                - /url: /made-to-order
+            - listitem [ref=e319]:
+              - link "Careers" [ref=e320] [cursor=pointer]:
+                - /url: mailto:careers@zarkoony.com
+        - generic [ref=e321]:
+          - heading "Customer Care" [level=4] [ref=e322]
+          - list [ref=e323]:
+            - listitem [ref=e324]:
+              - link "Contact Us" [ref=e325] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e326]:
+              - link "FAQ" [ref=e327] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e328]:
+              - link "Shipping & Dispatch" [ref=e329] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=e330]:
+              - link "Alterations & Exchanges" [ref=e331] [cursor=pointer]:
+                - /url: /returns
+            - listitem [ref=e332]:
+              - link "Size Guide" [ref=e333] [cursor=pointer]:
+                - /url: /made-to-order/size-guide
+            - listitem [ref=e334]:
+              - link "Custom Orders" [ref=e335] [cursor=pointer]:
+                - /url: /custom-orders
+            - listitem [ref=e336]:
+              - link "WhatsApp Concierge" [ref=e337] [cursor=pointer]:
+                - /url: https://wa.me/92300927566
+            - listitem [ref=e338]:
+              - link "UAN 111-ZARKOONY (111-927-566)" [ref=e339] [cursor=pointer]:
+                - /url: tel:111927566
+        - generic [ref=e340]:
+          - heading "Policies" [level=4] [ref=e341]
+          - list [ref=e342]:
+            - listitem [ref=e343]:
+              - link "Privacy Policy" [ref=e344] [cursor=pointer]:
+                - /url: /policies/privacy
+            - listitem [ref=e345]:
+              - link "Refund Policy" [ref=e346] [cursor=pointer]:
+                - /url: /policies/refund
+            - listitem [ref=e347]:
+              - link "Shipping Policy" [ref=e348] [cursor=pointer]:
+                - /url: /policies/shipping
+            - listitem [ref=e349]:
+              - link "Terms of Service" [ref=e350] [cursor=pointer]:
+                - /url: /policies/terms
+        - generic [ref=e351]:
+          - heading "Sign up for our atelier newsletter" [level=4] [ref=e352]
+          - paragraph [ref=e353]: Subscribe for early previews of new limited drops, bespoke stitching slots, and private salon appointments.
+          - generic [ref=e354]:
+            - textbox "E-mail address" [ref=e355]:
+              - /placeholder: E-mail
+            - button "Subscribe" [ref=e356] [cursor=pointer]
+          - generic [ref=e357]:
+            - link "Facebook" [ref=e358] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=e361] [cursor=pointer]:
+              - /url: "#"
+            - link "YouTube" [ref=e364] [cursor=pointer]:
+              - /url: "#"
+            - link "TikTok" [ref=e367] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e370]:
+        - button "Pakistan" [ref=e371] [cursor=pointer]
+        - generic [ref=e375]: © 2026 - ZARKOONY
+        - generic [ref=e376]:
+          - generic [ref=e377]: VISA
+          - img "Mastercard" [ref=e378]
+  - link "Chat with the concierge on WhatsApp" [ref=e381] [cursor=pointer]:
+    - /url: https://wa.me/92300927566
+  - button "Open Next.js Dev Tools" [ref=e389] [cursor=pointer]

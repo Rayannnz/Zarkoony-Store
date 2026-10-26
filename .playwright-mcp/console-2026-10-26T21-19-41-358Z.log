@@ -1,0 +1,143 @@
+[     181ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[     195ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[     314ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <Head>
+        <__next_root_layout_boundary__>
+          <SegmentViewNode type="layout" pagePath="layout.tsx">
+            <SegmentTrieNode>
+            <link>
+            <script>
+            <script>
+            <RootLayout>
+              <html lang="en" data-scroll-behavior="smooth" className="manrope_43..." suppressHydrationWarning={true}>
+                <head>
+                <body className="bg-white f...">
+                  <Overlays>
+                    <aside>
+                    <HeaderFrame>
+                    <main>
+                    <footer>
+                    <a>
+                    <Overlay>
+                    <Overlay ref={{current:null}} data-search={true} aria-label="Search" className="inset-x-0 ...">
+                      <dialog onClick={function closeOnBackdrop} className="fixed max-..." ref={{current:null}} ...>
+                        <SearchPanel>
+                          <div className="max-h-full...">
+                            <Form action="/search" onSubmit={function onSubmit} className="mx-auto fl...">
+                              <form action="/search" onSubmit={function onSubmit} className="mx-auto fl..." ...>
+                                <Search>
+                                <input
+                                  type="text"
+                                  name="q"
+                                  value=""
+                                  onChange={function onChange}
+                                  enterKeyHint="search"
+                                  autoComplete="off"
+                                  aria-label="Search the couture archive"
+                                  placeholder="Search for..."
+                                  className="caps min-w-0 flex-1 bg-transparent text-xl text-black outline-hidden plac..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                    <Overlay>
+                    ...
+                      <div className="flex h-ful...">
+                        <div>
+                        <div>
+                        <MeasureForm item={{title:"Bes...", ...}} onConfirm={function addToCart}>
+                          <form onSubmit={function submit} noValidate={true} className="space-y-5">
+                            <fieldset ref={{current:null}} aria-label="Size" className="min-w-0 tr...">
+                              <div>
+                              <div role="radiogroup" aria-label="Size" className="flex flex-...">
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="XS"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="S"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="M"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="L"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="XL"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                                <label className="relative f...">
+                                  <input
+                                    type="radio"
+                                    name="size"
+                                    value="Custom"
+                                    required={true}
+                                    checked={false}
+                                    onChange={function onChange}
+                                    className="sr-only"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                              ...
+                            ...
+                        ...
+        ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1052

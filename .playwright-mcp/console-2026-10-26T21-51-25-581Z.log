@@ -1,0 +1,486 @@
+[     321ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[     339ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[     460ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <SegmentViewNode type="layout" pagePath="layout.tsx">
+      <SegmentTrieNode>
+      <link>
+      <script>
+      <script>
+      <RootLayout>
+        <html lang="en" data-scroll-behavior="smooth" className="manrope_43..." suppressHydrationWarning={true}>
+          <head>
+          <body className="bg-white f...">
+            <Overlays>
+              <aside>
+              <HeaderFrame>
+              <main>
+              <footer>
+              <a>
+              <Overlay>
+              <Overlay>
+              <Overlay>
+              <Overlay ref={{current:null}} aria-label="Bespoke me..." className="inset-0 si...">
+                <dialog onClick={function closeOnBackdrop} className="fixed max-..." ref={{current:null}} ...>
+                  <MeasurePanel item={{title:"Bes...", ...}} onConfirm={function addToCart}>
+                    <div className="flex h-ful...">
+                      <div>
+                      <div>
+                      <MeasureForm item={{title:"Bes...", ...}} onConfirm={function addToCart}>
+                        <form onSubmit={function submit} noValidate={true} className="space-y-5">
+                          <fieldset ref={{current:null}} aria-label="Size" className="min-w-0 tr...">
+                            <div>
+                            <div role="radiogroup" aria-label="Size" className="flex flex-...">
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="XS"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="S"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="M"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="L"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="XL"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              <label className="relative f...">
+                                <input
+                                  type="radio"
+                                  name="size"
+                                  value="Custom"
+                                  required={true}
+                                  checked={false}
+                                  onChange={function onChange}
+                                  className="sr-only"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                          ...
+                      ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1052
+[     564ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/shop" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="shop/page.tsx">
+              <SegmentTrieNode>
+              <ShopPage>
+                <Listing>
+                  <div className="mx-auto ma...">
+                    <div>
+                    <header>
+                    <div>
+                    <div className="mt-6 grid ...">
+                      <aside aria-label="Filters">
+                        <FilterForm action="/shop" params={{type:[...], ...}} facets={[...]}>
+                          <button>
+                          <Form id="listing-fi..." action="/shop" scroll={false} replace={true} ...>
+                            <form id="listing-fi..." action="/shop" onChange={function onChange} ...>
+                              ...
+                                <ul className="space-y-2....">
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="type"
+                                        value="Kurta Set"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="type"
+                                        value="Long Kameez"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="type"
+                                        value="Sleeveless Kurta Set"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                              ...
+                                <ul className="space-y-2....">
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="fabric"
+                                        value="Chikankari Lawn"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="fabric"
+                                        value="Cotton Silk"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="fabric"
+                                        value="Jacquard"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="fabric"
+                                        value="Organza"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="fabric"
+                                        value="Raw Silk"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                              ...
+                                <ul className="space-y-2....">
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Beige"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Black"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Blush pink"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Champagne"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Cream"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Emerald"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Fuchsia"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Hot pink"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Lemon"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Mint"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Peach"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Plum"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Powder blue"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Rose gold"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Rust"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Sage green"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="color"
+                                        value="Sky blue"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                              ...
+                                <ul className="space-y-2....">
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="price"
+                                        value="under-25000"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="price"
+                                        value="25000-50000"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                                  <li>
+                                    <label className="flex curso...">
+                                      <input
+                                        type="checkbox"
+                                        name="price"
+                                        value="over-50000"
+                                        defaultChecked={false}
+                                        className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white ..."
+-                                       style={{caret-color:"transparent"}}
+                                      >
+                                      ...
+                              <label className="flex curso...">
+                                <input
+                                  type="checkbox"
+                                  name="new"
+                                  value="1"
+                                  defaultChecked={false}
+                                  className="size-4 shrink-0 appearance-none border border-neutral-400 bg-white transi..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              ...
+                      ...
+            ...
+          ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1052
+[   72147ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[   72169ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  103451ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  103611ms] [LOG] [Fast Refresh] done in 46ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776

@@ -5,7 +5,7 @@ export const site = {
   name: "ZARKOONY",
   title: "ZARKOONY | Bespoke Custom Stitched Pakistani Couture",
   description:
-    "ZARKOONY is a luxury Pakistani womenswear atelier. Every piece is custom stitched and made to order: formals, bridals and signature couture, tailored to your measurements.",
+    "ZARKOONY is a luxury Pakistani womenswear atelier. Every piece is custom stitched and made to order: formals, festive wear and luxury prêt, tailored to your measurements.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   internationalUrl: "https://www.zarkoony.com.pk",
   uan: { label: "UAN 111-ZARKOONY (111-927-566)", tel: "111927566" },
@@ -52,9 +52,9 @@ export const nav: NavItem[] = [
 ];
 
 export const popularSearches = [
-  { label: "Velvet", href: "/search?q=velvet" },
-  { label: "Bridal Lehenga", href: "/search?q=bridal+lehenga" },
-  { label: "Raw Silk Kalidar", href: "/search?q=raw+silk+kalidar" },
+  { label: "Chikankari", href: "/search?q=chikankari" },
+  { label: "Raw Silk", href: "/search?q=raw+silk" },
+  { label: "Jacquard", href: "/search?q=jacquard" },
 ];
 
 export const footerColumns = [
