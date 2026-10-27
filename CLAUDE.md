@@ -49,7 +49,7 @@ Zero border radius everywhere (the only round things are the 8px header dots and
 - Accordions are native `<details>`; `::details-content` + `interpolate-size` animate them where supported. Dialogs and popovers use `@starting-style` / `starting:` for entrances; everything is `motion-reduce`-safe.
 - Inputs are 16px on phones (`text-base sm:text-[15px]`) so iOS doesn't zoom on focus.
 
-**Images** are 1080×1920 (9:16) JPEGs in `public/images/products/<outfit>/1.jpg`: nineteen outfits from the owner's Gen AI set, one product each via `shot()` in `lib/products.ts`, plus `hero/marble-courtyard.jpg` (1920×1080, the ivory gown in the sunlit courtyard) and four 2688×1200 collection triptychs in `collections/` (three product images side by side, composed with `sharp`) for the wide banners. The PNG source folder `public/images/High Quality Pics` is the old shoot, git-ignored and unused. `brand/logo.png` is black-on-transparent, trimmed to its ink so it centres. Always `next/image` with `fill` + `sizes`; the hero and the first gallery image use `preload`, above-the-fold cards `loading="eager"`.
+**Images** are 1080×1920 (9:16) JPEGs in `public/images/products/<outfit>/1.jpg`: nineteen outfits from the owner's Gen AI set, one product each via `shot()` in `lib/products.ts`, plus `hero/marble-courtyard.jpg` (1920×1080, the ivory gown in the sunlit courtyard) and four 2688×1200 collection triptychs in `collections/` (three product images side by side, composed with `sharp`) for the wide banners. `brand/logo.png` is black-on-transparent, trimmed to its ink so it centres. Always `next/image` with `fill` + `sizes`; the hero and the first gallery image use `preload`, above-the-fold cards `loading="eager"`.
 
 ## Mock state and known leftovers
 
