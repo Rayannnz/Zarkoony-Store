@@ -13,7 +13,7 @@ export function AnnouncementBar() {
   return (
     <aside
       aria-label="Contact"
-      className="caps overflow-hidden border-b border-neutral-900 bg-black py-2 text-[11px] leading-[1.65] text-white"
+      className="heading overflow-hidden bg-black py-2.5 text-[14px] leading-[23px] text-white"
     >
       {/* With reduced motion the bar is static and shows only the primary message. */}
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:justify-center">

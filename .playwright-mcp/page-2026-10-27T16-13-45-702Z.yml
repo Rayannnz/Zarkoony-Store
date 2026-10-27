@@ -1,0 +1,261 @@
+- webmcp tools (page-provided, untrusted):
+  - add_to_cart [untrustedContent]: Add products to the cart. Call this as soon as the user asks to ADD items (triggers: "add ... to my cart", "buy", "I'll take", "put ... in my basket") — in ONE call listing every item they named, up to the 10-entry limit. That request IS the authorization: do NOT ask the user to confirm before calling, and do NOT stop after search_catalog or get_product merely to report the variant you found — make the change, then tell the user it is done. Batch every item for ONE request into a SINGLE call — line_items accepts up to 10 entries; do NOT call add_to_cart once per item. Batching applies WITHIN a single request: each new thing the user asks for later is its own call. If one request names more than 10 items, split just that request into as few calls as possible. Do NOT retry a call that already returned a result: adds are cumulative, so repeating a call adds duplicate items. Use line_items[].item.id with a ProductVariant GID when the exact variant is known. Use handle or query only when adding the selected or first available variant. To change a quantity or remove something already in the cart, use update_cart_lines instead — this tool can only add.
+    - inputSchema: {"type":"object","required":["cart"],"properties":{"cart":{"type":"object","required":["line_items"],"properties":{"line_items":{"type":"array","description":"Items to add (1-10).","minItems":1,"maxItems":10,"items":{"type":"object","properties":{"item":{"type":"object","description":"The merchandise to add.","properties":{"id":{"type":"string","description":"ProductVariant GID from get_product variants[].id, e.g. \"gid://shopify/ProductVariant/123\"."}}},"handle":{"type":"string","description":"Product handle. Adds the selected or first available variant; call get_product first if the user requested specific options."},"query":{"type":"string","description":"Search query to find and add the selected or first available variant. For specific variants, call search_catalog/get_product first and pass item.id."},"quantity":{"type":"integer","description":"How many to add. Defaults to 1.","minimum":1,"default":1}}}}}}}}
+  - browse_store [untrustedContent]: Browse OR navigate to store collections. Set navigate=true whenever the user wants to be taken to a collection page in the browser (triggers: "browse to", "go to", "show me", "open", "take me to", "navigate to" a collection or category). With navigate=false (default), returns collection or product data without changing the page — use this only when the user is asking a question about the catalog, not asking to view it. Without a collection handle, lists all collections. With a handle, returns products from that collection; use "all" to browse everything. Does NOT add anything to the cart; use add_to_cart for cart changes. Prefer this over search_catalog when the user names a category, collection, or wants to explore. With navigate=true this MOVES the browser to the collection page; the tool result confirms the destination, and no further navigation is needed to show it.
+    - inputSchema: {"type":"object","properties":{"collection":{"type":"string","description":"Collection handle to browse (e.g. \"best-sellers\", \"new-arrivals\"). Omit to list all collections. Use \"all\" to browse every product."},"navigate":{"type":"boolean","description":"When true, navigate the browser to the collection page after loading data. Set true for user intents like \"browse to\", \"go to\", \"show me\", \"open\", \"take me to\" a collection. Requires a collection handle. Defaults to false."},"sort_by":{"type":"string","description":"Sort order. Options: best-selling (default), price-ascending, price-descending, title-ascending, title-descending, created-descending, created-ascending."},"page":{"type":"number","description":"Page number for pagination (starts at 1). Each page returns up to 30 products."}}}
+  - cancel_cart: Remove all items from the cart in one step. Use when the user wants to empty their cart or start over.
+    - inputSchema: {"type":"object","properties":{}}
+  - get_cart [readOnly, untrustedContent]: Get the current shopping cart contents — line items with product titles, variant titles, handles, URLs, images, unit prices, quantities, and totals. Everything needed to describe the cart to the user in natural language, without a follow-up get_product call per line. Works from any page.
+    - inputSchema: {"type":"object","properties":{}}
+  - get_product [untrustedContent]: Get product details, OR navigate the browser to the product page. Set catalog.navigate=true whenever the user wants to see/view the product in the browser (triggers: "show me", "open", "view", "go to", "take me to", "navigate to" a product). Set catalog.navigate=false (default) only when you need data (description, options, variants, prices, availability) to answer a question or to prepare an add_to_cart call — the browser stays on the current page. Defaults to the current page's product if no catalog.id is provided. Does NOT add anything to the cart; use add_to_cart for that. To view a specific variant (color/size/etc.) in the browser, use show_variant instead — it accepts partial option selections like "purple" without needing every option. To add a specific variant to the cart, call get_product with catalog.selected_options to get its variant id. With catalog.navigate=true this MOVES the browser to the product page; the tool result confirms the destination, and no further navigation is needed to show it.
+    - inputSchema: {"type":"object","properties":{"catalog":{"type":"object","description":"Product detail parameters.","properties":{"id":{"type":"string","description":"Storefront API Product GID, product handle, or product URL path. Custom app product paths and Shopify standard /products/<handle> paths are supported. The id field from search_catalog or browse_store can be passed directly. If omitted, uses the current page's product."},"navigate":{"type":"boolean","description":"When true, navigate the browser to the product page after fetching details. Set true for user intents like \"show me\", \"open\", \"view\", \"go to\", \"take me to\" a product. Defaults to false. If the user specified partial options (e.g. only a color), prefer show_variant with selected_options instead."},"selected_options":{"type":"array","description":"Known product option selections to filter available_options. Use exact option names and values from search_catalog options or a prior get_product available_options entry.","items":{"type":"object","properties":{"name":{"type":"string","description":"Option name, e.g. \"Size\" or \"Color\"."},"value":{"type":"string","description":"Option value, e.g. \"160cm\" or \"Fiberglass\"."}},"required":["name","value"]}}}}}}
+  - get_ucp_profile [readOnly, untrustedContent]: Get this store's Universal Commerce Protocol (UCP) profile, as served at /.well-known/ucp: the UCP version, the services the store offers with their endpoints (e.g. the store's UCP MCP server), its capabilities, and its payment handlers. Use it to discover how to continue a purchase with this store over UCP, or to check which platform operates the store. Read-only; works from any page.
+    - inputSchema: {"type":"object","properties":{}}
+  - manage_orders: Navigate to the customer's order history page. Use when the user asks about past orders, order status, tracking, or returns. The user will be prompted to log in if not already authenticated. This MOVES the browser to the order history page; the tool result confirms the destination, and no further navigation is needed to show it.
+    - inputSchema: {"type":"object","properties":{}}
+  - proceed_to_checkout: Proceed to checkout. Verifies the cart is not empty, then MOVES the browser to the checkout page. The tool result confirms the destination, and no further navigation is needed to show it.
+    - inputSchema: {"type":"object","properties":{}}
+  - search_catalog [readOnly, untrustedContent]: Search the store catalog for products, collections, articles, and pages. Does NOT add anything to the cart; use add_to_cart for cart changes. If the user asks for a specific product variant, call get_product after search_catalog to get its variant ID for add_to_cart, or use show_variant to display it.
+    - inputSchema: {"type":"object","required":["catalog"],"properties":{"catalog":{"type":"object","required":["query"],"properties":{"query":{"type":"string","description":"Search query string."},"pagination":{"type":"object","properties":{"limit":{"type":"integer","description":"Max results per type (1-10). Defaults to 5.","default":5,"minimum":1,"maximum":10}}}}}}}
+  - search_shop_policies_and_faqs [readOnly, untrustedContent]: Used to get facts about the store's policies, FAQ, or contact details.
+When the question is about specific policy kinds, set policy_types to those kinds; leave it unset for general FAQ questions.
+Some examples of questions you can ask are:
+  - What is your return policy? (policy_types: ["refund"])
+  - What is your shipping policy? (policy_types: ["shipping"])
+  - What is your phone number? (policy_types: ["contact"])
+  - What are your hours of operation? (policy_types: ["contact"])
+  - Do you offer gift wrapping? (general FAQ, no specific policy kind — leave policy_types unset)
+
+    - inputSchema: {"type":"object","properties":{"query":{"type":"string","description":"A natural language query. Searches FAQ pages and articles, and routes policies by keyword when policy_types is omitted."},"policy_types":{"type":"array","description":"Policy kinds to fetch, chosen from the user's question — e.g. [\"refund\"] for returns/exchanges, [\"contact\"] for phone/hours/address. Include every kind the question touches. Omit when no specific policy is relevant (e.g. a general FAQ question).","items":{"type":"string","enum":["refund","shipping","privacy","terms_of_service","terms_of_sale","subscription","legal_notice","contact"]}}},"required":["query"]}
+  - show_variant [untrustedContent]: Navigate the browser to a product page, with a specific variant OR a partial option filter selected. Use for view intents: "show me", "open", "view", "go to", "take me to" a specific product configuration. Accepts EITHER variant_id (fully specified variant) OR selected_options (partial, e.g. only Color=Purple) — with partial options the first matching available variant is picked automatically, so DO NOT ask the user for missing options when their intent is to view. Does NOT add anything to the cart; use add_to_cart for cart changes. For cart operations you still need a full variant_id — call get_product with the full option combination first. This MOVES the browser to the exact variant page with the variant pre-selected; the tool result confirms the destination, and no further navigation is needed to show it.
+    - inputSchema: {"type":"object","required":["catalog"],"properties":{"catalog":{"type":"object","description":"Provide EITHER variant_id OR selected_options. Handle is required unless the user is already on the product page.","properties":{"handle":{"type":"string","description":"Product handle. If omitted, uses the current product page's handle."},"variant_id":{"type":["string","number"],"description":"ProductVariant ID from get_product variants[].id, e.g. \"gid://shopify/ProductVariant/123\", or the numeric variant ID. Use when the user picked a specific fully-specified variant. Omit when using selected_options."},"selected_options":{"type":"array","description":"Partial (or full) option selections, e.g. [{\"name\":\"Color\",\"value\":\"Purple\"}]. Use when the user names some options but not all (e.g. \"show me the purple shoe\" — pass only Color). The first matching available variant will be selected automatically. Use exact option names and values from get_product available_options or search_catalog options.","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}}}}
+  - update_cart_lines [untrustedContent]: Change the quantity of items already in the cart, or remove them. Every change here addresses an existing cart line by its id, so call get_cart first unless you already have line_items[].id from an earlier get_cart in this conversation. Pass the ABSOLUTE target quantity, not a delta — quantity 2 means the line ends up at 2 regardless of what it was. Use quantity 0 to remove the line entirely. Batch every change for ONE request into a SINGLE call — line_items accepts up to 10 entries; do NOT call update_cart_lines once per line. Batching applies WITHIN a single request: each new thing the user asks for later is its own call. This tool cannot add new merchandise. To add something not already in the cart, use add_to_cart. To empty the whole cart at once, use cancel_cart.
+    - inputSchema: {"type":"object","required":["cart"],"properties":{"cart":{"type":"object","required":["line_items"],"properties":{"line_items":{"type":"array","description":"Existing cart lines to update or remove (1-10).","minItems":1,"maxItems":10,"items":{"type":"object","required":["id","quantity"],"properties":{"id":{"type":"string","description":"Existing cart line id from get_cart line_items[].id. Required — this tool cannot resolve products by name."},"quantity":{"type":"integer","description":"Absolute target quantity for this line (not a delta). 0 removes the line.","minimum":0}}}}}}}}
+
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - paragraph [ref=e8]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link "WWW.BAROQUE.COM.PK" [ref=e9] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+      - paragraph [ref=e10]:
+        - 'link "Call us at: UAN 111-302-302" [ref=e11] [cursor=pointer]':
+          - /url: tel:111302302
+    - generic [aria-hidden] [ref=e12]:
+      - paragraph [ref=e13]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link [ref=e14] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+          - text: WWW.BAROQUE.COM.PK
+      - paragraph [ref=e15]:
+        - link [ref=e16] [cursor=pointer]:
+          - /url: tel:111302302
+          - text: "Call us at: UAN 111-302-302"
+    - generic [aria-hidden] [ref=e17]:
+      - paragraph [ref=e18]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link [ref=e19] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+          - text: WWW.BAROQUE.COM.PK
+      - paragraph [ref=e20]:
+        - link [ref=e21] [cursor=pointer]:
+          - /url: tel:111302302
+          - text: "Call us at: UAN 111-302-302"
+    - generic [aria-hidden] [ref=e22]:
+      - paragraph [ref=e23]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link [ref=e24] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+          - text: WWW.BAROQUE.COM.PK
+      - paragraph [ref=e25]:
+        - link [ref=e26] [cursor=pointer]:
+          - /url: tel:111302302
+          - text: "Call us at: UAN 111-302-302"
+    - generic [aria-hidden] [ref=e27]:
+      - paragraph [ref=e28]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link [ref=e29] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+          - text: WWW.BAROQUE.COM.PK
+      - paragraph [ref=e30]:
+        - link [ref=e31] [cursor=pointer]:
+          - /url: tel:111302302
+          - text: "Call us at: UAN 111-302-302"
+    - generic [aria-hidden] [ref=e32]:
+      - paragraph [ref=e33]:
+        - text: FOR INTERNATIONAL WEBSITE VISIT
+        - link [ref=e34] [cursor=pointer]:
+          - /url: https://baroque.com.pk
+          - text: WWW.BAROQUE.COM.PK
+      - paragraph [ref=e35]:
+        - link [ref=e36] [cursor=pointer]:
+          - /url: tel:111302302
+          - text: "Call us at: UAN 111-302-302"
+  - banner [ref=e37]:
+    - generic [ref=e39]:
+      - heading [level=1] [ref=e40]:
+        - link "BAROQUE" [ref=e41] [cursor=pointer]:
+          - /url: /
+      - navigation "Primary navigation" [ref=e43]:
+        - button "Open navigation menu" [ref=e44] [cursor=pointer]
+      - navigation "Secondary navigation" [ref=e48]:
+        - button "Pakistan" [ref=e51] [cursor=pointer]
+        - link "Open account page" [ref=e55] [cursor=pointer]:
+          - /url: /account
+        - link "Open search" [ref=e60] [cursor=pointer]:
+          - /url: /search
+        - link "Open cart" [ref=e65] [cursor=pointer]:
+          - /url: /cart
+  - main [ref=e74]:
+    - region [ref=e76]:
+      - group [ref=e77]:
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: READY TO WEAR
+          - link [ref=e85] [cursor=pointer]:
+            - /url: /collections/pret
+            - button "SHOP NOW" [ref=e86]
+    - paragraph [ref=e91]: SEW YOUR STYLE
+    - generic [ref=e96]:
+      - link [ref=e97] [cursor=pointer]:
+        - /url: /collections/unstitched
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: UNSTITCHED
+          - button "SHOP NOW" [ref=e101]
+      - link [ref=e102] [cursor=pointer]:
+        - /url: /collections/stitched
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: STITCHED
+          - button "SHOP NOW" [ref=e106]
+    - generic [ref=e111]:
+      - heading [level=2] [ref=e112]:
+        - emphasis [ref=e113]: Velvet
+        - emphasis [ref=e114]: Shawls
+      - paragraph [ref=e116]: A signature collection of heirloom-inspired shawls, crafted with timeless details.
+      - link "SHOP NOW" [ref=e117] [cursor=pointer]:
+        - /url: /collections/shawls
+    - paragraph [ref=e122]: CHANTELLE
+    - generic [ref=e127]:
+      - link [ref=e128] [cursor=pointer]:
+        - /url: /collections/unstitched-chantelle
+        - generic [ref=e130]:
+          - paragraph [ref=e131]: UNSTITCHED
+          - button "SHOP NOW" [ref=e132]
+      - link [ref=e133] [cursor=pointer]:
+        - /url: /collections/stitched-chantelle
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: STITCHED
+          - button "SHOP NOW" [ref=e137]
+    - region [ref=e139]:
+      - link [ref=e140] [cursor=pointer]:
+        - /url: ""
+      - group [ref=e141]:
+        - generic [ref=e146]:
+          - paragraph [ref=e147]: ESSENTIALS
+          - generic [ref=e148]:
+            - link [ref=e149] [cursor=pointer]:
+              - /url: /collections/ensembles
+              - button "ENSEMBLES" [ref=e150]
+            - link [ref=e151] [cursor=pointer]:
+              - /url: /collections/dupattas
+              - button "DUPATTAS" [ref=e152]
+    - generic [ref=e158]:
+      - link "Order Cancellation" [ref=e159] [cursor=pointer]:
+        - /url: /pages/order-cancellation
+        - heading "Order Cancellation" [level=2] [ref=e161]
+        - paragraph [ref=e162]: Cancel your order within 48 hours before dispatch.
+        - generic [ref=e163]: CLICK TO CANCEL
+      - link "Store locator" [ref=e164] [cursor=pointer]:
+        - /url: https://baroque.pk/pages/2-1?view=store-locator
+        - heading "Store locator" [level=2] [ref=e169]
+        - paragraph [ref=e170]: Locate a store to try our collections today.
+        - generic [ref=e171]: VISIT OUR STORES
+      - link "Customer Support" [ref=e172] [cursor=pointer]:
+        - /url: /pages/contact-us
+        - heading "Customer Support" [level=2] [ref=e177]
+        - paragraph [ref=e178]: Our team is here to help whenever you need us.
+        - generic [ref=e179]: CONTACT OUR TEAM
+  - contentinfo [ref=e180]:
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - generic [ref=e186]:
+          - paragraph [ref=e187]: About
+          - list [ref=e188]:
+            - listitem [ref=e189]:
+              - link "Who We Are" [ref=e190] [cursor=pointer]:
+                - /url: /pages/who-we-are
+            - listitem [ref=e191]:
+              - link "Our Responsibility" [ref=e192] [cursor=pointer]:
+                - /url: /pages/our-responsibility
+            - listitem [ref=e193]:
+              - link "Service We Provide" [ref=e194] [cursor=pointer]:
+                - /url: /pages/service-we-provide
+            - listitem [ref=e195]:
+              - link "Careers" [ref=e196] [cursor=pointer]:
+                - /url: /pages/career
+            - listitem [ref=e197]:
+              - link "Store Locations" [ref=e198] [cursor=pointer]:
+                - /url: https://baroque.pk/pages/our-store
+        - generic [ref=e200]:
+          - paragraph [ref=e201]: Customer Service
+          - list [ref=e202]:
+            - listitem [ref=e203]:
+              - link "Contact Us" [ref=e204] [cursor=pointer]:
+                - /url: /pages/contact-us
+            - listitem [ref=e205]:
+              - link "Dispatch Timeline" [ref=e206] [cursor=pointer]:
+                - /url: /pages/dispatch-timeline
+            - listitem [ref=e207]:
+              - link "Exchange Information" [ref=e208] [cursor=pointer]:
+                - /url: /pages/exchange-refund
+            - listitem [ref=e209]:
+              - 'link "Email: info@baroque.pk" [ref=e210] [cursor=pointer]':
+                - /url: mailto:info@baroque.pk
+            - listitem [ref=e211]:
+              - link "UAN 111-302-302" [ref=e212] [cursor=pointer]:
+                - /url: tel:111302302
+            - listitem [ref=e213]:
+              - 'link "WhatsApp: +92 325 7001111" [ref=e214] [cursor=pointer]':
+                - /url: https://wa.me/message/QZ3TRYLNGVQYN1
+        - generic [ref=e216]:
+          - paragraph [ref=e217]: Policies
+          - list [ref=e218]:
+            - listitem [ref=e219]:
+              - link "Privacy Policy" [ref=e220] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+            - listitem [ref=e221]:
+              - link "Refund Policy" [ref=e222] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e223]:
+              - link "Shipping Policy" [ref=e224] [cursor=pointer]:
+                - /url: /policies/shipping-policy
+            - listitem [ref=e225]:
+              - link "Terms of Service" [ref=e226] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e227]:
+              - link "Legal" [ref=e228] [cursor=pointer]:
+                - /url: /pages/legal
+      - list [ref=e229]:
+        - listitem [ref=e230]:
+          - link "Follow on Facebook" [ref=e231] [cursor=pointer]:
+            - /url: https://facebook.com/baroquepk
+        - listitem [ref=e234]:
+          - link "Follow on Instagram" [ref=e235] [cursor=pointer]:
+            - /url: https://instagram.com/baroque_official
+        - listitem [ref=e238]:
+          - link "Follow on YouTube" [ref=e239] [cursor=pointer]:
+            - /url: https://www.youtube.com/@baroque_fashion
+        - listitem [ref=e242]:
+          - link "Follow on TikTok" [ref=e243] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@baroque_fashion
+        - listitem [ref=e246]:
+          - link "Follow on WhatsApp" [ref=e247] [cursor=pointer]:
+            - /url: https://wa.me/message/YXTJU7BR5F6SJ1
+      - generic [ref=e250]:
+        - button "Pakistan" [ref=e253] [cursor=pointer]
+        - paragraph [ref=e257]: © 2026 - BAROQUE
+        - generic [ref=e258]:
+          - img "Mastercard" [ref=e259]
+          - img "Visa" [ref=e266]

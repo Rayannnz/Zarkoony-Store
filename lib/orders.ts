@@ -9,7 +9,9 @@ export type CartLine = {
   image: string;
   price: number;
   size: Size | "Custom";
-  /** Inches, keyed by `MeasurementKey`; only on custom lines. */
+  /** Custom lines: the standard size the pattern starts from; unfilled measurements come from it. */
+  base?: Size;
+  /** Inches, keyed by `MeasurementKey`; only the measurements the customer changed. */
   measurements?: Record<string, number>;
   notes?: string;
   qty: number;
@@ -193,7 +195,8 @@ export const sampleOrders: Order[] = [
         image: "/images/products/emerald-gold/1.jpg",
         price: 36500,
         size: "Custom",
-        measurements: { bust: 36, waist: 30, hips: 40, shoulder: 14.5, sleeveLength: 22, armhole: 17, shirtLength: 48, trouserLength: 38 },
+        base: "M",
+        measurements: { bust: 19, shirtLength: 48, sleeveLength: 22, trouserLength: 38 },
         notes: "Full sleeve lining, modest neckline.",
         qty: 1,
       },

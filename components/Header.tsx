@@ -6,14 +6,16 @@ import { CartDot, Trigger, WishlistDot } from "./Overlays";
 import { Regional } from "./Price";
 import { RegionChooser } from "./RegionChooser";
 
-const icon = { size: 24, strokeWidth: 1.5, "aria-hidden": true } as const;
+// Baroque: 22px icons on phones, 24px from 768px, 1px stroke.
+const icon = { size: 24, strokeWidth: 1, className: "size-[22px] md:size-6", "aria-hidden": true } as const;
 
 /** The paper shopping bag the owner chose: a tall looped handle over a tapered body, drawn to match the lucide stroke. */
-function BagIcon({ size, strokeWidth }: { size: number; strokeWidth: number }) {
+function BagIcon({ size, strokeWidth, className }: { size: number; strokeWidth: number; className?: string }) {
   return (
     <svg
       width={size}
       height={size}
+      className={className}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -34,9 +36,9 @@ const iconButton = "-m-1 p-2";
 export function Header() {
   return (
     // Colours come from `.site-header` in globals.css: white, or transparent over the hero.
-    <HeaderFrame className="site-header sticky top-0 z-50 border-b border-(--header-line)">
+    <HeaderFrame className="site-header sticky top-0 z-50">
       {/* Equal side columns keep the logo centred; it shrinks before the icons can overlap it. */}
-      <div className="mx-auto grid h-16 max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center gap-x-3 px-4 sm:px-8 md:h-[110px] lg:px-14">
+      <div className="mx-auto grid h-[57px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center gap-x-5 px-5 md:h-[73px] md:gap-x-10 md:px-12">
         <div className="flex min-w-23 items-center">
           <Trigger opens="menu" aria-label="Open navigation menu" className="-ml-2 p-2">
             <Menu {...icon} />
@@ -50,11 +52,11 @@ export function Header() {
             width={1064}
             height={269}
             loading="eager"
-            className="mx-auto h-9 w-auto max-w-full object-contain transition-[filter] duration-200 [filter:var(--logo-filter)] md:h-13"
+            className="mx-auto h-[25px] w-auto max-w-full object-contain transition-[filter] duration-200 [filter:var(--logo-filter)] md:h-[35px]"
           />
         </Link>
 
-        <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-5">
+        <div className="flex items-center justify-end gap-[14.4px] md:gap-5">
           <Link
             href="/custom-orders"
             className="caps hidden  border-current px-3 py-2 text-[11px] transition-colors duration-(--duration-fast) hover:bg-black hover:text-white lg:inline-flex"
@@ -64,13 +66,13 @@ export function Header() {
           <button
             type="button"
             popoverTarget="country-menu"
-            className="caps hidden items-center gap-1 text-[11px] lg:flex"
+            className="heading hidden items-center gap-1 text-[11px] lg:flex"
           >
             <Regional pk="Pakistan" us="United States" />
             <span className="opacity-60">
               <Regional pk="PKR" us="USD" />
             </span>
-            <ChevronDown size={15} strokeWidth={1.5} className="-mr-1" aria-hidden />
+            <ChevronDown size={10} strokeWidth={1} aria-hidden />
           </button>
           <Trigger opens="search" aria-label="Search" className={iconButton}>
             <Search {...icon} />
@@ -80,7 +82,7 @@ export function Header() {
             <WishlistDot />
           </Link>
           <Trigger opens="cart" aria-label="Shopping bag" className={`relative ${iconButton}`}>
-            <BagIcon size={icon.size} strokeWidth={icon.strokeWidth} />
+            <BagIcon size={icon.size} strokeWidth={icon.strokeWidth} className={icon.className} />
             <CartDot />
           </Trigger>
         </div>

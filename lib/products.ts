@@ -516,17 +516,32 @@ export const products: Product[] = [
 export const stitchingLabel = (product: Pick<Product, "stitchingTime">) =>
   `${product.stitchingTime[0]}–${product.stitchingTime[1]} working days`;
 
-/** All in inches. `min`/`max` are sanity bounds for validation, not size limits. */
+/**
+ * The custom-size fields, in inches, as finished garment measurements (what the stitched piece
+ * should measure, not the body). `group` is which diagram they sit beside; `min`/`max` are sanity
+ * bounds for validation, not size limits. Widths are flat, edge to edge, as on the size chart.
+ */
 export const measurementFields = [
-  { key: "bust", label: "Bust", hint: "Around the fullest part of the bust, tape level and relaxed.", min: 26, max: 60, placeholder: "e.g. 36" },
-  { key: "waist", label: "Waist", hint: "Around the natural waistline, where the body bends.", min: 20, max: 56, placeholder: "e.g. 30" },
-  { key: "hips", label: "Hips", hint: "Around the fullest part of the hips, feet together.", min: 28, max: 64, placeholder: "e.g. 40" },
-  { key: "shoulder", label: "Shoulder width", hint: "Across the back, from one shoulder bone to the other.", min: 11, max: 22, placeholder: "e.g. 14.5" },
-  { key: "sleeveLength", label: "Sleeve length", hint: "From the shoulder bone to where the sleeve should end.", min: 10, max: 30, placeholder: "e.g. 22" },
-  { key: "armhole", label: "Arm hole", hint: "Around the top of the arm, over the shoulder point.", min: 12, max: 26, placeholder: "e.g. 17" },
-  { key: "shirtLength", label: "Shirt / kurta length", hint: "From the shoulder down to the hem you want.", min: 30, max: 60, placeholder: "e.g. 44" },
-  { key: "trouserLength", label: "Trouser length", hint: "From the natural waist to the ankle bone.", min: 30, max: 50, placeholder: "e.g. 38" },
+  { group: "top", key: "shirtLength", label: "Front length", hint: "From the shoulder seam straight down to where the hem should fall.", min: 20, max: 64, placeholder: "44" },
+  { group: "top", key: "shoulder", label: "Shoulder", hint: "Across the back, seam to seam, from one shoulder point to the other.", min: 11, max: 22, placeholder: "14.5" },
+  { group: "top", key: "bust", label: "Bust", hint: "Flat across the fullest part of the bust, side seam to side seam.", min: 14, max: 32, placeholder: "18" },
+  { group: "top", key: "waist", label: "Waist", hint: "Flat across the narrowest point of the waist, side seam to side seam.", min: 12, max: 30, placeholder: "17" },
+  { group: "top", key: "hips", label: "Hip", hint: "Flat across the fullest part of the hips, side seam to side seam.", min: 14, max: 34, placeholder: "20" },
+  { group: "top", key: "bottom", label: "Daman (bottom)", hint: "Flat across the hem of the kameez, from one side to the other.", min: 16, max: 40, placeholder: "24" },
+  { group: "top", key: "sleeveLength", label: "Sleeve length", hint: "From the shoulder seam along the outside of the arm to where the sleeve should end.", min: 4, max: 30, placeholder: "22" },
+  { group: "top", key: "cuff", label: "Cuff opening", hint: "Flat across the sleeve opening at the wrist.", min: 4, max: 14, placeholder: "9" },
+  { group: "top", key: "armhole", label: "Arm hole", hint: "Straight from the shoulder point down to the underarm seam.", min: 6, max: 14, placeholder: "9" },
+  { group: "bottom", key: "trouserLength", label: "Trouser length", hint: "Down the side, from the top of the waistband to the hem.", min: 20, max: 50, placeholder: "39" },
+  { group: "bottom", key: "frontRise", label: "Front rise", hint: "From the top of the waistband down the front to the crotch seam.", min: 8, max: 18, placeholder: "12.5" },
+  { group: "bottom", key: "backRise", label: "Back rise", hint: "From the top of the waistband down the back to the crotch seam.", min: 10, max: 20, placeholder: "15" },
+  { group: "bottom", key: "trouserWaist", label: "Waist (relaxed)", hint: "Flat across the waistband with the elastic or drawstring relaxed.", min: 10, max: 30, placeholder: "15" },
+  { group: "bottom", key: "trouserHip", label: "Trouser hip", hint: "Flat across the fullest part of the hips, side seam to side seam.", min: 14, max: 34, placeholder: "20" },
+  { group: "bottom", key: "thigh", label: "Thigh", hint: "Flat across the leg just below the crotch, inseam to outseam.", min: 8, max: 20, placeholder: "12" },
+  { group: "bottom", key: "knee", label: "Knee", hint: "Flat across the leg at the knee.", min: 6, max: 16, placeholder: "9" },
+  { group: "bottom", key: "trouserBottom", label: "Bottom opening", hint: "Flat across the hem of one leg.", min: 4, max: 20, placeholder: "7.5" },
 ] as const;
+
+export type MeasurementGroup = (typeof measurementFields)[number]["group"];
 
 export type MeasurementKey = (typeof measurementFields)[number]["key"];
 
@@ -584,6 +599,10 @@ export const chartForPiece = (piece: string) => {
   if (/dupatta|shawl|slip|veil/.test(name)) return undefined;
   return /trouser|churidar|sharara|gharara|lehenga|culotte/.test(name) ? garmentCharts.bottom : garmentCharts.top;
 };
+
+/** Which custom-size groups a product's pieces need; a kameez alone skips the trouser diagram. */
+export const groupsForPieces = (pieces: string[]): MeasurementGroup[] =>
+  pieces.some((p) => chartForPiece(p) === garmentCharts.bottom) ? ["top", "bottom"] : ["top"];
 
 // Fixed locale so server and client render the same string.
 export const formatPrice = (price: number) => `PKR ${price.toLocaleString("en-US")}`;

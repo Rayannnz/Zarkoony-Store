@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { footerColumns, site, socials } from "@/lib/site";
-import { NewsletterForm } from "./NewsletterForm";
 
 const columnSpan: Record<number, string> = { 2: "lg:col-span-2", 3: "lg:col-span-3" };
 
@@ -28,13 +27,8 @@ export function Footer() {
           ))}
 
           <div className="space-y-4 lg:col-span-4">
-            <h4 className={headingClass}>Sign up for our atelier newsletter</h4>
-            <p className="text-neutral-400">
-              Subscribe for early previews of new limited drops, bespoke stitching slots, and
-              private salon appointments.
-            </p>
-            <NewsletterForm />
-            <div className="flex items-center gap-5 pt-3 text-white/65">
+            <h4 className={headingClass}>Follow the atelier</h4>
+            <div className="flex items-center gap-5 text-white/65">
               {socials.map((social) => (
                 <a
                   key={social.label}

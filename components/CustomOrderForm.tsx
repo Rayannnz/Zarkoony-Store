@@ -173,7 +173,7 @@ export function CustomOrderForm() {
           ))}
         </div>
         <span role={errors.size ? "alert" : undefined} className={`mt-1 block text-[12px] ${errors.size ? "text-red-700" : "text-neutral-500"}`}>
-          {errors.size || "Choose Custom to enter your measurements, at no extra cost."}
+          {errors.size || "Choose Custom to enter finished garment measurements, at no extra cost. Fill in what you know; the atelier confirms the rest with you."}
         </span>
       </div>
 
@@ -199,7 +199,6 @@ export function CustomOrderForm() {
                 step="0.25"
                 min={f.min}
                 max={f.max}
-                required
                 placeholder={f.placeholder}
                 onChange={() => setErrors((prev) => ({ ...prev, [f.key]: "" }))}
                 error={errors[f.key]}

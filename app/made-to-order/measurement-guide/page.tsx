@@ -4,7 +4,7 @@ import { measurementGuide } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Measurement Guide",
-  description: "How to take the eight measurements the atelier uses to draft your pattern.",
+  description: "How to take the finished garment measurements the atelier uses for a custom size.",
 };
 
 export default function MeasurementGuidePage() {

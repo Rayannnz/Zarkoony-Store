@@ -190,22 +190,26 @@ export const measurementGuide: ContentPage = {
   eyebrow: "Made to order",
   title: "Measurement Guide",
   intro:
-    "Eight measurements, in inches, are all the atelier needs to draft your pattern. Take them over light clothing with a soft tape, and ask someone to help with the back measurements.",
+    "The custom size option takes finished garment measurements in inches: what the stitched piece should measure, laid flat, not your body. The easiest way is to measure a kameez and trouser that already fit you well. Give only the measurements you want changed; everything else follows your nearest standard size.",
   sections: [
     {
       heading: "Before you start",
       blocks: [
         list([
-          "Wear the undergarments you will wear with the piece, and light clothing over them.",
-          "Keep the tape level and snug but not tight; you should fit a finger underneath.",
-          "Stand naturally, feet together, arms relaxed at your sides.",
+          "Lay a well-fitting kameez and trouser flat on a table, smoothed out, with the seams straight.",
+          "Widths (bust, waist, hip, daman, thigh) are taken flat, edge to edge, as on the size chart; not around the body.",
+          "Lengths run straight down from the shoulder seam or the top of the waistband.",
           "Round to the nearest quarter inch. If in doubt, round up: it is easier to take in than let out.",
         ]),
       ],
     },
     {
-      heading: "Each measurement",
-      blocks: [{ type: "steps", items: measurementFields.map((f) => ({ title: f.label, text: f.hint })) }],
+      heading: "The kameez",
+      blocks: [{ type: "steps", items: measurementFields.filter((f) => f.group === "top").map((f) => ({ title: f.label, text: f.hint })) }],
+    },
+    {
+      heading: "The trouser",
+      blocks: [{ type: "steps", items: measurementFields.filter((f) => f.group === "bottom").map((f) => ({ title: f.label, text: f.hint })) }],
     },
     {
       heading: "Unsure about something?",
@@ -379,7 +383,7 @@ export const policies: Record<string, ContentPage> = {
     intro: "What we collect when you use zarkoony.com, why, and how to ask us to change or delete it.",
     sections: [
       { heading: "What we collect", blocks: [list(["Contact details and delivery addresses you enter at checkout or in your account.", "Body measurements you provide for a commission, kept with that order.", "Order history and messages with the concierge.", "Basic technical information such as browser type and pages visited, used to keep the site working."])] },
-      { heading: "How we use it", blocks: [p("To make and deliver your commission, to contact you about it, to keep your account working and, if you subscribe, to send the atelier newsletter. We do not sell personal information.")] },
+      { heading: "How we use it", blocks: [p("To make and deliver your commission, to contact you about it, to keep your account working. We do not sell personal information.")] },
       { heading: "Who sees it", blocks: [p("The atelier team working on your order, the courier delivering it, and the service providers that run our website and e-mail. Each receives only what it needs.")] },
       { heading: "Your choices", blocks: [p("You can update your details in your account, unsubscribe from any e-mail with one click, and ask us to delete your data by writing to the concierge. Measurements on past orders are kept for alterations unless you ask otherwise.")] },
       { heading: "Contact", blocks: [p("Questions about this policy go to the concierge at the address on the contact page.")] },

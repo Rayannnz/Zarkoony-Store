@@ -1,0 +1,373 @@
+- generic [ref=e1]:
+  - complementary "Contact" [ref=e2]:
+    - generic [ref=e3]:
+      - list [ref=e4]:
+        - listitem [ref=e5]:
+          - link "Stitched in Lahore, delivered across Pakistan and the United States" [ref=e6] [cursor=pointer]:
+            - /url: /shipping
+        - listitem [ref=e7]:
+          - 'link "Call us at: UAN 111-ZARKOONY (111-927-566)" [ref=e8] [cursor=pointer]':
+            - /url: tel:111927566
+        - listitem [ref=e9]:
+          - 'link "For bespoke concierge: +92 300 ZARKOONY" [ref=e10] [cursor=pointer]':
+            - /url: tel:+92300927566
+      - list [aria-hidden] [ref=e11]:
+        - listitem [ref=e12]:
+          - link [ref=e13] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e14]:
+          - link [ref=e15] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e16]:
+          - link [ref=e17] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=e18]:
+        - listitem [ref=e19]:
+          - link [ref=e20] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e21]:
+          - link [ref=e22] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e23]:
+          - link [ref=e24] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+      - list [aria-hidden] [ref=e25]:
+        - listitem [ref=e26]:
+          - link [ref=e27] [cursor=pointer]:
+            - /url: /shipping
+            - text: Stitched in Lahore, delivered across Pakistan and the United States
+        - listitem [ref=e28]:
+          - link [ref=e29] [cursor=pointer]:
+            - /url: tel:111927566
+            - text: "Call us at: UAN 111-ZARKOONY (111-927-566)"
+        - listitem [ref=e30]:
+          - link [ref=e31] [cursor=pointer]:
+            - /url: tel:+92300927566
+            - text: "For bespoke concierge: +92 300 ZARKOONY"
+  - banner [ref=e33]:
+    - generic [ref=e34]:
+      - button "Open navigation menu" [ref=e36] [cursor=pointer]
+      - link [ref=e38] [cursor=pointer]:
+        - /url: /
+        - img "ZARKOONY Custom Stitched Couture" [ref=e39]
+      - generic [ref=e40]:
+        - link "Custom Design" [ref=e41] [cursor=pointer]:
+          - /url: /custom-orders
+        - button "Pakistan PKR" [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: Pakistan
+          - generic [ref=e44]: PKR
+        - button "Search" [ref=e47] [cursor=pointer]
+        - link "Wishlist" [ref=e51] [cursor=pointer]:
+          - /url: /wishlist
+        - button "Shopping bag" [ref=e54] [cursor=pointer]
+  - main [ref=e58]:
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - list "Gallery thumbnails" [ref=e62]:
+            - listitem [ref=e63]:
+              - link "Show image 1 of 1" [ref=e64] [cursor=pointer]:
+                - /url: "#media-1"
+          - list "Zariya Blush Raw Silk Set images" [ref=e66]:
+            - listitem [ref=e67]:
+              - button "Open image 1 of 1 full screen" [ref=e68]:
+                - img "Zariya Blush Raw Silk Set" [ref=e69]
+        - generic [ref=e70]:
+          - heading "Zariya Blush Raw Silk Set" [level=1] [ref=e71]
+          - paragraph [ref=e72]: PKR 34,500
+          - paragraph [ref=e73]: zk-001 · 3 pieces
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - group "Size" [ref=e77]:
+                - generic [ref=e78]:
+                  - paragraph [ref=e79]: Size
+                  - button "Size chart" [ref=e80] [cursor=pointer]
+                - radiogroup "Size" [ref=e81]:
+                  - generic [ref=e82] [cursor=pointer]:
+                    - radio "XS" [ref=e83]
+                    - generic [ref=e84]: XS
+                  - generic [ref=e85] [cursor=pointer]:
+                    - radio "S" [ref=e86]
+                    - generic [ref=e87]: S
+                  - generic [ref=e88] [cursor=pointer]:
+                    - radio "M" [ref=e89]
+                    - generic [ref=e90]: M
+                  - generic [ref=e91] [cursor=pointer]:
+                    - radio "L" [ref=e92]
+                    - generic [ref=e93]: L
+                  - generic [ref=e94] [cursor=pointer]:
+                    - radio "XL" [ref=e95]
+                    - generic [ref=e96]: XL
+                  - generic [ref=e97] [cursor=pointer]:
+                    - radio "Custom" [checked] [ref=e98]
+                    - generic [ref=e99]: Custom
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - paragraph [ref=e286]: Custom size (inches)
+                    - link "How to measure" [ref=e287] [cursor=pointer]:
+                      - /url: /made-to-order/measurement-guide
+                  - generic [ref=e288]:
+                    - paragraph [ref=e289]: Note
+                    - list [ref=e290]:
+                      - listitem [ref=e291]: "Give finished garment measurements, not body measurements: what the stitched piece should measure, laid flat."
+                      - listitem [ref=e292]: Choose your nearest size, then fill in only the measurements you want changed. Everything else follows that size.
+                      - listitem [ref=e293]: Changes to a custom-stitched order are accepted within 3 days of placing it, once the atelier confirms.
+                      - listitem [ref=e294]: All measurements in inches.
+                  - generic [ref=e295]:
+                    - paragraph [ref=e296]: Nearest size *
+                    - radiogroup "Nearest size" [ref=e297]:
+                      - generic [ref=e298] [cursor=pointer]:
+                        - radio "XS" [active] [ref=e299]
+                        - generic [ref=e300]: XS
+                      - generic [ref=e301] [cursor=pointer]:
+                        - radio "S" [ref=e302]
+                        - generic [ref=e303]: S
+                      - generic [ref=e304] [cursor=pointer]:
+                        - radio "M" [ref=e305]
+                        - generic [ref=e306]: M
+                      - generic [ref=e307] [cursor=pointer]:
+                        - radio "L" [ref=e308]
+                        - generic [ref=e309]: L
+                      - generic [ref=e310] [cursor=pointer]:
+                        - radio "XL" [ref=e311]
+                        - generic [ref=e312]: XL
+                    - alert [ref=e412]: Choose the standard size closest to you.
+                  - generic [ref=e313]:
+                    - paragraph [ref=e314]: Kameez
+                    - generic [ref=e315]:
+                      - img "Kameez with its measurements marked" [ref=e316]:
+                        - generic [ref=e321]: SHOULDER
+                        - generic [ref=e323]: BUST
+                        - generic [ref=e325]: WAIST
+                        - generic [ref=e327]: HIP
+                        - generic [ref=e329]: DAMAN
+                        - generic [ref=e331]: FRONT LENGTH
+                        - generic [ref=e333]: SLEEVE
+                        - generic [ref=e335]: CUFF
+                        - generic [ref=e336]: ARM HOLE
+                      - generic [ref=e337]:
+                        - generic [ref=e338]:
+                          - generic [ref=e339]: Front length
+                          - spinbutton "Front length" [ref=e340]
+                        - generic [ref=e341]:
+                          - generic [ref=e342]: Shoulder
+                          - spinbutton "Shoulder" [ref=e343]
+                        - generic [ref=e344]:
+                          - generic [ref=e345]: Bust
+                          - spinbutton "Bust" [ref=e346]
+                        - generic [ref=e347]:
+                          - generic [ref=e348]: Waist
+                          - spinbutton "Waist" [ref=e349]
+                        - generic [ref=e350]:
+                          - generic [ref=e351]: Hip
+                          - spinbutton "Hip" [ref=e352]
+                        - generic [ref=e353]:
+                          - generic [ref=e354]: Daman (bottom)
+                          - spinbutton "Daman (bottom)" [ref=e355]
+                        - generic [ref=e356]:
+                          - generic [ref=e357]: Sleeve length
+                          - spinbutton "Sleeve length" [ref=e358]
+                        - generic [ref=e359]:
+                          - generic [ref=e360]: Cuff opening
+                          - spinbutton "Cuff opening" [ref=e361]
+                        - generic [ref=e362]:
+                          - generic [ref=e363]: Arm hole
+                          - spinbutton "Arm hole" [ref=e364]
+                  - generic [ref=e365]:
+                    - paragraph [ref=e366]: Trouser
+                    - generic [ref=e367]:
+                      - img "Trouser with its measurements marked" [ref=e368]:
+                        - generic [ref=e371]: WAIST
+                        - generic [ref=e373]: HIP
+                        - generic [ref=e375]: THIGH
+                        - generic [ref=e377]: KNEE
+                        - generic [ref=e379]: BOTTOM
+                        - generic [ref=e381]: LENGTH
+                        - generic [ref=e382]: RISE
+                      - generic [ref=e383]:
+                        - generic [ref=e384]:
+                          - generic [ref=e385]: Trouser length
+                          - spinbutton "Trouser length" [ref=e386]
+                        - generic [ref=e387]:
+                          - generic [ref=e388]: Front rise
+                          - spinbutton "Front rise" [ref=e389]
+                        - generic [ref=e390]:
+                          - generic [ref=e391]: Back rise
+                          - spinbutton "Back rise" [ref=e392]
+                        - generic [ref=e393]:
+                          - generic [ref=e394]: Waist (relaxed)
+                          - spinbutton "Waist (relaxed)" [ref=e395]
+                        - generic [ref=e396]:
+                          - generic [ref=e397]: Trouser hip
+                          - spinbutton "Trouser hip" [ref=e398]
+                        - generic [ref=e399]:
+                          - generic [ref=e400]: Thigh
+                          - spinbutton "Thigh" [ref=e401]
+                        - generic [ref=e402]:
+                          - generic [ref=e403]: Knee
+                          - spinbutton "Knee" [ref=e404]
+                        - generic [ref=e405]:
+                          - generic [ref=e406]: Bottom opening
+                          - spinbutton "Bottom opening" [ref=e407]
+                  - generic [ref=e408]:
+                    - generic [ref=e409]: Notes (optional)
+                    - textbox "Notes (optional)" [ref=e410]:
+                      - /placeholder: e.g. Modest neckline, full sleeve lining, extra flare...
+                - generic [ref=e100]:
+                  - paragraph [ref=e101]: Quantity
+                  - generic [ref=e102]:
+                    - button "Decrease quantity" [ref=e103] [cursor=pointer]: −
+                    - generic [ref=e104]: "1"
+                    - button "Increase quantity" [ref=e105] [cursor=pointer]: +
+              - button "Add to cart" [ref=e106] [cursor=pointer]
+            - button "Add Zariya Blush Raw Silk Set to wishlist" [ref=e108] [cursor=pointer]
+          - generic [ref=e112]:
+            - group [ref=e113]:
+              - generic [ref=e114] [cursor=pointer]
+            - group [ref=e121]:
+              - generic [ref=e122] [cursor=pointer]
+            - group [ref=e130]:
+              - generic [ref=e131] [cursor=pointer]
+            - group [ref=e137]:
+              - generic [ref=e138] [cursor=pointer]
+      - generic [ref=e146]:
+        - heading "You may also like" [level=2] [ref=e148]
+        - generic [ref=e149]:
+          - article [ref=e150]:
+            - generic [ref=e151]:
+              - img "Mehr Rose Gold Jaal Set" [ref=e152]
+              - generic [ref=e153]: Luxury Edit
+              - button "Add Mehr Rose Gold Jaal Set to wishlist" [ref=e154] [cursor=pointer]
+            - generic [ref=e157]:
+              - heading [level=3] [ref=e158]:
+                - link "Mehr Rose Gold Jaal Set" [ref=e159] [cursor=pointer]:
+                  - /url: /product/mehr-rose-gold-jaal-set
+              - paragraph [ref=e160]: PKR 32,500
+              - generic [ref=e161]: Made to order · 14–21 working days
+          - article [ref=e162]:
+            - generic [ref=e163]:
+              - img "Sahar Emerald Tilla Set" [ref=e164]
+              - link "Your Custom Design" [ref=e165] [cursor=pointer]:
+                - /url: /custom-orders
+              - button "Add Sahar Emerald Tilla Set to wishlist" [ref=e166] [cursor=pointer]
+            - generic [ref=e169]:
+              - heading [level=3] [ref=e170]:
+                - link "Sahar Emerald Tilla Set" [ref=e171] [cursor=pointer]:
+                  - /url: /product/sahar-emerald-tilla-set
+              - paragraph [ref=e172]: PKR 36,500
+              - generic [ref=e173]: Made to order · 14–21 working days
+          - article [ref=e174]:
+            - generic [ref=e175]:
+              - img "Laila Plum Jacquard Set" [ref=e176]
+              - link "Your Custom Design" [ref=e177] [cursor=pointer]:
+                - /url: /custom-orders
+              - button "Add Laila Plum Jacquard Set to wishlist" [ref=e178] [cursor=pointer]
+            - generic [ref=e181]:
+              - heading [level=3] [ref=e182]:
+                - link "Laila Plum Jacquard Set" [ref=e183] [cursor=pointer]:
+                  - /url: /product/laila-plum-jacquard-set
+              - paragraph [ref=e184]:
+                - generic [ref=e185]: PKR 44,500
+                - text: PKR 39,500
+              - generic [ref=e186]: Made to order · 14–21 working days
+          - article [ref=e187]:
+            - generic [ref=e188]:
+              - img "Noor Champagne Raw Silk Set" [ref=e189]
+              - generic [ref=e190]: Signature Edit
+              - button "Add Noor Champagne Raw Silk Set to wishlist" [ref=e191] [cursor=pointer]
+            - generic [ref=e194]:
+              - heading [level=3] [ref=e195]:
+                - link "Noor Champagne Raw Silk Set" [ref=e196] [cursor=pointer]:
+                  - /url: /product/noor-champagne-raw-silk-set
+              - paragraph [ref=e197]: PKR 29,500
+              - generic [ref=e198]: Made to order · 14–21 working days
+  - contentinfo [ref=e199]:
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - heading "About" [level=4] [ref=e203]
+          - list [ref=e204]:
+            - listitem [ref=e205]:
+              - link "Our Story" [ref=e206] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e207]:
+              - link "Craftsmanship" [ref=e208] [cursor=pointer]:
+                - /url: /about#craftsmanship
+            - listitem [ref=e209]:
+              - link "The Atelier" [ref=e210] [cursor=pointer]:
+                - /url: /about#atelier
+            - listitem [ref=e211]:
+              - link "Made to Order" [ref=e212] [cursor=pointer]:
+                - /url: /made-to-order
+            - listitem [ref=e213]:
+              - link "Careers" [ref=e214] [cursor=pointer]:
+                - /url: mailto:careers@zarkoony.com
+        - generic [ref=e215]:
+          - heading "Customer Care" [level=4] [ref=e216]
+          - list [ref=e217]:
+            - listitem [ref=e218]:
+              - link "Contact Us" [ref=e219] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e220]:
+              - link "FAQ" [ref=e221] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e222]:
+              - link "Shipping & Dispatch" [ref=e223] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=e224]:
+              - link "Alterations & Exchanges" [ref=e225] [cursor=pointer]:
+                - /url: /returns
+            - listitem [ref=e226]:
+              - link "Size Guide" [ref=e227] [cursor=pointer]:
+                - /url: /made-to-order/size-guide
+            - listitem [ref=e228]:
+              - link "Custom Orders" [ref=e229] [cursor=pointer]:
+                - /url: /custom-orders
+            - listitem [ref=e230]:
+              - link "WhatsApp Concierge" [ref=e231] [cursor=pointer]:
+                - /url: https://wa.me/92300927566
+            - listitem [ref=e232]:
+              - link "UAN 111-ZARKOONY (111-927-566)" [ref=e233] [cursor=pointer]:
+                - /url: tel:111927566
+        - generic [ref=e234]:
+          - heading "Policies" [level=4] [ref=e235]
+          - list [ref=e236]:
+            - listitem [ref=e237]:
+              - link "Privacy Policy" [ref=e238] [cursor=pointer]:
+                - /url: /policies/privacy
+            - listitem [ref=e239]:
+              - link "Refund Policy" [ref=e240] [cursor=pointer]:
+                - /url: /policies/refund
+            - listitem [ref=e241]:
+              - link "Shipping Policy" [ref=e242] [cursor=pointer]:
+                - /url: /policies/shipping
+            - listitem [ref=e243]:
+              - link "Terms of Service" [ref=e244] [cursor=pointer]:
+                - /url: /policies/terms
+        - generic [ref=e245]:
+          - heading "Follow the atelier" [level=4] [ref=e246]
+          - generic [ref=e247]:
+            - link "Facebook" [ref=e248] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=e251] [cursor=pointer]:
+              - /url: "#"
+            - link "YouTube" [ref=e254] [cursor=pointer]:
+              - /url: "#"
+            - link "TikTok" [ref=e257] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e260]:
+        - button "Pakistan" [ref=e261] [cursor=pointer]
+        - generic [ref=e265]: © 2026 - ZARKOONY
+        - generic [ref=e266]:
+          - generic [ref=e267]: VISA
+          - img "Mastercard" [ref=e268]
+  - link "Chat with the concierge on WhatsApp" [ref=e271] [cursor=pointer]:
+    - /url: https://wa.me/92300927566
+  - button "Open Next.js Dev Tools" [ref=e279] [cursor=pointer]
+  - alert [ref=e411]

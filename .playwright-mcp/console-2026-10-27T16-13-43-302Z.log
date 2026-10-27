@@ -1,0 +1,30 @@
+[     723ms] [LOG] Panda Size Chart & AI Guide Working version 2.0.0 @ https://cdn.shopify.com/extensions/019dbdfe-dc27-791b-88b1-b4b7182fd5bb/panda-9-41/assets/panda-sizechart.js:3
+[     968ms] [LOG] https://baroque.pk/a/mushdesk_orbe/api/v1/geolocation/?plan=plus @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[     969ms] [LOG] https://baroque.pk/api/collect @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1028ms] [LOG] %c InfinitePixels background: blue; color: white {id: sh-7e239aa2-5AF5-41CF-F493-31B5B97D76AE, name: page_viewed, data: Object, type: standard, timestamp: 2026-10-27T16:13:44.161Z} @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@c78502c5f4b2961ebb73440db4b702a1.js:0
+[    1030ms] [LOG] ggggggggg [Array(0), Array(1), Object, Array(0), Array(0), Array(0)] @ https://baroque.pk/web-pixels/strict/app/web-pixel-1271169091@c78502c5f4b2961ebb73440db4b702a1.js:0
+[    1079ms] SyntaxError: Unexpected token 'W', "W1tdLFt7Im"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at https://baroque.pk/web-pixels@78841ebdw6fd1eda2peb7ac126m6aaa99ab/custom/web-pixel-129761347@1/sandbox/modern/:11:45
+[    1200ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1290ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1366ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1524ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1602ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1602ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1709ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    1816ms] [LOG] https://baroque.pk/.well-known/shopify/monorail/unstable/produce_batch @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    2011ms] [LOG]  @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    2017ms] [LOG]  @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    2302ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    2550ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/logs @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    3152ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    3203ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    3350ms] [LOG] https://tr.snapchat.com/scs/shopify @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    3898ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    4261ms] [LOG] https://otlp-http-production.shopifysvc.com/v1/metrics @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[    4778ms] [LOG] https://app.kiwisizing.com/kiwiSizing/api/static/scriptVersion.json @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[   11154ms] [LOG] https://baroque.pk/api/collect @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[   36381ms] [LOG] https://baroque.pk/api/collect @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[   61581ms] [LOG] https://baroque.pk/api/collect @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466
+[   66795ms] [LOG] https://baroque.pk/api/collect @ https://cdn.shopify.com/extensions/01a17704-e657-73c5-a88d-424819718ff2/infinite-fb-tiktok-pixels-349/assets/embede.js:466

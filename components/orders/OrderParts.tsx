@@ -19,7 +19,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
               {line.name}
             </Link>
             <p className="caps mt-1 text-[11px] text-neutral-500">
-              {line.size === "Custom" ? "Custom measurements" : `Size ${line.size}`} · Made to order
+              {line.size === "Custom" ? `Custom size${line.base ? ` · from ${line.base}` : ""}` : `Size ${line.size}`} · Made to order
               {line.qty > 1 && ` · Qty ${line.qty}`}
             </p>
           </div>
@@ -29,7 +29,7 @@ export function LineItem({ line, children }: { line: CartLine; children?: React.
           <details className="mt-2 text-[12px] text-neutral-600">
             <summary className="link-underline inline cursor-pointer text-neutral-500">View measurements</summary>
             <dl className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-4">
-              {measurementFields.map((f) => (
+              {measurementFields.filter((f) => line.measurements?.[f.key] !== undefined).map((f) => (
                 <div key={f.key} className="flex justify-between gap-2">
                   <dt className="text-neutral-500">{f.label}</dt>
                   <dd className="text-black">{line.measurements?.[f.key]}&quot;</dd>

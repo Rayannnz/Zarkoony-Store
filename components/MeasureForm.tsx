@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { productBySlug } from "@/lib/catalog";
 import {
+  groupsForPieces,
   measurementFields,
   sizeOrder,
   standardSizes,
@@ -12,6 +13,9 @@ import {
   type Size,
 } from "@/lib/products";
 import type { CartLine } from "@/lib/orders";
+import { diagrams } from "./MeasureDiagrams";
+
+const groupTitles = { top: "Kameez", bottom: "Trouser" } as const;
 
 type Props = {
   item: MeasureItem;
@@ -30,16 +34,18 @@ const field =
   "w-full border border-neutral-200 bg-white px-3 py-2.5 text-base text-black outline-hidden transition-colors focus:border-black user-invalid:border-red-700 sm:text-[15px]";
 
 /**
- * Baroque's size row and quantity, then add to cart. Choosing Custom adds one step for the
- * measurements. Only the current step is rendered, so a hidden `required` field can never block
- * the submit, and each step validates itself natively before moving on.
+ * Baroque's size row, then add to cart. Choosing Custom reveals the measurement guide inline
+ * between the size row and the quantity. The guide only mounts while Custom is chosen, so its
+ * required nearest-size radio can never block a standard-size submit.
  */
 export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", sizeGuide }: Props) {
   const product = item.slug ? productBySlug(item.slug) : undefined;
   const sizes = product?.sizes ?? sizeOrder;
+  // Bespoke commissions (no product) get both diagrams.
+  const groups = product ? groupsForPieces(product.pieces) : groupsForPieces(["Kurta", "Trouser"]);
 
-  const [measuring, setMeasuring] = useState(false);
   const [size, setSize] = useState<Choice | "">("");
+  const [base, setBase] = useState<Size | "">("");
   const [measurements, setMeasurements] = useState<Partial<Record<MeasurementKey, string>>>({});
   const [notes, setNotes] = useState("");
   const [qty, setQty] = useState(1);
@@ -61,10 +67,12 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
   const submit = (event: FormEvent) => {
     event.preventDefault();
     if (!validate()) return;
-    if (size === "Custom" && !measuring) return setMeasuring(true);
     setPending(true);
+    // Only the measurements the customer changed; the rest follow the base size.
     const numbers = Object.fromEntries(
-      Object.entries(measurements).map(([k, v]) => [k, Number(v)]),
+      Object.entries(measurements)
+        .filter(([, v]) => v !== "")
+        .map(([k, v]) => [k, Number(v)]),
     ) as Record<string, number>;
     const line = {
       slug: item.slug ?? "bespoke",
@@ -72,6 +80,7 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
       image: product?.images[0] ?? "",
       price: item.price,
       size: size as Choice,
+      base: size === "Custom" && base ? base : undefined,
       measurements: size === "Custom" ? numbers : undefined,
       notes: notes.trim() || undefined,
       qty,
@@ -81,21 +90,12 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
     setTimeout(() => {
       onConfirm(line);
       setPending(false);
-      setMeasuring(false);
     }, 350);
   };
 
   return (
     <form onSubmit={submit} noValidate className="space-y-5">
-      {/* Keyed on the step so the panel remounts and @starting-style runs the entrance. */}
-      <fieldset
-        key={measuring ? "measure" : "size"}
-        ref={panel}
-        aria-label={measuring ? "Measurements" : "Size"}
-        className="min-w-0 transition-[opacity,translate] duration-300 ease-out starting:translate-x-3 starting:opacity-0 motion-reduce:transition-none"
-      >
-        {!measuring ? (
-          <>
+      <fieldset ref={panel} aria-label="Size" className="min-w-0">
             <div className="mb-3 flex items-baseline justify-between">
               <p className="caps text-[15px] text-neutral-600">Size</p>
               {sizeGuide ?? (
@@ -136,33 +136,11 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
                 Choose a size, or Custom.
               </p>
             )}
-            <div className="mt-5 flex items-center justify-between">
-              <p className="caps text-[15px] text-neutral-600">Quantity</p>
-              <div className="flex items-center border border-neutral-200">
-                <button
-                  type="button"
-                  aria-label="Decrease quantity"
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="px-3 py-2 text-neutral-600 hover:text-black"
-                >
-                  −
-                </button>
-                <span className="min-w-8 text-center text-black">{qty}</span>
-                <button
-                  type="button"
-                  aria-label="Increase quantity"
-                  onClick={() => setQty((q) => Math.min(5, q + 1))}
-                  className="px-3 py-2 text-neutral-600 hover:text-black"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
+        {/* The guide appears as soon as Custom is chosen; the block mounts so @starting-style runs. */}
+        {size === "Custom" && (
+          <div className="mt-6 min-w-0 transition-[opacity,translate] duration-300 ease-out starting:translate-y-2 starting:opacity-0 motion-reduce:transition-none">
             <div className="mb-4 flex items-baseline justify-between">
-              <p className="caps text-[15px] text-neutral-600">Your measurements (inches)</p>
+              <p className="caps text-[15px] text-neutral-600">Custom size (inches)</p>
               <Link
                 href="/made-to-order/measurement-guide"
                 className="link-underline caps text-[13px] text-black"
@@ -170,39 +148,93 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
                 How to measure
               </Link>
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {measurementFields.map((f) => (
-                <label key={f.key} className="block">
-                  <span className={fieldLabel}>{f.label}</span>
-                  <input
-                    type="number"
-                    name={f.key}
-                    inputMode="decimal"
-                    step="0.25"
-                    min={f.min}
-                    max={f.max}
-                    required
-                    placeholder={f.placeholder}
-                    value={measurements[f.key] ?? ""}
-                    onChange={(e) => {
-                      setMeasurements((m) => ({ ...m, [f.key]: e.target.value }));
-                      setErrors((prev) => ({ ...prev, [f.key]: undefined }));
-                    }}
-                    aria-describedby={errors[f.key] ? `${f.key}-error` : undefined}
-                    aria-invalid={!!errors[f.key]}
-                    className={field}
-                  />
-                  {errors[f.key] && (
-                    <span id={`${f.key}-error`} role="alert" className="mt-1 block text-[12px] text-red-700">
-                      {errors[f.key] === "missing"
-                        ? `Enter your ${f.label.toLowerCase()}.`
-                        : `Between ${f.min} and ${f.max} inches.`}
-                    </span>
-                  )}
-                </label>
-              ))}
+
+            <div className="bg-ivory-base px-4 py-3 text-[12px] leading-relaxed text-charcoal-body">
+              <p className="caps mb-1 text-[11px] font-semibold text-black">Note</p>
+              <ul className="list-disc space-y-1 pl-4">
+                <li>Give finished garment measurements, not body measurements: what the stitched piece should measure, laid flat.</li>
+                <li>Choose your nearest size, then fill in only the measurements you want changed. Everything else follows that size.</li>
+                <li>Changes to a custom-stitched order are accepted within 3 days of placing it, once the atelier confirms.</li>
+                <li>All measurements in inches.</li>
+              </ul>
             </div>
-            <label className="mt-4 block">
+
+            <div className="mt-5">
+              <p className="caps mb-2 text-[12px] text-neutral-600">
+                Nearest size <span aria-hidden>*</span>
+              </p>
+              <div role="radiogroup" aria-label="Nearest size" className="flex flex-wrap gap-2">
+                {sizes.map((value) => (
+                  <label
+                    key={value}
+                    className="relative flex h-9 min-w-11 cursor-pointer items-center justify-center border border-neutral-200 px-2.5 transition-colors hover:border-black has-checked:border-black has-checked:bg-black has-checked:text-white has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-black"
+                  >
+                    <input
+                      type="radio"
+                      name="base"
+                      value={value}
+                      required
+                      checked={base === value}
+                      onChange={() => {
+                        setBase(value);
+                        setErrors((prev) => ({ ...prev, base: undefined }));
+                      }}
+                      className="sr-only"
+                    />
+                    <span className="caps text-[13px]">{value}</span>
+                  </label>
+                ))}
+              </div>
+              {errors.base && (
+                <p role="alert" className="mt-2 text-[13px] text-red-700">
+                  Choose the standard size closest to you.
+                </p>
+              )}
+            </div>
+
+            {groups.map((group) => {
+              const Diagram = diagrams[group];
+              return (
+                <div key={group} className="mt-6">
+                  <p className="caps mb-3 text-[12px] text-neutral-600">{groupTitles[group]}</p>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] sm:gap-3">
+                    <Diagram className="mx-auto h-auto w-full max-w-[220px] text-black" />
+                    <div className="space-y-2">
+                      {measurementFields
+                        .filter((f) => f.group === group)
+                        .map((f) => (
+                          <label key={f.key} className="grid grid-cols-[minmax(0,1fr)_88px] items-center gap-x-2">
+                            <span className="caps text-[11px] leading-tight text-black">{f.label}</span>
+                            <input
+                              type="number"
+                              name={f.key}
+                              inputMode="decimal"
+                              step="0.25"
+                              min={f.min}
+                              max={f.max}
+                              placeholder={f.placeholder}
+                              value={measurements[f.key] ?? ""}
+                              onChange={(e) => {
+                                setMeasurements((m) => ({ ...m, [f.key]: e.target.value }));
+                                setErrors((prev) => ({ ...prev, [f.key]: undefined }));
+                              }}
+                              aria-describedby={errors[f.key] ? `${f.key}-error` : undefined}
+                              aria-invalid={!!errors[f.key]}
+                              className={`${field} h-9 py-0 text-center`}
+                            />
+                            {errors[f.key] && (
+                              <span id={`${f.key}-error`} role="alert" className="col-span-2 text-[12px] text-red-700">
+                                Between {f.min} and {f.max} inches.
+                              </span>
+                            )}
+                          </label>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            <label className="mt-5 block">
               <span className={fieldLabel}>Notes (optional)</span>
               <textarea
                 name="notes"
@@ -213,24 +245,35 @@ export function MeasureForm({ item, onConfirm, submitLabel = "Add to cart", size
                 className={field}
               />
             </label>
-          </>
+          </div>
         )}
+        <div className="mt-5 flex items-center justify-between">
+          <p className="caps text-[15px] text-neutral-600">Quantity</p>
+          <div className="flex items-center border border-neutral-200">
+            <button
+              type="button"
+              aria-label="Decrease quantity"
+              onClick={() => setQty((q) => Math.max(1, q - 1))}
+              className="px-3 py-2 text-neutral-600 hover:text-black"
+            >
+              −
+            </button>
+            <span className="min-w-8 text-center text-black">{qty}</span>
+            <button
+              type="button"
+              aria-label="Increase quantity"
+              onClick={() => setQty((q) => Math.min(5, q + 1))}
+              className="px-3 py-2 text-neutral-600 hover:text-black"
+            >
+              +
+            </button>
+          </div>
+        </div>
       </fieldset>
 
-      <div className="space-y-3">
-        {measuring && (
-          <button
-            type="button"
-            onClick={() => setMeasuring(false)}
-            className="caps block text-[13px] text-neutral-500 hover:text-black"
-          >
-            Back
-          </button>
-        )}
-        <button type="submit" disabled={pending} className="btn-black w-full disabled:opacity-60">
-          {pending ? "Adding…" : size === "Custom" && !measuring ? "Continue" : submitLabel}
-        </button>
-      </div>
+      <button type="submit" disabled={pending} className="btn-black w-full disabled:opacity-60">
+        {pending ? "Adding…" : submitLabel}
+      </button>
     </form>
   );
 }
